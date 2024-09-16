@@ -493,15 +493,17 @@ Mots-clés :  Anguilla Anguilla ; Montaison ; Recrutement ; Rampe à anguille ; 
 \clearpage
 
 \begin{center}
-\textbf{\LARGE Seine Normandie Migrateurs}
+\textbf{Seine Normandie Migrateurs}
 \end{center}
 
 Préambule : Les informations présentées ci-dessous sont tirées de site internet : https://www.seinormigr.fr. 
 \vspace{1cm}
 
-\underline{Présentation générale} : Seinormigr a été créé en 2007 sur une initiative du Président de la Fédération de la Seine-Maritime pour la Pêche et la Protection du Milieu Aquatique. L’association regroupe par adhésion les Fédérations départementales présentes sur le bassin Seine-Normandie afin de créer une seule et même continuité dans le suivi et la gestion des populations de poissons migrateurs. 
+\underline{Présentation générale} : Seinormigr a été créé en 2007 sur une initiative du Président de la Fédération de la Seine-Maritime pour la Pêche et la Protection du Milieu Aquatique. 
+L’association regroupe par adhésion les Fédérations départementales présentes sur le bassin Seine-Normandie afin de créer une seule et même continuité dans le suivi et la gestion des populations de poissons migrateurs. 
 En 2011, elle est inscrite au Plan de Gestion des Poissons Migrateurs du bassin Seine-Normandie où elle siège en tant qu’inviter. 
-En 2012, Seinormigr obtient son agrément d’association de protection de l’environnement par arrêté préfectoral du 13 décembre 2012. Puis en 2013, l'association est habilitée pour prendre part aux débats environnementaux se déroulant dans le cadre des instances consultatives régionales. 
+En 2012, Seinormigr obtient son agrément d’association de protection de l’environnement par arrêté préfectoral du 13 décembre 2012. 
+Puis en 2013, l'association est habilitée pour prendre part aux débats environnementaux se déroulant dans le cadre des instances consultatives régionales. 
 Enfin en 2020, Seine-Normandie Migrateurs et Normandie Grands Migrateurs ont fusionné pour ne créer qu'une seule association grands migrateurs sur le territoire Seine-Normandie.
 \vspace{1cm}
 
@@ -522,7 +524,8 @@ Enfin en 2020, Seine-Normandie Migrateurs et Normandie Grands Migrateurs ont fus
 -	Développer une large communication de synthèse des productions basées sur des données d’expertises, notamment à l’aide de mise à disposition d’outils de communication à différentes échelles des besoins qu’ils soient locaux, régionaux ou de bassins.
 \vspace{1cm}
 
-\underline{Territoires d’action} :  Seine Normandie Migrateurs fait partie des 8 associations migratrices présentent en France qui recouvrent les grands bassins français (Figure \ref{AM_National}). L’association regroupe par adhésion 18 Fédérations Départementales pour la Pêche et la Protection du Milieu Aquatique (FDAAPPMA), des Associations Agréées pour la Pêche et la Protection du Milieu Aquatique (AAPPMA), ainsi que des adhérents directs. 
+\underline{Territoires d’action} :  Seine Normandie Migrateurs fait partie des 8 associations migratrices présentent en France qui recouvrent les grands bassins français (Figure \ref{AM_National}). 
+L’association regroupe par adhésion 18 Fédérations Départementales pour la Pêche et la Protection du Milieu Aquatique (FDAAPPMA), des Associations Agréées pour la Pêche et la Protection du Milieu Aquatique (AAPPMA), ainsi que des adhérents directs. 
 Son territoire s’étend sur une superficie totale de 95 500 km², englobant près de 50 000 km de cours d’eau, composé d’une très grande partie du bassin versant de la Seine et de ceux des fleuves côtiers Normands. 
 
 \vspace{1cm}
@@ -535,7 +538,8 @@ Son territoire s’étend sur une superficie totale de 95 500 km², englobant pr
 \end{figure}
 
 
-\underline{Organisation} : Plus de 200 000 pêcheurs à travers 18 fédérations départementales pour la pêche et la protection des milieux aquatiques sont représentés par Seinormigr.  L’association est dirigée par un conseil d’administration de 20 membres avec à sa tête le Président M. Martial CHOUQUET, également président de la FDPPMA de l’Eure. Aujourd’hui l’équipe technique est composée de 6 salariés permanents répartis sur deux antennes Rouen (76) et Mondeville (14) (Figure \ref{Organigramme_Seinormigr}) :
+\underline{Organisation} : Plus de 200 000 pêcheurs à travers 18 fédérations départementales pour la pêche et la protection des milieux aquatiques sont représentés par Seinormigr. 
+L’association est dirigée par un conseil d’administration de 20 membres avec à sa tête le Président M. Martial CHOUQUET, également président de la FDPPMA de l’Eure. Aujourd’hui l’équipe technique est composée de 6 salariés permanents répartis sur deux antennes Rouen (76) et Mondeville (14) (Figure \ref{Organigramme_Seinormigr}) :
 
 \begin{figure}[htpb]
 \centering
@@ -560,8 +564,11 @@ Son territoire s’étend sur une superficie totale de 95 500 km², englobant pr
 
 \subsection{Contexte historique de l’étude}
 
-Les écosystèmes marins et dulcicoles jouent un rôle crucial pour l'humanité, fournissant des services essentiels (FAO 2020). Cependant, au cours des dernières décennies, l'augmentation rapide des activités anthropiques, telles que l'urbanisation, l'industrialisation, et l'agriculture intensive, a entraîné une dégradation significative de ces environnements naturels (FAO 2020). 
-Les activités humaines constituent la 1ère cause d’érosion de la biodiversité mondiale (UICN). En France, près de 25\% des poissons dulçaquicoles et amphihalins sont considérés à minima comme menacés (18 espèces sur 80) (UICN, 2019). Il est estimé que près d’une espèce d’eau douce sur trois est menacée d’extinction (WWF 2020). 
+Les ecosystemes marins et dulcicoles jouent un role crucial pour l'humanite, fournissant des services essentiels (FAO 2020). 
+Cependant, au cours des dernières décennies, l'augmentation rapide des activités anthropiques, telles que l'urbanisation, l'industrialisation, et l'agriculture intensive, a entraîné une dégradation significative de ces environnements naturels (FAO 2020). 
+Les activités humaines constituent la 1ère cause d’érosion de la biodiversité mondiale (UICN). 
+En France, près de 25\% des poissons dulçaquicoles et amphihalins sont considérés à minima comme menacés (18 espèces sur 80) (UICN, 2019). 
+Il est estimé que près d’une espece d’eau douce sur trois est menacée d’extinction (WWF 2020). 
 
 L’anguille européenne est une des espèces qui a été extrêmement touchées par ces menaces (Dekker et Beaulaton, 2016). Autrefois abondante dans les eaux européennes, jugée nuisible jusqu’en 1984, l’espèce représentait plus de 50\% de la biomasse piscicole de l’aval des systèmes fluviaux (Bruslé et Quignard, 2013 ; Moriarty et Dekker, 1997). 
 Ensuite, la population d'anguilles a drastiquement diminué depuis le milieu du XXème siècle. Initialement classée comme "vulnérable", elle est ensuite passée à "en danger", pour finalement aujourd’hui atteindre le statut "en danger critique d'extinction" selon l'Union internationale pour la conservation de la nature (UICN). Des études ont montré qu’aujourd’hui, selon les auteurs, le recrutement aurait diminué entre 90 et 99\% depuis 1960 (Feunteun, 2002 ; Baisez et Lafaille, 2005). 
@@ -575,5 +582,13 @@ Depuis 2014, l’association Seine-Normandie Migrateurs (SEINORMIGR) est chargé
 Ce rapport présente une synthèse bibliographique sur le sujet d’étude « l’Anguille européenne » puis une mise en contexte de la présence d’Anguille européenne sur le bassin Seine Normandie. Ensuite, La partie « matériels et méthodes » décrit les dispositifs de franchissement ainsi que les protocoles. Enfin, les résultats sont commentés puis discutés avant la conclusion et les perspectives.
 
 
+
+%\twocolumn
+% biblio commune aux différentes années
+\bibliographystyle{apalike}
+\bibliography{Biblio_M2}
+\normalsize
+\null
+\vfill
 
 \end{document}
