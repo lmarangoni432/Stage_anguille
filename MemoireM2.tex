@@ -1,4 +1,7 @@
-\documentclass{article}\usepackage[]{graphicx}\usepackage[]{xcolor}
+
+
+
+\documentclass[11pt,titlepage,twoside]{article}\usepackage[]{graphicx}\usepackage[table]{xcolor}
 % maxwidth is the original width if it is less than linewidth
 % otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -49,10 +52,211 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+\usepackage[a4paper, inner=1.5cm, outer=1.5cm, top=2cm, bottom=3cm]{geometry}
+
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage[sort&compress]{natbib}
+\usepackage[french]{babel}
+
+\addto\captionsfrench{\def\tablename{Tableau}}
+\addto\captionsfrench{\renewcommand*{\contentsname}{Sommaire:}}
+\addto\captionsfrench{%
+  \renewcommand{\listfigurename}{Liste des figures:}%
+  \renewcommand{\listtablename}{Liste des tableaux:}%
+  \renewcommand{\abstractname}{Résumé}%
+}
+\usepackage{caption}
+\usepackage[labelsep=endash]{caption}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage[table]{xcolor}
+\usepackage{ae,aeguill}
+\usepackage{subcaption}
+
+\usepackage{authblk}
+\renewcommand\Authand{ et }
+\renewcommand\Authands{ et }
+
+\usepackage{textcomp}
+\usepackage{hyperref}
+\pdfstringdefDisableCommands{%
+  \def\\{}%
+  }
+\hypersetup{ 
+colorlinks=true, 
+linkcolor=blue, 
+citecolor=blue, 
+filecolor=blue, 
+urlcolor=blue, 
+pdftitle= {Suivi et estimation du recrutement en anguille européenne sur le fleuve Seine\\ Année 2024 }, pdfauthor={Marangoni Lucas},
+pdfsubject={stacomi},
+ pdfkeywords={stacomi} {migrateurs} {Seine} {poissons}
+}
+\pdfoptionpdfminorversion=7
+\renewcommand{\sectionmark}[1]{\markboth{}{\emph{\thesection~#1}}}
+\renewcommand{\subsectionmark}[1]{\markboth{}{\emph{\thesubsection~#1}}}
+\renewcommand{\subsubsectionmark}[1]{\markboth{}{\emph{\thesubsection~#1}}}
+
+\makeatletter
+    \def\@@and{et}
+\makeatother
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\rightmark}
+\lfoot{\footnotesize{Suivi et estimation du recrutement en anguille européenne sur le fleuve Seine, année 2024}} %Insere un pied de page avec le texte a gauche.
+\rfoot{\thepage}
+\setlength{\headheight}{15pt}
+
+\usepackage{pdfpages}
+\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% CHUNK DE CHARGEMENT INITIAL  %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% Makes a path to your graphics' folder.
+\graphicspath{{image/}}
+
+\title{Suivi et estimation du recrutement en anguille européenne sur le fleuve Seine,
+année 2024}
+
+\author[1]{Marangoni Lucas}
+\affil[1]{Seine-Normandie Migrateurs, 11 cours Clemenceau 76100 Rouen}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
-test
+\hypersetup{pageanchor=false}
+
+\begin{titlepage}
+
+\includepdf[pages=-]{frontpage.pdf}
+
+\end{titlepage}
+
+
+
+\newpage
+\thispagestyle{empty}
+\strut
+\newpage
+
+\pagenumbering{roman} \setcounter{page}{1}
+
+\maketitle
+
+\begin{abstract}
+
+
+Un suivi du recrutement de l’anguille européenne en Seine est réalisé depuis 2014 en rive gauche et 2018 en rive droite du barrage de Poses, premier ouvrage sur la Seine. Ce suivi a été mis en place dans le cadre du Plan National de Gestion Anguille (PGA). Pour cette année 2024, un total de 843 489 anguilles a été comptabilisé avec 86,6\% des individus en rive droite et 13,4\% des individus en rive gauche. La mise en place d’une rampe à anguille en rive droite a fortement augmenté les chiffres car l’accessibilité de la rampe en rive gauche est trop difficile à cause des courants issus de l’usine hydroélectrique. Les facteurs environnementaux jouent un rôle dans la montaison des anguilles. Cette année les résultats ont réussi a montré un impact significatif positif des températures de l’air et de l’eau fortement corrélées entre elles. Les débits et les niveaux d’eau étaient extrêmement élevés, cela a joué un rôle dans l’accessibilité des anguilles en venant modifier et contrer les courants de l’usine hydroélectrique. En complémentarité des dispositifs de piégeages, des flottangs ont été mis en place en aval des rampes visant à vérifier le bon fonctionnement des dispositifs. Une amélioration des chiffres est visible cette année mais nous ne pouvons pas qualifier la situation de satisfaisante comparé aux chiffres des années 80.
+Mots-clés :  Anguilla Anguilla ; Montaison ; Recrutement ; Rampe à anguille ; Seine
+
+
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\clearpage
+
+\listoffigures
+
+\listoftables
+
+\hypersetup{pageanchor=false}
+
+\clearpage
+
+\pagenumbering{arabic} \setcounter{page}{1} 
+
+\clearpage
+
+\begin{center}
+\textbf{\LARGE Seine Normandie Migrateurs}
+\end{center}
+
+Préambule : Les informations présentées ci-dessous sont tirées de site internet : https://www.seinormigr.fr. 
+\vspace{1cm}
+
+\underline{Présentation générale} : Seinormigr a été créé en 2007 sur une initiative du Président de la Fédération de la Seine-Maritime pour la Pêche et la Protection du Milieu Aquatique. L’association regroupe par adhésion les Fédérations départementales présentes sur le bassin Seine-Normandie afin de créer une seule et même continuité dans le suivi et la gestion des populations de poissons migrateurs. 
+En 2011, elle est inscrite au Plan de Gestion des Poissons Migrateurs du bassin Seine-Normandie où elle siège en tant qu’inviter. 
+En 2012, Seinormigr obtient son agrément d’association de protection de l’environnement par arrêté préfectoral du 13 décembre 2012. Puis en 2013, l'association est habilitée pour prendre part aux débats environnementaux se déroulant dans le cadre des instances consultatives régionales. 
+Enfin en 2020, Seine-Normandie Migrateurs et Normandie Grands Migrateurs ont fusionné pour ne créer qu'une seule association grands migrateurs sur le territoire Seine-Normandie.
+\vspace{1cm}
+
+\underline{Missions} :
+
+-	Contribuer à la connaissance, l’évaluation et au suivi des populations piscicoles amphihalines sur le bassin Seine-Normandie et la région Normandie.
+
+-	Favoriser la valorisation et la gestion des grands migrateurs, notamment avec un porter à connaissance technique et scientifique qui soit visible et accessible en veillant au développement durable des pratiques halieutiques.
+
+-	Participer et s’investir techniquement et/ou financièrement dans les projets de restauration des axes de circulation et des habitats de reproduction et de développement des poissons migrateurs en vue d’assurer leur sauvegarde et la recolonisation des cours d’eau.
+
+-	Assister les maîtres d’ouvrages et les services instructeurs en matière technique et administrative dans tous les projets contribuant à l’accomplissement du cycle biologique des grands migrateurs.
+
+-	Mener ou coordonner des études ou publications spécifiques en concertation avec les différents gestionnaires et pouvoir publics en appui aux décisions politiques locales de l’eau afin de démontrer le bénéfice de l’action à consentir à toutes les échelles des cours d’eau.
+
+-	Participer à la définition et la mise en œuvre des objectifs de restauration des populations de poissons migrateurs au sein du COGEPOMI et de son PLAGEPOMI en collaboration étroite avec le secrétariat technique (DRIEE Île de France, Délégation de bassin) et les établissements publics de l’Etat (DREAL, AFB, Agence de l’Eau, DDTM, …).
+
+-	Développer une large communication de synthèse des productions basées sur des données d’expertises, notamment à l’aide de mise à disposition d’outils de communication à différentes échelles des besoins qu’ils soient locaux, régionaux ou de bassins.
+\vspace{1cm}
+
+\underline{Territoires d’action} :  Seine Normandie Migrateurs fait partie des 8 associations migratrices présentent en France qui recouvrent les grands bassins français (Figure \ref{AM_National}). L’association regroupe par adhésion 18 Fédérations Départementales pour la Pêche et la Protection du Milieu Aquatique (FDAAPPMA), des Associations Agréées pour la Pêche et la Protection du Milieu Aquatique (AAPPMA), ainsi que des adhérents directs. 
+Son territoire s’étend sur une superficie totale de 95 500 km², englobant près de 50 000 km de cours d’eau, composé d’une très grande partie du bassin versant de la Seine et de ceux des fleuves côtiers Normands. 
+
+\vspace{1cm}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=\textwidth]{AM_National.png}
+\caption{Associations migrateurs (AM) des grands bassins français (SEINORMIGR)}
+\label{AM_National}
+\end{figure}
+
+
+\underline{Organisation} : Plus de 200 000 pêcheurs à travers 18 fédérations départementales pour la pêche et la protection des milieux aquatiques sont représentés par Seinormigr.  L’association est dirigée par un conseil d’administration de 20 membres avec à sa tête le Président M. Martial CHOUQUET, également président de la FDPPMA de l’Eure. Aujourd’hui l’équipe technique est composée de 6 salariés permanents répartis sur deux antennes Rouen (76) et Mondeville (14) (Figure \ref{Organigramme_Seinormigr}) :
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=\textwidth]{Organigramme_Seinormigr.png}
+\caption{Organigramme de l'association Seinormigr}
+\label{Organigramme_Seinormigr}
+\end{figure}
+
+-	Florian DESHAYES, Directeur (Rouen)
+
+-	Maxime POTIER, Responsable technique (Mondeville)
+
+-	Adrien BARAULT, Responsable - connaissances/suivis (Rouen)
+
+-	Sébastien GRALL, Responsable - Stations de contrôle des migrations (Rouen)
+
+-	Alice LEMONNIER, Chargée d'études – communication (Mondeville)
+
+-	Romain DUPUY-JANDARD, Chargé d'étude - suivis milieux (Rouen)
+
+\section{Introduction}
+
+\subsection{Contexte historique de l’étude}
+
+
 
 
 \end{document}
