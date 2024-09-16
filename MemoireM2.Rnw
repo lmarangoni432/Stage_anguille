@@ -117,19 +117,9 @@ require(ggplot2)
 require(dplyr)
 require(cowplot)
 require(lubridate)
-
-
 require(stacomiR)
+require(DBI)
 
-
-###### connexion à la base Stacomi, schéma Seinormigr sur le raspberry ###########
-
-stacomi(database_expected = TRUE, sch= "seinormigr",options(
-  stacomiR.dbname = keyring::key_get("dbname_server"),
-  stacomiR.host = keyring::key_get("host_server"),
-  stacomiR.port = keyring::key_get("port_server"),
-  stacomiR.user = keyring::key_get("user_server"),
-  stacomiR.password = keyring::key_get("pwd_server")))
 
 #repertoire contenant les images
 imgwd<-str_c(getwd(),"/image/")
@@ -144,12 +134,6 @@ gras <- function(x) {str_c('{\\textbf{',x,'}}')}
 options("xtable.include.rownames"=FALSE)
 options(knitr.table.format = "latex")
 
-stacomi(database_expected = TRUE, sch= "seinormigr",options(
-  stacomiR.dbname = keyring::key_get("dbname_server"),
-  stacomiR.host = keyring::key_get("host_server"),
-  stacomiR.port = keyring::key_get("port_server"),
-  stacomiR.user = keyring::key_get("user_server"),
-  stacomiR.password = keyring::key_get("pwd_server")))
 
 # A function factory for getting integer y-axis values.
 integer_breaks <- function(n = 5, ...) {
@@ -160,6 +144,28 @@ integer_breaks <- function(n = 5, ...) {
     }
     return(fxn)
 }
+
+
+###### connexion à la base Stacomi, schéma Seinormigr sur le raspberry ###########
+
+
+# con<-  pool::dbPool(
+#   drv=RPostgres::Postgres(),
+#   dbname = keyring::key_get("dbname_server"),
+#   host = keyring::key_get("host_server"),
+#   port = keyring::key_get("port_server"),
+#   user = keyring::key_get("user_server"),
+#   password = keyring::key_get("pwd_server")
+# )
+
+if(exists("con")){
+
+stacomi(database_expected = TRUE, sch= "seinormigr",options(
+  stacomiR.dbname = keyring::key_get("dbname_server"),
+  stacomiR.host = keyring::key_get("host_server"),
+  stacomiR.port = keyring::key_get("port_server"),
+  stacomiR.user = keyring::key_get("user_server"),
+  stacomiR.password = keyring::key_get("pwd_server")))
 
 ##### création de bilan  multiple (plusieurs DC et/ou plusieurs esp mais 1 année) ########
 
@@ -172,7 +178,58 @@ r_mig_mult<-charge(r_mig_mult)
 r_mig_mult<-connect(r_mig_mult)
 r_mig_mult<-calcule(r_mig_mult,silent=TRUE)
 
+r_ann<-new("report_annual")
+r_ann<-choice_c(r_ann,
+                dc=c(104,102),
+                taxa=c("Anguilla anguilla"),
+                stage=c(4),
+                start_year="2014",
+                end_year="2024",
+                silent=FALSE)
+r_ann<-connect(r_ann)
+
+r_sample_char<-new("report_sample_char")
+r_sample_char<-choice_c(r_sample_char,
+                        dc=c(102,104),
+                        taxa=c("Anguilla anguilla"),
+                        stage=c("4"),
+                        par=c(1786),  #### poids = A111  taille= 1786
+                        horodatedebut="2024-01-01",  ### rien avant car pas intégré dans la base
+                        horodatefin="2024-12-31",
+                        silent=TRUE)
+r_sample_char<-connect(r_sample_char)
+r_sample_char<-calcule(r_sample_char,silent=TRUE)
+
+data_env<-new("report_env")
+data_env<-choice_c(data_env,
+                    stationMesure=c("P_coef_maree","Poses_debit","Poses_temp","P_temp_air","Po_niv_aval"),
+                    datedebut="2024-01-01",
+                    datefin="2024-12-31",
+                    silent=FALSE)
+data_env<-connect(data_env)
+data_env<-data_env@data
+
+r_env<-new("report_env")
+r_env<-choice_c(r_env,
+                stationMesure=c("Po_niv_aval"),
+                datedebut="2019-01-01",
+                datefin="2024-12-31",
+                silent=FALSE)	
+r_env<-connect(r_env)
+
+hauteur_eau<-r_env@data
 grdata<-fun_aggreg_for_plot(r_mig_mult)
+annee2<-r_ann@data
+bio_ang<-r_sample_char@data
+patho <- dbGetQuery(con, "SELECT * FROM seinormigr.tj_pathologieconstatee_pco")
+lot <- dbGetQuery(con, "SELECT * FROM seinormigr.t_lot_lot")
+ope<-dbGetQuery(con, "SELECT * FROM seinormigr.t_operation_ope")
+
+save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,file=str_c(datawd,"data_report.Rdata"))
+
+}else{
+  load(str_c(datawd,"data_report.Rdata"))
+}
 
 # Calculer le nombre total d'anguilles
 total_anguilles <- sum(grdata$effectif_total, na.rm = TRUE)
@@ -186,67 +243,19 @@ effectif_rive_gauche <- sum(grdata$effectif_total[grdata$DC == 102], na.rm = TRU
 pourcentage_rive_gauche <- (effectif_rive_gauche / total_anguilles) * 100
 
 # Afficher les résultats
-pourcentage_rive_droite
-pourcentage_rive_gauche
+#pourcentage_rive_droite
+#pourcentage_rive_gauche
 
 #### résultats annuels
 
-r_ann<-new("report_annual")
-r_ann<-choice_c(r_ann,
-                dc=c(104,102),
-                taxa=c("Anguilla anguilla"),
-                stage=c(4),
-                start_year="2014",
-                end_year="2024",
-                silent=FALSE)
-r_ann<-connect(r_ann)
 
-annee2<-r_ann@data
 annee2$annee<-as.factor(annee2$annee)
 annee2$ope_dic_identifiant<-as.factor(annee2$ope_dic_identifiant)
-
-
-##### création de bilan  caractéristiques lots ########
-
-r_sample_char<-new("report_sample_char")
-r_sample_char<-choice_c(r_sample_char,
-                        dc=c(102,104),
-                        taxa=c("Anguilla anguilla"),
-                        stage=c("4"),
-                        par=c(1786),  #### poids = A111  taille= 1786
-                        horodatedebut="2024-01-01",  ### rien avant car pas intégré dans la base
-                        horodatefin="2024-12-31",
-                        silent=TRUE)
-r_sample_char<-connect(r_sample_char)
-r_sample_char<-calcule(r_sample_char,silent=TRUE)
-report_sample_char=get("report_sample_char",envir_stacomi)
-
-
-
-##### résultats du bilan caractéristiques lots ####
-
-bio_ang<-report_sample_char@data
 
 colnames(bio_ang)[colnames(bio_ang)=="car_valeur_quantitatif"] <- "taille"  #### pour renommer la colonne car_valeur_quantitatif en taille
 
 
-
 ######### récupération des pathologies des anguilles #########
-
-require(DBI)
-require(dplyr)
-
-con<-  pool::dbPool(
-  drv=RPostgres::Postgres(),
-  dbname = keyring::key_get("dbname_server"),
-  host = keyring::key_get("host_server"),
-  port = keyring::key_get("port_server"),
-  user = keyring::key_get("user_server"),
-  password = keyring::key_get("pwd_server")
-)
-patho <- dbGetQuery(con, "SELECT * FROM seinormigr.tj_pathologieconstatee_pco")
-lot <- dbGetQuery(con, "SELECT * FROM seinormigr.t_lot_lot")
-ope<-dbGetQuery(con, "SELECT * FROM seinormigr.t_operation_ope")
 
 colnames(patho)[colnames(patho)=="pco_lot_identifiant"] <- "lot_identifiant"
 
@@ -262,169 +271,21 @@ patho_constate %>%
   summarise(nb=n())
 
 
-
-#### Pour comparaison des hauteurs d'eau interannuels 
-
-
-r_env<-new("report_env")
-r_env<-choice_c(r_env,
-                stationMesure=c("Po_niv_aval"),
-                datedebut="2019-01-01",
-                datefin="2024-12-31",
-                silent=FALSE)	
-r_env<-connect(r_env)
-
-hauteur_eau<-r_env@data
-
-
-
 ### Paramètres environneentaux 
 
 ##Dénomination station mesures enviro :
   
-#   "Poses_debit"
-#   "Poses_temp"
-#   "P_coef_maree"
-#   "Po_niv_aval"
+#   "Poses_debit" = 1
+#   "Poses_temp" = 2
+#   "P_coef_maree" = 4
+#   "Po_niv_aval" = 8
+#    "P_temp_air" = 7
 
-
-##Coeff
-r_mig_env<-new("report_mig_env")
-r_mig_env<-choice_c(r_mig_env,
-                    dc=c(102,104),
-                    taxa=c("Anguilla anguilla"),
-                    stage=c(4),
-                    stationMesure=c("P_coef_maree"),
-                    datedebut="2024-01-01",
-                    datefin="2024-12-31",
-                    silent=FALSE)
-r_mig_env<-charge(r_mig_env)
-r_mig_env<-connect(r_mig_env)
-r_mig_env<-calcule(r_mig_env,silent=TRUE)
-r_mig_env@report_env@data
-
-#bilan enviro
-
-#bilan migration multiple
-grdata0<-fun_aggreg_for_plot(r_mig_env@report_mig_mult)
-grdata2<-subset(grdata0, taxa=="2038" & stage=="AGG")
-grdata3<-grdata2
-grdata3$effectif_total<-abs(grdata3$effectif_total)
-
-Coeff_maree<-r_mig_env@report_env@data
-
-
-##Débit 
-
-r_mig_env<-new("report_mig_env")
-r_mig_env<-choice_c(r_mig_env,
-                    dc=c(102,104),
-                    taxa=c("Anguilla anguilla"),
-                    stage=c(4),
-                    stationMesure=c("Poses_debit"),
-                    datedebut="2024-01-01",
-                    datefin="2024-12-31",
-                    silent=FALSE)
-r_mig_env<-charge(r_mig_env)
-r_mig_env<-connect(r_mig_env)
-r_mig_env<-calcule(r_mig_env,silent=TRUE)
-r_mig_env@report_env@data
-
-#bilan enviro
-
-#bilan migration multiple
-grdata0<-fun_aggreg_for_plot(r_mig_env@report_mig_mult)
-grdata2<-subset(grdata0, taxa=="2038" & stage=="AGG")
-grdata3<-grdata2
-grdata3$effectif_total<-abs(grdata3$effectif_total)
-
-Débit<-r_mig_env@report_env@data
-
-
-##Température eau 
-
-r_mig_env<-new("report_mig_env")
-r_mig_env<-choice_c(r_mig_env,
-                    dc=c(102,104),
-                    taxa=c("Anguilla anguilla"),
-                    stage=c(4),
-                    stationMesure=c("Poses_temp"),
-                    datedebut="2024-01-01",
-                    datefin="2024-12-31",
-                    silent=FALSE)
-r_mig_env<-charge(r_mig_env)
-r_mig_env<-connect(r_mig_env)
-r_mig_env<-calcule(r_mig_env,silent=TRUE)
-r_mig_env@report_env@data
-
-#bilan enviro
-
-#bilan migration multiple
-grdata0<-fun_aggreg_for_plot(r_mig_env@report_mig_mult)
-grdata2<-subset(grdata0, taxa=="2038" & stage=="AGG")
-grdata3<-grdata2
-grdata3$effectif_total<-abs(grdata3$effectif_total)
-
-Temperature_eau<-r_mig_env@report_env@data
-
-
-
-
-##Temperature air 
-
-
-r_mig_env<-new("report_mig_env")
-r_mig_env<-choice_c(r_mig_env,
-                    dc=c(102,104),
-                    taxa=c("Anguilla anguilla"),
-                    stage=c(4),
-                    stationMesure=c("P_temp_air"),
-                    datedebut="2024-01-01",
-                    datefin="2024-12-31",
-                    silent=FALSE)
-r_mig_env<-charge(r_mig_env)
-r_mig_env<-connect(r_mig_env)
-r_mig_env<-calcule(r_mig_env,silent=TRUE)
-r_mig_env@report_env@data
-
-#bilan enviro
-
-#bilan migration multiple
-grdata0<-fun_aggreg_for_plot(r_mig_env@report_mig_mult)
-grdata2<-subset(grdata0, taxa=="2038" & stage=="AGG")
-grdata3<-grdata2
-grdata3$effectif_total<-abs(grdata3$effectif_total)
-
-Temperature_air<-r_mig_env@report_env@data
-
-
-##niveau eau 
-
-
-r_mig_env<-new("report_mig_env")
-r_mig_env<-choice_c(r_mig_env,
-                    dc=c(102,104),
-                    taxa=c("Anguilla anguilla"),
-                    stage=c(4),
-                    stationMesure=c("Po_niv_aval"),
-                    datedebut="2024-01-01",
-                    datefin="2024-12-31",
-                    silent=FALSE)
-r_mig_env<-charge(r_mig_env)
-r_mig_env<-connect(r_mig_env)
-r_mig_env<-calcule(r_mig_env,silent=TRUE)
-r_mig_env@report_env@data
-
-#bilan enviro
-
-#bilan migration multiple
-grdata0<-fun_aggreg_for_plot(r_mig_env@report_mig_mult)
-grdata2<-subset(grdata0, taxa=="2038" & stage=="AGG")
-grdata3<-grdata2
-grdata3$effectif_total<-abs(grdata3$effectif_total)
-
-Niveau_eau<-r_mig_env@report_env@data
-
+Coeff_maree<-subset(data_env,env_stm_identifiant==4)
+Niveau_eau<-subset(data_env,env_stm_identifiant==8)
+Temperature_air<-subset(data_env,env_stm_identifiant==7)
+Temperature_eau<-subset(data_env,env_stm_identifiant==2)
+Débit<-subset(data_env,env_stm_identifiant==1)
 
 
 @
