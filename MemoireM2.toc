@@ -10,3 +10,13 @@
 \contentsline {subsection}{\numberline {2.3}Cycle de vie}{5}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Larve leptocéphale}{7}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Civelle}{7}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Anguille jaune }{8}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Anguille argentée }{9}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Menaces }{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Pêche et braconnage }{9}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Parasitisme}{9}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Prédation}{10}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Obstacles à la migration}{10}{subsubsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.5}Perte et dégradation des habitats}{10}{subsubsection.2.4.5}%
+\contentsline {subsubsection}{\numberline {2.4.6}Modifications hydro climatiques}{10}{subsubsection.2.4.6}%
+\contentsline {subsubsection}{\numberline {2.4.7}Pollution}{10}{subsubsection.2.4.7}%
