@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  24 SEP 2024 14:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  24 SEP 2024 14:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,7 +680,7 @@ Package hyperref Info: Link coloring ON on input line 144.
 \openout3 = `MemoireM2.out'.
 
 Package hyperref Info: Option `pageanchor' set `false' on input line 146.
-<frontpage.pdf, id=44, 597.432pt x 845.07718pt>
+<frontpage.pdf, id=48, 597.432pt x 845.07718pt>
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf>
 Package pdftex.def Info: frontpage.pdf  used on input line 150.
@@ -689,7 +689,7 @@ File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf>
 Package pdftex.def Info: frontpage.pdf  used on input line 150.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
-<frontpage.pdf, id=47, page=1, 597.432pt x 845.07718pt>
+<frontpage.pdf, id=51, page=1, 597.432pt x 845.07718pt>
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
 Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
@@ -756,7 +756,7 @@ t ti-rées de site in-ter-net : https ://www.seinormigr.fr.
 Package textcomp Info: Symbol \texttwosuperior not provided by
 (textcomp)             font family aer in TS1 encoding.
 (textcomp)             Default family used instead on input line 226.
-<image/AM_National.png, id=143, 964.038pt x 548.814pt>
+<image/AM_National.png, id=148, 964.038pt x 548.814pt>
 File: image/AM_National.png Graphic file (type png)
 <use image/AM_National.png>
 Package pdftex.def Info: image/AM_National.png  used on input line 232.
@@ -765,7 +765,7 @@ Package pdftex.def Info: image/AM_National.png  used on input line 232.
 
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<image/Organigramme_Seinormigr.png, id=151, 1105.12875pt x 736.25063pt>
+<image/Organigramme_Seinormigr.png, id=156, 1105.12875pt x 736.25063pt>
 File: image/Organigramme_Seinormigr.png Graphic file (type png)
 <use image/Organigramme_Seinormigr.png>
 Package pdftex.def Info: image/Organigramme_Seinormigr.png  used on input line 
@@ -778,24 +778,24 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 28
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<image/Morpho.jpg, id=184, 1395.2125pt x 238.8925pt>
+<image/Morpho.jpg, id=189, 1395.2125pt x 238.8925pt>
 File: image/Morpho.jpg Graphic file (type jpg)
 <use image/Morpho.jpg>
 Package pdftex.def Info: image/Morpho.jpg  used on input line 300.
 (pdftex.def)             Requested size: 512.14963pt x 87.6926pt.
  [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-<image/Aire.png, id=240, 439.6425pt x 243.91125pt>
+<image/Aire.png, id=245, 439.6425pt x 243.91125pt>
 File: image/Aire.png Graphic file (type png)
 <use image/Aire.png>
 Package pdftex.def Info: image/Aire.png  used on input line 318.
 (pdftex.def)             Requested size: 512.14963pt x 284.1468pt.
-<image/Cycle.png, id=244, 663.98062pt x 327.2225pt>
+<image/Cycle.png, id=249, 663.98062pt x 327.2225pt>
 File: image/Cycle.png Graphic file (type png)
 <use image/Cycle.png>
 Package pdftex.def Info: image/Cycle.png  used on input line 330.
 (pdftex.def)             Requested size: 512.14963pt x 252.41147pt.
- (./MemoireM2.bbl [5 <./image/Morpho.jpg>] [6 <./image/Aire.png> <./image/Cycle
-.png>] [7]) [8]
+ [5 <./image/Morpho.jpg>]
+[6 <./image/Aire.png> <./image/Cycle.png>] (./MemoireM2.bbl [7] [8]) [9]
 (./MemoireM2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -806,16 +806,16 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `MemoireM2.out' has not changed.
-(rerunfilecheck)             Checksum: 88E8382E1AB17F5BE67AA10C6F1246DB;1735.
+(rerunfilecheck)             Checksum: 6101F097128162873818034A7842E433;1838.
  ) 
 Here is how much of TeX's memory you used:
- 16544 strings out of 474116
- 267671 string characters out of 5743683
+ 16546 strings out of 474116
+ 267711 string characters out of 5743683
  1940187 words of memory out of 5000000
- 38545 multiletter control sequences out of 15000+600000
+ 38546 multiletter control sequences out of 15000+600000
  594130 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,17n,79p,1893b,607s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,79p,1893b,625s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
@@ -827,10 +827,10 @@ texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on MemoireM2.pdf (14 pages, 7970276 bytes).
+Output written on MemoireM2.pdf (15 pages, 7973287 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 

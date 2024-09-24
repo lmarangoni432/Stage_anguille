@@ -499,6 +499,15 @@ Le cycle biologique de l’anguille européenne est assez complexe et présente 
 
 \subsubsection{Larve leptocéphale}
 
+La larve leptocéphale est le premier stade de l’espèce qui apparait à la suite de l’éclosion des œufs en mer des Sargasses, après la reproduction à des profondeurs comprises entre 200 et 400 mètres. La larve leptocéphale est translucide, en forme de feuille de saule est particulièrement adaptée à un mode de vie pélagique (Figure 6) (Edeline et al., 2005). La larve dispose de glycosaminoglycanes (GAG) constituant une enveloppe corporelle très hydratée sous forme de composés hydrophiles. Ceux- ci maintiennent et hydratent le corps larvaire de l’individu. D’après Bonhommeau et al., (2010) la migration des larves vers le continent européen dure environ 21 mois. Les larves effectuent des migrations nycthémérales restant entre 200 et 300 m de profondeur pour éviter les prédateurs la journée et remonte à 25 m de la surface la nuit pour se nourrir (Castonguay et McCleave, 1987 ; Hirschinger, 2015). A l’approche des côtes, les larves cessent de se nourrir (Edeline et al., 2005) et commencent leur métamorphose en civelles (Hirschinger, 2015).
+
+
+\subsubsection{Civelle}
+
+Le stade civelle permet aux individus de coloniser le milieu continental (Edeline et al., 2005). La température de l’eau ainsi que la salinité conditionnent la vitesse de métamorphose (Briand et al., 2005). Les civelles ont une taille comprise en 60 et 80 mm (Figure 7) (Adam et al., 2008).  Elles colonisent les bassins versants en utilisant les courants de marée de flot (Hirschinger, 2015). Durant la colonisation des milieux continentaux le corps des civelles se pigmente progressivement (Prouzet, 2003) et l’alimentation s’arrête (Prouzet, 2002 ; Charlon et Blanc, 1982). Le stade civelle dure environ 3 mois (Guerault et al., (1991). La fin de la métamorphose est marquée par une pigmentation totale du corps dès lors la civelle devient une anguillette (Laffaille et al., 2000).
+
+La remontée des civelles est conditionnée par divers facteurs : le crépuscule (Bardonnet et al., 2003, 2005), la température de l’eau, avec une augmentation des captures à 20°C (White et Knights, 1997), la marée montante (Bardonnet et al., 2003) et le cycle lunaire avec plus d’activité pendant la deuxième moitié du cycle (Todd, 1981). 
+
 
 %\twocolumn
 % biblio commune aux différentes années
