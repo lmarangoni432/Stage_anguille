@@ -9,12 +9,25 @@ Adam, G. (1997).
   III.
 \newblock Pages: 353.
 
-\bibitem[Adam et~al., 2008]{adam_anguille_2008}
-Adam, G., Feunteun, E., Prouzet, P., and Rigaud, C. (2008).
+\bibitem[Adam et~al., 2008a]{adam_anguille_2008}
+Adam, G., Feunteun, E., Prouzet, P., and Rigaud, C. (2008a).
 \newblock {\em L'anguille européenne. {Indicateurs} d'abondance et de
   colonisation}.
 \newblock Editions Quae.
 \newblock Pages: 400.
+
+\bibitem[Adam et~al., 2008b]{adam_anguille_2008-1}
+Adam, G., Feunteun, E., Prouzet, P., and Rigaud, C. (2008b).
+\newblock {\em L'anguille européenne. {Indicateurs} d'abondance et de
+  colonisation}.
+\newblock Editions Quae.
+\newblock Pages: 400.
+
+\bibitem[Anthony, 2006]{anthony_bases_2006}
+Anthony, A. (2006).
+\newblock Bases biologiques d'un modèle pour estimer la biomasse féconde de
+  l'anguille européenne en fonction des recrues fluviales et du contexte de
+  croissance : approche comparative à l'échelle de petits bassins versants.
 
 \bibitem[Baisez and Laffaille, 2005]{baisez_outil_2005}
 Baisez, A. and Laffaille, P. (2005).
@@ -23,6 +36,12 @@ Baisez, A. and Laffaille, P. (2005).
 \newblock {\em Bulletin Français de la Pêche et de la Pisciculture},
   (378-379):115--130.
 \newblock Number: 378-379 Publisher: EDP Sciences.
+
+\bibitem[Bonhommeau et~al., 2010]{bonhommeau_duration_2010}
+Bonhommeau, S., Castonguay, M., Rivot, E., Sabatié, R., and Le~Pape, O.
+  (2010).
+\newblock The duration of migration of {Atlantic} \textit{{Anguilla}} larvae.
+\newblock {\em Fish and Fisheries}, 11(3):289--306.
 
 \bibitem[BRUSLÉ, 1994]{brusle_anguille_1994}
 BRUSLÉ, J. (1994).
@@ -36,6 +55,13 @@ Bruslé, J. and Quignard, J.-P. (2001).
 \newblock {\em Biologie des poissons d'eau douce européens}.
 \newblock Lavoisier.
 \newblock Google-Books-ID: 8XVqV3YIn7oC.
+
+\bibitem[Castonguay and McCleave, 1987]{castonguay_vertical_1987}
+Castonguay, M. and McCleave, J. (1987).
+\newblock Vertical distributions, diel and ontogenic vertical migrations and
+  net avoidance of {Leptocephali} of {Anguilla} and other common species in the
+  {Sargasso} {Sea}.
+\newblock {\em Journal of Plankton Research - J PLANKTON RES}, 9:195--214.
 
 \bibitem[Daemen et~al., 2001]{daemen_analysis_2001}
 Daemen, E., Cross, T., Ollevier, F., and Volckaert, F. (2001).
@@ -78,12 +104,40 @@ Elie, P. and Rochard, E. (1994).
 \newblock {\em Bulletin Francais De La Peche Et De La Pisciculture - BULL FR
   PECHE PISCIC}, 335:81--98.
 
+\bibitem[Farrugio and Elie, 2011]{farrugio_etat_2011}
+Farrugio, H. and Elie, P. (2011).
+\newblock Etat de l'exploitation de l'anguille européenne ({Anguilla}
+  anguilla, {Linnée} 1758) et éléments pour l'élaboration de plans de
+  gestion dans la zone {CGPM}.
+
+\bibitem[Feunteun and Laffaille, 2011]{feunteun_commercially_2011}
+Feunteun, E. and Laffaille, P. (2011).
+\newblock Commercially {Important} {Catadromous} {Fish}.
+
 \bibitem[Feunteun et~al., 2003]{feunteun_review_2003-1}
 Feunteun, E., Laffaille, P., Robinet, T., Briand, C., Baisez, A., Olivier,
   J.-M., and Acou, A. (2003).
 \newblock A {Review} of {Upstream} {Migration} and {Movements} in {Inland}
   {Waters} by {Anguillid} {Eels}: {Toward} a {General} {Theory}.
 \newblock pages 191--213.
+
+\bibitem[Feunteun and Marion, 1994]{feunteun_assessment_1994}
+Feunteun, E. and Marion, L. (1994).
+\newblock Assessment of {Grey} heron predation on fish communities : the case
+  of the largest {European} colony. {Hydrobiologia} 279/280: 327-344.
+\newblock {\em Hydrobiologia}, 279/280:327--344.
+
+\bibitem[Hirschinger, 2015]{hirschinger_donnees_2015}
+Hirschinger, J. (2015).
+\newblock Données nouvelles sur le cycle biologique et les infestations
+  parasitaires des anguilles de {Polynésie} française.
+
+\bibitem[Jobling, 2004]{jobling_eel_2004}
+Jobling, M. (2004).
+\newblock The eel: {F}.-{W}. {Tesch} (translated from {German} by {R}.{J}.
+  {White}, and edited by {J}.{E}. {Thorpe}) {Blackwell} {Science}, {Oxford},
+  2003; vii+408 pp., {Price} £89.50; {ISBN} 0 632 06389 0.
+\newblock {\em Aquaculture}, 237:533--535.
 
 \bibitem[Jouanin et~al., 2012]{jouanin_eel_2012}
 Jouanin, C., Briand, C., Beaulaton, L., and Lambert, P. (2012).
@@ -98,6 +152,12 @@ Laffaille, P., Baisez, A., Rigaud, C., and Feunteun, E. (2004).
 \newblock Habitat preferences of different {European} eel size classes in a
   reclaimed marsh: {A} contribution to species and ecosystem conservation.
 \newblock {\em Wetlands}, 24:642--651.
+
+\bibitem[Laffaille et~al., 2005]{laffaille_point_2005}
+Laffaille, P., Briand, C., Fatin, D., Lafage, D., and Lasne, E. (2005).
+\newblock Point sampling the abundance of {European} eel ( {Anguilla} anguilla
+  ) in freshwater areas.
+\newblock {\em Archiv für Hydrobiologie}, 162:91--98.
 
 \bibitem[Laffaille et~al., 2003]{laffaille_spatial_2003}
 Laffaille, P., Feunteun, E., Baisez, A., Robinet, T., Acou, A., Legault, A.,
@@ -131,6 +191,14 @@ Riemann, L., Alfredsson, H., Hansen, M., Als, T., Nielsen, T., Munk, P.,
 \newblock Qualitative assessment of the diet of {European} eel larvae in the
   {Sargasso} {Sea} resolved by {DNA} barcoding.
 \newblock {\em Biology letters}, 6:819--22.
+
+\bibitem[Schmidt and Regan, 1922]{schmidt_ivbreeding_1922}
+Schmidt, J. and Regan, C.~T. (1922).
+\newblock {IV}.—{The} breeding places of the eel.
+\newblock {\em Philosophical Transactions of the Royal Society of London.
+  Series B, Containing Papers of a Biological Character},
+  211(382-390):179--208.
+\newblock Publisher: Royal Society.
 
 \bibitem[Tutman et~al., 2007]{tutman_new_2007}
 Tutman, P., Glamuzina, B., Bartulovic, V., and Jakov, D. (2007).
