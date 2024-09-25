@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  24 SEP 2024 17:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  25 SEP 2024 17:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,7 +680,7 @@ Package hyperref Info: Link coloring ON on input line 144.
 \openout3 = `MemoireM2.out'.
 
 Package hyperref Info: Option `pageanchor' set `false' on input line 146.
-<frontpage.pdf, id=88, 597.432pt x 845.07718pt>
+<frontpage.pdf, id=192, 597.432pt x 845.07718pt>
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf>
 Package pdftex.def Info: frontpage.pdf  used on input line 150.
@@ -689,7 +689,7 @@ File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf>
 Package pdftex.def Info: frontpage.pdf  used on input line 150.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
-<frontpage.pdf, id=91, page=1, 597.432pt x 845.07718pt>
+<frontpage.pdf, id=195, page=1, 597.432pt x 845.07718pt>
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
 Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
@@ -756,7 +756,7 @@ t ti-r�es de site in-ter-net : https ://www.seinormigr.fr.
 Package textcomp Info: Symbol \texttwosuperior not provided by
 (textcomp)             font family aer in TS1 encoding.
 (textcomp)             Default family used instead on input line 226.
-<image/AM_National.png, id=208, 964.038pt x 548.814pt>
+<image/AM_National.png, id=379, 964.038pt x 548.814pt>
 File: image/AM_National.png Graphic file (type png)
 <use image/AM_National.png>
 Package pdftex.def Info: image/AM_National.png  used on input line 232.
@@ -765,7 +765,7 @@ Package pdftex.def Info: image/AM_National.png  used on input line 232.
 
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<image/Organigramme_Seinormigr.png, id=216, 1105.12875pt x 736.25063pt>
+<image/Organigramme_Seinormigr.png, id=387, 1105.12875pt x 736.25063pt>
 File: image/Organigramme_Seinormigr.png Graphic file (type png)
 <use image/Organigramme_Seinormigr.png>
 Package pdftex.def Info: image/Organigramme_Seinormigr.png  used on input line 
@@ -777,55 +777,136 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 28
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-<image/Morpho.jpg, id=249, 1395.2125pt x 238.8925pt>
+) [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+<image/Morpho.jpg, id=430, 1395.2125pt x 238.8925pt>
 File: image/Morpho.jpg Graphic file (type jpg)
 <use image/Morpho.jpg>
-Package pdftex.def Info: image/Morpho.jpg  used on input line 300.
+Package pdftex.def Info: image/Morpho.jpg  used on input line 318.
 (pdftex.def)             Requested size: 512.14963pt x 87.6926pt.
- [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+
 
 Package natbib Warning: Citation `schmidt_ivbreeding_1922' on page 5 undefined 
-on input line 314.
+on input line 332.
 
-<image/Aire.png, id=302, 439.6425pt x 243.91125pt>
+[5 <./image/Morpho.jpg>]
+<image/Aire.png, id=490, 439.6425pt x 243.91125pt>
 File: image/Aire.png Graphic file (type png)
 <use image/Aire.png>
-Package pdftex.def Info: image/Aire.png  used on input line 318.
+Package pdftex.def Info: image/Aire.png  used on input line 336.
 (pdftex.def)             Requested size: 512.14963pt x 284.1468pt.
-<image/Cycle.png, id=306, 663.98062pt x 327.2225pt>
+<image/Cycle.png, id=494, 663.98062pt x 327.2225pt>
 File: image/Cycle.png Graphic file (type png)
 <use image/Cycle.png>
-Package pdftex.def Info: image/Cycle.png  used on input line 330.
+Package pdftex.def Info: image/Cycle.png  used on input line 348.
 (pdftex.def)             Requested size: 512.14963pt x 252.41147pt.
-[5 <./image/Morpho.jpg>] [6 <./image/Aire.png> <./image/Cycle.png>]
-<image/larve.png, id=344, 268.00125pt x 370.38374pt>
+<image/larve.png, id=506, 268.00125pt x 370.38374pt>
 File: image/larve.png Graphic file (type png)
 <use image/larve.png>
-Package pdftex.def Info: image/larve.png  used on input line 341.
+Package pdftex.def Info: image/larve.png  used on input line 359.
 (pdftex.def)             Requested size: 256.07481pt x 353.89713pt.
- [7 <./image/larve.png>]
-<image/civelle.png, id=383, 210.7875pt x 176.66pt>
+ [6 <./image/Aire.png>] [7 <./image/Cycle.png> <./image/larve.png>]
+<image/civelle.png, id=549, 210.7875pt x 176.66pt>
 File: image/civelle.png Graphic file (type png)
 <use image/civelle.png>
-Package pdftex.def Info: image/civelle.png  used on input line 354.
+Package pdftex.def Info: image/civelle.png  used on input line 372.
 (pdftex.def)             Requested size: 256.07481pt x 214.61914pt.
 
 
 Package natbib Warning: Citation `oliveira_life_1999' on page 8 undefined on in
-put line 361.
+put line 379.
 
-<image/ang_jaune_argent.png, id=393, 571.63562pt x 336.75812pt>
+<image/ang_jaune_argent.png, id=559, 571.63562pt x 336.75812pt>
 File: image/ang_jaune_argent.png Graphic file (type png)
 <use image/ang_jaune_argent.png>
-Package pdftex.def Info: image/ang_jaune_argent.png  used on input line 365.
+Package pdftex.def Info: image/ang_jaune_argent.png  used on input line 383.
 (pdftex.def)             Requested size: 256.07481pt x 150.85632pt.
-[8 <./image/civelle.png> <./image/ang_jaune_argent.png>] [9] (./MemoireM2.bbl
-[10] [11] [12] [13])
+[8 <./image/civelle.png>] [9 <./image/ang_jaune_argent.png>] [10]
+<image/PGA.png, id=688, 455.7025pt x 314.17375pt>
+File: image/PGA.png Graphic file (type png)
+<use image/PGA.png>
+Package pdftex.def Info: image/PGA.png  used on input line 458.
+(pdftex.def)             Requested size: 256.07481pt x 176.54971pt.
+
+Underfull \vbox (badness 2409) has occurred while \output is active []
+
+ [11]
+<image/Bassin.png, id=699, 1027.33812pt x 729.72626pt>
+File: image/Bassin.png Graphic file (type png)
+<use image/Bassin.png>
+Package pdftex.def Info: image/Bassin.png  used on input line 472.
+(pdftex.def)             Requested size: 256.07481pt x 181.88551pt.
+
+[12 <./image/PGA.png> <./image/Bassin.png>]
+<image/Qualité_eau.png, id=712, 457.6005pt x 323.901pt>
+File: image/Qualité_eau.png Graphic file (type png)
+<use image/Qualité_eau.png>
+Package pdftex.def Info: image/Qualité_eau.png  used on input line 482.
+(pdftex.def)             Requested size: 256.07481pt x 181.25482pt.
+<image/Barrage.png, id=714, 676.02562pt x 382.42876pt>
+File: image/Barrage.png Graphic file (type png)
+<use image/Barrage.png>
+Package pdftex.def Info: image/Barrage.png  used on input line 499.
+(pdftex.def)             Requested size: 256.07481pt x 144.86343pt.
+ [13 <./image/Qualité_eau.png> <./image/Barrage.png>]
+<image/RD.png, id=723, 481.8pt x 194.691pt>
+File: image/RD.png Graphic file (type png)
+<use image/RD.png>
+Package pdftex.def Info: image/RD.png  used on input line 517.
+(pdftex.def)             Requested size: 256.07481pt x 103.47983pt.
+<image/RG.png, id=724, 483.552pt x 194.472pt>
+File: image/RG.png Graphic file (type png)
+<use image/RG.png>
+Package pdftex.def Info: image/RG.png  used on input line 524.
+(pdftex.def)             Requested size: 256.07481pt x 102.98953pt.
+ [14 <./image/RD.png> <./image/RG.png>]
+<image/RG2.jpeg, id=738, 666.49pt x 939.51pt>
+File: image/RG2.jpeg Graphic file (type jpg)
+<use image/RG2.jpeg>
+Package pdftex.def Info: image/RG2.jpeg  used on input line 547.
+(pdftex.def)             Requested size: 256.07481pt x 360.97418pt.
+ [15 <./image/RG2.jpeg>]
+<image/RD2.jpeg, id=743, 746.79pt x 762.85pt>
+File: image/RD2.jpeg Graphic file (type jpg)
+<use image/RD2.jpeg>
+Package pdftex.def Info: image/RD2.jpeg  used on input line 564.
+(pdftex.def)             Requested size: 256.07481pt x 261.5772pt.
+
+Overfull \hbox (7.61554pt too wide) in paragraph at lines 583--601
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[16 <./image/RD2.jpeg>]
+<image/Protocole.png, id=751, 492.75pt x 322.9155pt>
+File: image/Protocole.png Graphic file (type png)
+<use image/Protocole.png>
+Package pdftex.def Info: image/Protocole.png  used on input line 615.
+(pdftex.def)             Requested size: 256.07481pt x 167.8234pt.
+ [17 <./image/Protocole.png>]
+<image/Flottang.png, id=760, 278.03876pt x 185.69376pt>
+File: image/Flottang.png Graphic file (type png)
+<use image/Flottang.png>
+Package pdftex.def Info: image/Flottang.png  used on input line 633.
+(pdftex.def)             Requested size: 256.07481pt x 171.02733pt.
+ [18 <./image/Flottang.png>]
+<image/Grille.png, id=777, 457.98067pt x 440.9282pt>
+File: image/Grille.png Graphic file (type png)
+<use image/Grille.png>
+Package pdftex.def Info: image/Grille.png  used on input line 673.
+(pdftex.def)             Requested size: 256.07481pt x 246.54134pt.
+<image/Interprétation.png, id=783, 416.55624pt x 63.23625pt>
+File: image/Interprétation.png Graphic file (type png)
+<use image/Interprétation.png>
+Package pdftex.def Info: image/Interprétation.png  used on input line 691.
+(pdftex.def)             Requested size: 256.07481pt x 38.87605pt.
+ [19 <./image/Grille.png>] (./MemoireM2.bbl [20 <./image/Interprétation.png>] 
+[21] [22] [23])
 
 Package natbib Warning: There were undefined citations.
 
-[14] (./MemoireM2.aux)
+[24] (./MemoireM2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -835,32 +916,34 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `MemoireM2.out' has not changed.
-(rerunfilecheck)             Checksum: E1BE481AA543772120D319386E7393FA;3464.
+(rerunfilecheck)             Checksum: 179BBAE1A671192F4426971A07D8961A;8371.
  ) 
 Here is how much of TeX's memory you used:
- 16728 strings out of 474116
- 272390 string characters out of 5743683
- 1940187 words of memory out of 5000000
- 38685 multiletter control sequences out of 15000+600000
+ 17010 strings out of 474116
+ 277978 string characters out of 5743683
+ 1946187 words of memory out of 5000000
+ 38917 multiletter control sequences out of 15000+600000
  594130 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,17n,79p,2286b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,79p,2286b,699s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on MemoireM2.pdf (20 pages, 9941994 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on MemoireM2.pdf (30 pages, 21912294 bytes).
 PDF statistics:
- 586 PDF objects out of 1000 (max. 8388607)
- 487 compressed objects within 5 object streams
- 91 named destinations out of 1000 (max. 500000)
- 229 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 908 PDF objects out of 1000 (max. 8388607)
+ 766 compressed objects within 8 object streams
+ 141 named destinations out of 1000 (max. 500000)
+ 497 words of extra memory for PDF output out of 10000 (max. 10000000)
 

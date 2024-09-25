@@ -9,15 +9,8 @@ Adam, G. (1997).
   III.
 \newblock Pages: 353.
 
-\bibitem[Adam et~al., 2008a]{adam_anguille_2008}
-Adam, G., Feunteun, E., Prouzet, P., and Rigaud, C. (2008a).
-\newblock {\em L'anguille européenne. {Indicateurs} d'abondance et de
-  colonisation}.
-\newblock Editions Quae.
-\newblock Pages: 400.
-
-\bibitem[Adam et~al., 2008b]{adam_anguille_2008-1}
-Adam, G., Feunteun, E., Prouzet, P., and Rigaud, C. (2008b).
+\bibitem[Adam et~al., 2008]{adam_anguille_2008}
+Adam, G., Feunteun, E., Prouzet, P., and Rigaud, C. (2008).
 \newblock {\em L'anguille européenne. {Indicateurs} d'abondance et de
   colonisation}.
 \newblock Editions Quae.
@@ -64,6 +57,15 @@ Bevacqua, D., Melià, P., De~Leo, G.~A., and Gatto, M. (2011).
   case of the {European} eel.
 \newblock {\em Oecologia}, 165(2):333--339.
 
+\bibitem[Bilau et~al., 2007]{bilau_probabilistic_2007}
+Bilau, M., Sioen, I., Matthys, C., De~Vocht, A., Goemans, G., Belpaire, C.,
+  Willems, J.~L., and De~Henauw, S. (2007).
+\newblock Probabilistic approach to polychlorinated biphenyl ({PCB}) exposure
+  through eel consumption in recreational fishermen vs. the general population.
+\newblock {\em Food Additives \& Contaminants}, 24(12):1386--1393.
+\newblock Publisher: Taylor \& Francis \_eprint:
+  https://doi.org/10.1080/02652030701459848.
+
 \bibitem[Bonhommeau et~al., 2010]{bonhommeau_duration_2010}
 Bonhommeau, S., Castonguay, M., Rivot, E., Sabatié, R., and Le~Pape, O.
   (2010).
@@ -107,6 +109,24 @@ Castonguay, M. and McCleave, J. (1987).
   net avoidance of {Leptocephali} of {Anguilla} and other common species in the
   {Sargasso} {Sea}.
 \newblock {\em Journal of Plankton Research - J PLANKTON RES}, 9:195--214.
+
+\bibitem[Couillard et~al., 2011]{couillard_correlation_2011}
+Couillard, C., Hodson, P., and Castonguay, M. (2011).
+\newblock Correlation between pathological changes and chemical contamination
+  in {American} {Eels}, {Anguilla} rostrata, from the {St} {Lawrence} {River}.
+\newblock {\em Canadian Journal of Fisheries and Aquatic Sciences},
+  54:1916--1927.
+
+\bibitem[Cowx et~al., 2003]{cowx_enhancing_2003}
+Cowx, I., O'Grady, K., Knights, B., and WHITE, E. (2003).
+\newblock Enhancing immigration and recruitment of eels: {The} use of passes
+  and associated trapping systems.
+\newblock {\em Fisheries Management and Ecology}, 5:459--471.
+
+\bibitem[Crivelli, 1998]{crivelli_languille_1998}
+Crivelli, A.~J. (1998).
+\newblock L’{ANGUILLE} {DANS} {LE} {BASSIN} {RHONE}- {MEDITERRANEE}-{CORSE} :
+  {UNE} {SYNTHESE} {BIBLIOGRAPHIQUE}.
 
 \bibitem[Daemen et~al., 2001]{daemen_analysis_2001}
 Daemen, E., Cross, T., Ollevier, F., and Volckaert, F. (2001).
@@ -165,6 +185,13 @@ Edeline, E., Dufour, S., and Elie, P. (2005).
 \newblock {\em Marine Ecology-progress Series - MAR ECOL-PROGR SER},
   304:191--199.
 
+\bibitem[Elie and Girard, 2014]{elie_sante_2014}
+Elie, P. and Girard, P. (2014).
+\newblock {\em La santé des poissons sauvages : les codes pathologie, un outil
+  d'évaluation}.
+\newblock Association Santé Poissons Sauvages.
+\newblock Pages: 286.
+
 \bibitem[Elie and Rochard, 1994]{elie_migration_1994}
 Elie, P. and Rochard, E. (1994).
 \newblock Migration des civelles d'anguilles ({Anguilla} anguilla {L}.) dans
@@ -182,9 +209,16 @@ Farrugio, H. and Elie, P. (2011).
 Feunteun, E. and Laffaille, P. (2011).
 \newblock Commercially {Important} {Catadromous} {Fish}.
 
-\bibitem[Feunteun et~al., 2003]{feunteun_review_2003-1}
+\bibitem[Feunteun et~al., 2003a]{feunteun_review_2003-1}
 Feunteun, E., Laffaille, P., Robinet, T., Briand, C., Baisez, A., Olivier,
-  J.-M., and Acou, A. (2003).
+  J.-M., and Acou, A. (2003a).
+\newblock A {Review} of {Upstream} {Migration} and {Movements} in {Inland}
+  {Waters} by {Anguillid} {Eels}: {Toward} a {General} {Theory}.
+\newblock pages 191--213.
+
+\bibitem[Feunteun et~al., 2003b]{feunteun_review_2003}
+Feunteun, E., Laffaille, P., Robinet, T., Briand, C., Baisez, A., Olivier,
+  J.-M., and Acou, A. (2003b).
 \newblock A {Review} of {Upstream} {Migration} and {Movements} in {Inland}
   {Waters} by {Anguillid} {Eels}: {Toward} a {General} {Theory}.
 \newblock pages 191--213.
@@ -260,6 +294,19 @@ Lecomte-Finiger, R. (1990).
   anguilla {L}.) et sa migration catadrome.
 \newblock {\em Ann. Biol.}, 29:183--194.
 
+\bibitem[Legrand et~al., 2019]{legrand_stacomir_2019}
+Legrand, M., Briand, C., and Besse, T. (2019).
+\newblock {stacomiR} : a common tool for monitoring fish migration.
+\newblock {\em Journal of Open Source Software}, 4(40):791.
+
+\bibitem[Maes et~al., 2005]{maes_catadromous_2005}
+Maes, G.~E., Raeymaekers, J. a.~M., Pampoulie, C., Seynaeve, A., Goemans, G.,
+  Belpaire, C., and Volckaert, F. a.~M. (2005).
+\newblock The catadromous {European} eel {Anguilla} anguilla ({L}.) as a model
+  for freshwater evolutionary ecotoxicology: relationship between heavy metal
+  bioaccumulation, condition and genetic variability.
+\newblock {\em Aquatic Toxicology (Amsterdam, Netherlands)}, 73(1):99--114.
+
 \bibitem[McCleave et~al., 1987]{mccleave_reproductive_1987}
 McCleave, J., Kleckner, R., and Castonguay, M. (1987).
 \newblock Reproductive sympatry of {American} and {European} eels and
@@ -328,6 +375,18 @@ Riemann, L., Alfredsson, H., Hansen, M., Als, T., Nielsen, T., Munk, P.,
   {Sargasso} {Sea} resolved by {DNA} barcoding.
 \newblock {\em Biology letters}, 6:819--22.
 
+\bibitem[Robinet and Feunteun, 2002]{robinet_sublethal_2002}
+Robinet, T. and Feunteun, E. (2002).
+\newblock Sublethal effects of exposure to chemical compounds: a cause for the
+  decline in {Atlantic} eels?
+\newblock {\em Ecotoxicology (London, England)}, 11(4):265--277.
+
+\bibitem[Rocher and Azimi, 2017]{rocher_evolution_2017}
+Rocher, V. and Azimi, S. (2017).
+\newblock {\em Évolution de la qualité de la {Seine} en lien avec les
+  progrès de l'assainissement de 1970 à 2015}.
+\newblock Éditions Johanet, Paris.
+
 \bibitem[Saglio et~al., 1988]{saglio_structural_1988}
 Saglio, P., Escaffre, A.~M., and Blanc, J.~M. (1988).
 \newblock Structural characteristics of the epidermal mucosa in yellow and
@@ -335,6 +394,13 @@ Saglio, P., Escaffre, A.~M., and Blanc, J.~M. (1988).
 \newblock {\em Journal of Fish Biology}, 32(4):505--514.
 \newblock \_eprint:
   https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1095-8649.1988.tb05390.x.
+
+\bibitem[Thieu et~al., 2009]{thieu_nutrient_2009}
+Thieu, V., Billen, G., and Garnier, J. (2009).
+\newblock Nutrient transfer in three contrasting {NW} {European} watersheds:
+  {The} {Seine}, {Somme}, and {Scheldt} {Rivers}. {A} comparative application
+  of the {Seneque}/{Riverstrahler} model.
+\newblock {\em Water Research}, 43(6):1740--1754.
 
 \bibitem[Todd, 1981]{todd_timing_1981}
 Todd, P.~R. (1981).

@@ -7,16 +7,42 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Morphologie }{4}{subsubsection.2.1.2}%
 \contentsline {subsubsection}{\numberline {2.1.3}Régime alimentaire}{5}{subsubsection.2.1.3}%
 \contentsline {subsection}{\numberline {2.2}Aire de répartition}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Cycle de vie}{5}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Larve leptocéphale}{7}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Civelle}{7}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3}Cycle de vie}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Larve leptocéphale}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Civelle}{6}{subsubsection.2.3.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}Anguille jaune }{8}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Anguille argentée }{9}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.4}Anguille argentée }{8}{subsubsection.2.3.4}%
 \contentsline {subsection}{\numberline {2.4}Menaces }{9}{subsection.2.4}%
 \contentsline {subsubsection}{\numberline {2.4.1}Pêche et braconnage }{9}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Parasitisme}{9}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.2}Parasitisme}{10}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Prédation}{10}{subsubsection.2.4.3}%
 \contentsline {subsubsection}{\numberline {2.4.4}Obstacles à la migration}{10}{subsubsection.2.4.4}%
 \contentsline {subsubsection}{\numberline {2.4.5}Perte et dégradation des habitats}{10}{subsubsection.2.4.5}%
 \contentsline {subsubsection}{\numberline {2.4.6}Modifications hydro climatiques}{10}{subsubsection.2.4.6}%
 \contentsline {subsubsection}{\numberline {2.4.7}Pollution}{10}{subsubsection.2.4.7}%
+\contentsline {subsection}{\numberline {2.5}Intérêt de l’anguille européenne }{11}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Écologique }{11}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Économique }{11}{subsubsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.6}Mesures de conservation}{11}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Contexte}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Bassin Seine Normandie}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Sites d’études : Poses – Amfreville-sous-les-Monts}{13}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Le barrage}{13}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Les passes à poissons et le vidéo comptage}{14}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Les rampes à anguilles }{14}{subsubsection.3.2.3}%
+\contentsline {section}{\numberline {4}Matériels et méthodes}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Les pièges actifs }{14}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Rive gauche}{15}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Rive droite }{16}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Protocole de suivi }{16}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Suivi des anguilles }{16}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Entretien des pièges}{16}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Obtention des données biométriques}{17}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Saisie et bancarisation des données}{17}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Les pièges passifs « Flottang »}{18}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Protocole des flottangs}{18}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Saisie et bancarisation des données }{18}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Paramètres environnementaux}{18}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Traitement de données }{19}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Analyse globale }{19}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Analyses statistiques}{20}{subsubsection.4.5.2}%
