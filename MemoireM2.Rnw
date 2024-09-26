@@ -151,14 +151,14 @@ integer_breaks <- function(n = 5, ...) {
 ###### connexion à la base Stacomi, schéma Seinormigr sur le raspberry ###########
 
 
-# con<-  pool::dbPool(
-#   drv=RPostgres::Postgres(),
-#   dbname = keyring::key_get("dbname_server"),
-#   host = keyring::key_get("host_server"),
-#   port = keyring::key_get("port_server"),
-#   user = keyring::key_get("user_server"),
-#   password = keyring::key_get("pwd_server")
-# )
+con<-  pool::dbPool(
+  drv=RPostgres::Postgres(),
+  dbname = keyring::key_get("dbname_server"),
+  host = keyring::key_get("host_server"),
+  port = keyring::key_get("port_server"),
+  user = keyring::key_get("user_server"),
+  password = keyring::key_get("pwd_server")
+)
 
 if(exists("con")){
 
@@ -196,7 +196,7 @@ r_sample_char<-choice_c(r_sample_char,
                         taxa=c("Anguilla anguilla"),
                         stage=c("4"),
                         par=c(1786),  #### poids = A111  taille= 1786
-                        horodatedebut="2024-01-01",  ### rien avant car pas intégré dans la base
+                        horodatedebut="2019-01-01",  ### rien avant car pas intégré dans la base
                         horodatefin="2024-12-31",
                         silent=TRUE)
 r_sample_char<-connect(r_sample_char)
@@ -219,25 +219,30 @@ r_env<-choice_c(r_env,
                 silent=FALSE)	
 r_env<-connect(r_env)
 
+histo_debit<-new("report_env")
+histo_debit<-choice_c(histo_debit,
+                stationMesure=c("Poses_debit"),
+                datedebut="2008-01-01",
+                datefin="2024-12-31",
+                silent=FALSE)	
+histo_debit<-connect(histo_debit)
+
+histo_debit<-histo_debit@data
+
 hauteur_eau<-r_env@data
 grdata<-fun_aggreg_for_plot(r_mig_mult)
 annee2<-r_ann@data
-bio_ang<-report_sample_char@data
+bio_ang<-r_sample_char@data
 patho <- dbGetQuery(con, "SELECT * FROM seinormigr.tj_pathologieconstatee_pco")
 lot <- dbGetQuery(con, "SELECT * FROM seinormigr.t_lot_lot")
 ope<-dbGetQuery(con, "SELECT * FROM seinormigr.t_operation_ope")
 
-save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,file=str_c(datawd,"data_report.Rdata"))
+save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,histo_debit,file=str_c(datawd,"data_report.Rdata"))
 
 }else{
   load(str_c(datawd,"data_report.Rdata"))
 }
 
-colnames(bio_ang)[colnames(bio_ang)=="car_valeur_quantitatif"] <- "taille"  #### pour renommer la colonne car_valeur_quantitatif en taille
-nbangbio<-sum(bio_ang$lot_effectif)
-
-bioangRG<-subset(bio_ang, bio_ang$ope_dic_identifiant==102)
-bioangRD<-subset(bio_ang, bio_ang$ope_dic_identifiant==104)
 
 # Calculer le nombre total d'anguilles
 total_anguilles <- sum(grdata$effectif_total, na.rm = TRUE)
@@ -351,9 +356,14 @@ dev.off()
 
 ### Classe de taille des deux rives
 
+
+colnames(bio_ang)[colnames(bio_ang)=="car_valeur_quantitatif"] <- "taille"  #### pour renommer la colonne car_valeur_quantitatif en taille
+
 # Filtrer les données pour les opérations de la rive Gauche (102) et de la rive Droite (104)
-gauche <- bio_ang[bio_ang$ope_dic_identifiant == 102, ]
-droite <- bio_ang[bio_ang$ope_dic_identifiant == 104, ]
+gauche<-filter(bio_ang,annee==2024 & ope_dic_identifiant==102)
+droite<-filter(bio_ang,annee==2024 & ope_dic_identifiant==104)
+
+
 
 # Définir les limites des classes de taille pour la rive Gauche
 breaks_gauche <- c(-Inf, 60, seq(65, 200, by = 5), Inf)
@@ -479,13 +489,14 @@ dev.off()
 
 
 ## Morphologie taille des individus
+bio_ang2024<-filter(bio_ang,annee==2024)
 
 # Supposons que bio_ang est votre dataframe
-bio_ang <- bio_ang %>%
+bio_ang2024 <- bio_ang2024 %>%
   mutate(ope_dic_identifiant = recode(ope_dic_identifiant, `102` = "RG", `104` = "RD"))
 
 # Calculer les valeurs extrêmes (outliers) pour chaque groupe
-outliers <- bio_ang %>%
+outliers <- bio_ang2024 %>%
   group_by(ope_dic_identifiant) %>%
   mutate(
     q1 = quantile(taille, 0.25),
@@ -497,23 +508,23 @@ outliers <- bio_ang %>%
   filter(taille < lower_bound | taille > upper_bound)
 
 # Calculer le nombre d'observations pour chaque groupe
-counts <- bio_ang %>%
+counts <- bio_ang2024 %>%
   group_by(ope_dic_identifiant) %>%
   summarise(n = n())
 
 # Créer le graphique
-taille<-ggplot(bio_ang, aes(x = ope_dic_identifiant, y = taille, fill = ope_dic_identifiant)) +
+taille<-ggplot(bio_ang2024, aes(x = ope_dic_identifiant, y = taille, fill = ope_dic_identifiant)) +
   geom_violin(trim = FALSE, color = "black", show.legend = FALSE) +  # Créer le violin plot sans légende
   geom_boxplot(width = 0.1, fill = "white", outlier.shape = NA, show.legend = FALSE) +  # Ajouter un boxplot sans légende
   geom_point(data = outliers, aes(x = ope_dic_identifiant, y = taille), color = "black", size = 0.7, show.legend = FALSE) +  # Points noirs plus petits pour les valeurs extrêmes sans légende
   geom_text(data = counts, aes(x = ope_dic_identifiant, y = -Inf, label = paste("n =", n)), vjust = -0.5, size = 5, color = "black") +  # Ajouter les nombres d'observations sous chaque violon avec le texte "n ="
-  geom_text(x = 1, y = max(bio_ang$taille) + 35, label = "a", size = 5) +  # Ajuster les coordonnées pour le groupe RG
-  geom_text(x = 2, y = max(bio_ang$taille) + 35, label = "b", size = 5) +  # Ajuster les coordonnées pour le groupe RD
+  geom_text(x = 1, y = max(bio_ang2024$taille) + 35, label = "a", size = 5) +  # Ajuster les coordonnées pour le groupe RG
+  geom_text(x = 2, y = max(bio_ang2024$taille) + 35, label = "b", size = 5) +  # Ajuster les coordonnées pour le groupe RD
   labs(title = "Taille en mm des anguilles - 2024",
        x = "Rive",
        y = "Taille en mm") +
   scale_fill_manual(values = c("RG" = "lightblue", "RD" = "lightcoral")) +  # Définir les couleurs des violins
-  scale_y_continuous(breaks = seq(0, 450, by = 50)) +  # Utiliser max(bio_ang$taille) pour fixer la limite de l'axe Y
+  scale_y_continuous(breaks = seq(0, 450, by = 50)) +  # Utiliser max(bio_ang2024$taille) pour fixer la limite de l'axe Y
   theme_minimal() 
 
 taille_oral <- taille + theme(
@@ -532,7 +543,7 @@ dev.off()
 
 
 ##Graph avec les deux rives séparés
-taille_mois<-ggplot(bio_ang, aes(x = factor(mois), y = taille, fill = ope_dic_identifiant)) +
+taille_mois<-ggplot(bio_ang2024, aes(x = factor(mois), y = taille, fill = ope_dic_identifiant)) +
   geom_boxplot() +
   labs(
     title = "Taille mensuelle des individus",
@@ -541,8 +552,8 @@ taille_mois<-ggplot(bio_ang, aes(x = factor(mois), y = taille, fill = ope_dic_id
     fill = "Passes-pièges"
   ) +
   scale_fill_manual(
-    values = c("102" = "lightblue", "104" = "lightcoral"),
-    labels = c("102" = "Rive gauche", "104" = "Rive droite")
+    values = c("RG" = "lightblue", "RD" = "lightcoral"),
+    labels = c("RG" = "Rive gauche", "RD" = "Rive droite")
   ) +
   theme_minimal() 
 
@@ -612,10 +623,10 @@ dev.off()
 
 ##Débit 
 
-Débit$year<-strftime(Débit$env_date_debut,format="%Y")
-Débit$mois<-strftime(Débit$env_date_debut,format="%m")
+histo_debit$year<-strftime(histo_debit$env_date_debut,format="%Y")
+histo_debit$mois<-strftime(histo_debit$env_date_debut,format="%m")
 
-debit<-rename(Débit, bjo_jour=env_date_debut, bjo_annee=year,bjo_valeur=env_valeur_quantitatif,bjo_labelquantite=env_val_identifiant)
+debit<-rename(histo_debit, bjo_jour=env_date_debut, bjo_annee=year,bjo_valeur=env_valeur_quantitatif,bjo_labelquantite=env_val_identifiant)
 debit$bjo_labelquantite="Effectif_total"
 dat<-fun_report_mig_interannual(debit,year = NULL,timesplit = NULL)
 
@@ -669,14 +680,12 @@ taille_ang_montaison_histo <- taille_ang_montaison_histo %>%
 
 
 
-    bio_ang <- bio_ang %>%
+    bio_ang_petit <- bio_ang %>%
       select(taille, annee, ope_dic_identifiant)  
     
-fusion_data <- full_join(taille_ang_montaison_histo, bio_ang, 
-                             by = c("taille", "ope_dic_identifiant", "annee"))
+fusion_data <- rbind(taille_ang_montaison_histo,bio_ang_petit)
 
-
-taille_annee<-ggplot(fusion_data, aes(x = factor(annee), y = taille, fill = ope_dic_identifiant)) +
+taille_annee<-ggplot(fusion_data, aes(x = annee, y = taille, fill = ope_dic_identifiant)) +
   geom_boxplot() +
   labs(
     title = "Taille des individus par années",
