@@ -40,7 +40,7 @@
 \contentsline {subsubsection}{\numberline {4.2.2}Entretien des pièges}{17}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}Obtention des données biométriques}{17}{subsubsection.4.2.3}%
 \contentsline {subsubsection}{\numberline {4.2.4}Saisie et bancarisation des données}{18}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Les pièges passifs « Flottang »}{18}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}Les pièges passifs \@FB@og Flottang \@FB@fg \relax {}}{18}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Protocole des flottangs}{18}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Saisie et bancarisation des données }{19}{subsubsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.4}Paramètres environnementaux}{19}{subsection.4.4}%
