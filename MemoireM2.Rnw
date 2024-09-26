@@ -121,7 +121,8 @@ require(cowplot)
 require(lubridate)
 require(stacomiR)
 require(DBI)
-
+require(scales)
+require(openxlsx)
 
 #repertoire contenant les images
 imgwd<-str_c(getwd(),"/image/")
@@ -237,7 +238,35 @@ patho <- dbGetQuery(con, "SELECT * FROM seinormigr.tj_pathologieconstatee_pco")
 lot <- dbGetQuery(con, "SELECT * FROM seinormigr.t_lot_lot")
 ope<-dbGetQuery(con, "SELECT * FROM seinormigr.t_operation_ope")
 
-save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,histo_debit,file=str_c(datawd,"data_report.Rdata"))
+r_mig_interannual<-new("report_mig_interannual")
+r_mig_interannual<-choice_c(r_mig_interannual,
+                            dc=c(102),
+                            taxa=c("Anguilla anguilla"),
+                            stage=c("4"),
+                            start_year="2014",
+                            end_year=annee,
+                            silent=TRUE)
+r_mig_interannual<-charge(r_mig_interannual)
+r_mig_interannual<-connect(r_mig_interannual,check=TRUE)    
+r_mig_interannual<-calcule(r_mig_interannual,silent=TRUE)
+
+data_histo_RG <- r_mig_interannual@data
+
+r_mig_interannual<-new("report_mig_interannual")
+r_mig_interannual<-choice_c(r_mig_interannual,
+                            dc=c(104),
+                            taxa=c("Anguilla anguilla"),
+                            stage=c("4"),
+                            start_year="2014",
+                            end_year=annee,
+                            silent=TRUE)
+r_mig_interannual<-charge(r_mig_interannual)
+r_mig_interannual<-connect(r_mig_interannual,check=TRUE)    
+r_mig_interannual<-calcule(r_mig_interannual,silent=TRUE)
+
+data_histo_RD <- r_mig_interannual@data
+
+save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,histo_debit,data_histo_RG,data_histo_RD,file=str_c(datawd,"data_report.Rdata"))
 
 }else{
   load(str_c(datawd,"data_report.Rdata"))
@@ -403,9 +432,7 @@ freq_combined[is.na(freq_combined)] <- 0
 # Trier les classes de taille pour l'affichage correct dans le graphique
 freq_combined$class <- factor(freq_combined$class, levels = unique(c(freq_gauche$class, freq_droite$class)))
 
-# Charger le package ggplot2
-library(ggplot2)
-library(scales)
+
 
 # Créer une fonction pour transformer les labels des classes de taille
 format_class_labels <- function(label) {
@@ -665,7 +692,7 @@ dev.off()
 ###Taille mois par année 
 
 
-taille_ang_montaison_histo <- read.csv("~/Desktop/git/Stage_anguille/data/taille_ang_montaison_histo.csv", sep = ";", header = TRUE)
+taille_ang_montaison_histo <- read.csv(str_c(datawd,"taille_ang_montaison_histo.csv"), sep = ";", header = TRUE)
 
 
 taille_ang_montaison_histo$ope_dic_identifiant <- factor(taille_ang_montaison_histo$ope_dic_identifiant)
@@ -712,10 +739,8 @@ print(taille_annee_oral)
 dev.off()
 
 ###Flottang
-library(openxlsx)
 
-flottang <- read.xlsx("~/Desktop/Stage M2/Données_Suivi_Flottang.xlsx", sheet = 1)
-
+flottang <- read.xlsx(str_c(datawd,"Données_Suivi_Flottang.xlsx"),sheet=1)
 
 # Date cible
 target_date <- as.Date("2020-07-03")
@@ -736,7 +761,6 @@ flottang$Date_Fin<- as.Date(flottang$Date_Fin, format="%Y-%m-%d")
 
 flottang <- flottang %>% 
   filter(Date_Fin <= as.Date("2024-09-13"))
-library(dplyr)
 
 # Convertir Effectif en numérique
 flottang$Effectif <- as.numeric(as.character(flottang$Effectif))
@@ -845,6 +869,136 @@ png(file=str_c(imgwd,"taille_flottang_oral.png"),width=42,height=20,unit="cm",re
 print(taille_flottang_oral)
 dev.off()
 
+#########  graph cumule RD RG #####
+
+options(scipen=10000)
+
+### Rive gauche
+currentyear<-annee
+
+data<-summarise(group_by(data_histo_RG,bjo_tax_code,bjo_std_code,
+                         bjo_annee,bjo_jour,bjo_labelquantite,
+                         bjo_org_code),bjo_valeur=sum(bjo_valeur)) %>%
+  as.data.frame()
+
+maxdate<-as.Date(max(data$bjo_jour))
+
+day<-day(maxdate)
+month<-month(maxdate)
+maxdate<-as.Date(paste("2000",month,day,sep="-"),"%Y-%m-%d")
+
+
+dat <- fun_report_mig_interannual(data)
+
+dat$value[is.na(dat$value)]<-0 # sinon si il ne reste qu'une ligne peut planter
+
+amplitude <- paste(min(as.numeric(as.character(dat$year))),
+                   "-",max(as.numeric(as.character(dat$year))),sep="")
+for (an in unique(dat$year)){
+  # an=as.character(unique(dat$annee)) ;an<-an[1]
+  dat[dat$year==an,"cumsum"] <- cumsum(dat[dat$year==an,"value"])
+  dat[dat$year==an,"total_annuel"] <- max(dat[dat$year==an,"cumsum"])          
+}
+dat$day <- as.Date(dat$day)
+dat$year <- as.factor(dat$year)
+colnames(dat)[colnames(dat)=="total_annuel"] <- "total annuel"
+
+dat1<-filter(dat,year==currentyear & day <=maxdate)
+dat2<-filter(dat, year !=currentyear)
+
+dat<-rbind(dat2,dat1)
+
+
+g <- ggplot(dat)+geom_line(aes(x=day,y=cumsum,col=year),linewidth=1)+
+  guides(color=guide_legend(title="Année")) 
+
+g <- g+scale_y_continuous(name=gettext("Effectifs cumulés"),
+                          labels = scales::comma_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
+                                                        big.mark = " ", decimal.mark = "."))
+g <- g+scale_x_date(name=gettext("Période de suivi"),
+                    date_breaks="months", 
+                    date_labels = "%B",
+                    limits=range(dat[dat$value>0 & dat$cumsum!=1,"day"]))+theme_bw()
+
+g<-g+ggtitle("Effectifs cumulés interannuels - Rive gauche")
+
+g<-g+theme_bw()
+
+g_RG <- g + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+
+png(file=str_c(imgwd,"g_RG.png"),width=42,height=20,unit="cm",res=200)
+print(g_RG)
+dev.off()
+
+### Rive droite 
+
+data<-summarise(group_by(data_histo_RD,bjo_tax_code,bjo_std_code,
+                         bjo_annee,bjo_jour,bjo_labelquantite,
+                         bjo_org_code),bjo_valeur=sum(bjo_valeur)) %>%
+  as.data.frame()
+
+maxdate<-as.Date(max(data$bjo_jour))
+
+day<-day(maxdate)
+month<-month(maxdate)
+maxdate<-as.Date(paste("2000",month,day,sep="-"),"%Y-%m-%d")
+
+
+dat <- fun_report_mig_interannual(data)
+
+dat$value[is.na(dat$value)]<-0 # sinon si il ne reste qu'une ligne peut planter
+
+amplitude <- paste(min(as.numeric(as.character(dat$year))),
+                   "-",max(as.numeric(as.character(dat$year))),sep="")
+for (an in unique(dat$year)){
+  # an=as.character(unique(dat$annee)) ;an<-an[1]
+  dat[dat$year==an,"cumsum"] <- cumsum(dat[dat$year==an,"value"])
+  dat[dat$year==an,"total_annuel"] <- max(dat[dat$year==an,"cumsum"])          
+}
+dat$day <- as.Date(dat$day)
+dat$year <- as.factor(dat$year)
+colnames(dat)[colnames(dat)=="total_annuel"] <- "total annuel"
+
+dat1<-filter(dat,year==currentyear & day <=maxdate)
+dat2<-filter(dat, year !=currentyear)
+
+dat<-rbind(dat2,dat1)
+
+
+g <- ggplot(dat)+geom_line(aes(x=day,y=cumsum,col=year),linewidth=1)+
+  guides(color=guide_legend(title="Année")) 
+
+g <- g+scale_y_continuous(name=gettext("Effectifs cumulés"),
+                          labels = scales::comma_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
+                                                        big.mark = " ", decimal.mark = "."))
+g <- g+scale_x_date(name=gettext("Période de suivi"),
+                    date_breaks="months", 
+                    date_labels="%B",
+                    limits=range(dat[dat$value>0 & dat$cumsum!=1,"day"]))+theme_bw()
+
+g<-g+ggtitle("Effectifs cumulés interannuels - Rive droite")
+
+g<-g+theme_bw()
+
+g_RD <- g + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+
+png(file=str_c(imgwd,"g_RD.png"),width=42,height=20,unit="cm",res=200)
+print(g_RD)
+dev.off()
 
 
 @
@@ -858,9 +1012,6 @@ année \Sexpr{annee}}
 
 \author[1]{Marangoni Lucas}
 \affil[1]{Seine-Normandie Migrateurs, 11 cours Clemenceau 76100 Rouen}
-
-
-
 
 
 
@@ -1452,12 +1603,26 @@ Le suivi du recrutement des anguilles européennes en Seine est réalisé sur le
 \label{graph_annee_oral}
 \end{figure}
 
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{g_RG.png}
+\caption{Effectifs cumulés rive gauche}
+\label{g_RG}
+\end{figure}
+
 Tout d’abord, sur la (Figure \ref{g_RG}) concernant la rive gauche, nous pouvons observer que les dynamiques de migrations sont relativement similaires avec des captures faibles en début de saison. Les captures augmentent ensuite progressivement jusqu’à des pics de migrations.   Ces pics de migrations ont souvent lieu l’été en juillet-août cependant il y a une forte variabilité entre les années en termes d’effectifs.
 
 A noté que pour cette année en rive gauche, 84 926 anguilles ont été piégées, soit plus du double des effectifs de l’année 2020 qui était jusqu’à présent la meilleure année.
 
 
-La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite 760 856 anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi. 
+La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite 760 856 anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{g_RD.png}
+\caption{Effectifs cumulés rive gauche}
+\label{g_RD}
+\end{figure}
 
 
 \subsection{Morphotypes des individus en 2024}
