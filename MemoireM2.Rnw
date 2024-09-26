@@ -64,6 +64,7 @@ knit_hooks$set(inline = function(x) {
 \usepackage{gensymb}
 \usepackage{authblk}
 \usepackage{natbib}
+\usepackage{xcolor}
 \renewcommand\Authand{ et }
 \renewcommand\Authands{ et }
 
@@ -289,6 +290,500 @@ Temperature_eau<-subset(data_env,env_stm_identifiant==2)
 Débit<-subset(data_env,env_stm_identifiant==1)
 
 
+
+## Graphique des effectifs journaliers et cumulés 2024 
+
+# Renommer les valeurs de DC
+grdata <- grdata %>%
+  mutate(DC = recode(DC, `102` = "Rive Gauche", `104` = "Rive Droite")) %>%
+  arrange(fin_pas) %>%  # S'assurer que les données sont ordonnées par date
+  group_by(DC) %>%      # Regrouper par rive (DC)
+  mutate(effectif_cumule = cumsum(effectif_total)) %>%  # Calculer le cumul par rive
+  ungroup()  # Ne pas oublier de dégrouper après l'opération
+
+# Calculer le facteur d'échelle entre les deux jeux de données
+max_effectif_total <- max(grdata$effectif_total)
+max_effectif_cumule <- max(grdata$effectif_cumule)
+scale_factor <- max_effectif_cumule / max_effectif_total
+
+# Créer le graphique
+graph <- ggplot(grdata, aes(x = fin_pas)) +
+  geom_bar(aes(y = effectif_total, fill = DC), stat = "identity", position = "stack", alpha = 0.7) + # Barres empilées pour les effectifs journaliers
+  geom_line(aes(y = effectif_cumule / scale_factor, color = DC, group = DC), size = 0.5) + # Lignes pour les effectifs cumulés
+  geom_point(aes(y = effectif_cumule / scale_factor, color = DC, group = DC), size = 1) + # Points pour plus de clarté
+  scale_y_continuous(
+    name = "Effectifs journaliers",
+    sec.axis = sec_axis(~ . * scale_factor, name = "Effectifs cumulés", 
+                        labels = scales::comma)  # Utiliser scales::comma pour formater sans notation scientifique)  # Ajuster l'axe secondaire
+  ) +
+  scale_x_datetime(
+    name = "Période de suivi", 
+    date_labels = "%B",   # Afficher les mois en toutes lettres (en français avec Sys.setlocale)
+    date_breaks = "1 month"  # Afficher les mois à chaque intervalle d'un mois
+  ) +
+  scale_fill_manual(name = "Effectifs journaliers", values = c("Rive Gauche" = "#1B4F72", "Rive Droite" = "#E74C3C")) + # Définir les couleurs des barres
+  scale_color_manual(name = "Effectifs cumulés", values = c("Rive Gauche" = "#1B4F72", "Rive Droite" = "#E74C3C")) + # Définir les couleurs des lignes
+  labs(
+    title = "Effectifs journaliers et cumulés - 2024 ",
+    x = "Période de suivi"
+  ) +
+  theme_bw() 
+ 
+
+graph_oral <- graph + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+
+png(file=str_c(imgwd,"graph_oral.png"),width=42,height=20,unit="cm",res=200)
+print(graph_oral)
+dev.off()
+
+### Classe de taille des deux rives
+
+# Filtrer les données pour les opérations de la rive Gauche (102) et de la rive Droite (104)
+gauche <- bio_ang[bio_ang$ope_dic_identifiant == 102, ]
+droite <- bio_ang[bio_ang$ope_dic_identifiant == 104, ]
+
+# Définir les limites des classes de taille pour la rive Gauche
+breaks_gauche <- c(-Inf, 60, seq(65, 200, by = 5), Inf)
+
+# Créer les classes de taille avec cut pour la rive Gauche
+gauche$classes <- cut(gauche$taille, breaks = breaks_gauche, include.lowest = TRUE, right = FALSE)
+
+
+# Définir les limites des classes de taille pour la rive Droite
+breaks_droite <- c(-Inf, 60, seq(65, 200, by = 5), Inf)
+
+# Créer les classes de taille avec cut pour la rive Droite
+droite$classes <- cut(droite$taille, breaks = breaks_droite, include.lowest = TRUE, right = FALSE)
+
+# Calculer les fréquences pour chaque classe de taille pour la rive Gauche
+freq_gauche <- as.data.frame(table(gauche$classes))
+colnames(freq_gauche) <- c("class", "frequency_gauche")
+
+# Calculer les pourcentages pour la rive Gauche
+freq_gauche <- freq_gauche %>%
+  mutate(percentage_gauche = frequency_gauche / sum(frequency_gauche) * 100)
+
+# Calculer les fréquences pour chaque classe de taille pour la rive Droite
+freq_droite <- as.data.frame(table(droite$classes))
+colnames(freq_droite) <- c("class", "frequency_droite")
+
+# Calculer les pourcentages pour la rive Droite
+freq_droite <- freq_droite %>%
+  mutate(percentage_droite = frequency_droite / sum(frequency_droite) * 100)
+
+# Fusionner les tables de fréquences des deux rives
+freq_combined <- merge(freq_gauche, freq_droite, by = "class", all = TRUE)
+
+# Remplacer les valeurs manquantes par 0 (si une classe n'est présente que dans une seule rive)
+freq_combined[is.na(freq_combined)] <- 0
+
+# Trier les classes de taille pour l'affichage correct dans le graphique
+freq_combined$class <- factor(freq_combined$class, levels = unique(c(freq_gauche$class, freq_droite$class)))
+
+# Charger le package ggplot2
+library(ggplot2)
+library(scales)
+
+# Créer une fonction pour transformer les labels des classes de taille
+format_class_labels <- function(label) {
+  label <- gsub("\\[", "", label)  # Supprimer les crochets ouvrants
+  label <- gsub("\\)", "", label)  # Supprimer les parenthèses fermantes
+  label <- gsub("\\(", "-", label) # Remplacer les parenthèses ouvrantes par des tirets
+  label <- gsub(",", "-", label)   # Remplacer les virgules par des tirets
+  label
+}
+
+# Créer l'histogramme avec ggplot2
+classe_taille <- ggplot(freq_combined, aes(x = class)) +
+  geom_bar(aes(y = percentage_gauche), stat = "identity", fill = "lightblue", color = "black", position = "stack") +
+  geom_bar(aes(y = percentage_droite), stat = "identity", fill = "lightcoral", color = "black", position = "stack", width = 0.3) +
+  labs(title = "Classes de Taille des individus par Rive",
+       x = "Classe de Taille en mm",
+       y = "Fréquence en %") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +  # Convertir l'axe y en pourcentage
+  scale_x_discrete(labels = format_class_labels) +  # Appliquer la fonction de formatage aux labels de l'axe x
+  theme_bw() 
+
+classe_taille_oral <- classe_taille + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 8),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+png(file=str_c(imgwd,"classe_taille_oral.png"),width=42,height=20,unit="cm",res=200)
+print(classe_taille_oral)
+dev.off()
+
+
+# Modifier les niveaux du facteur pour remplacer les numéros par les noms souhaités
+annee2 <- annee2 %>%
+  mutate(
+    ope_dic_identifiant = factor(
+      ope_dic_identifiant,
+      levels = rev(levels(factor(ope_dic_identifiant))),
+      labels = c("Rive droite", "Rive gauche")
+    )
+  )
+
+# Calculer les totaux par année pour l'affichage au-dessus des barres
+totals <- annee2 %>%
+  group_by(annee) %>%
+  summarize(total_effectif = round(sum(effectif), 0))
+
+# Créer le graphique avec les modifications nécessaires
+graph_annee<- ggplot(annee2) +
+  aes(x = annee, y = effectif, fill = ope_dic_identifiant) +
+  geom_col() +
+  scale_fill_hue(direction = 1) +
+  theme_minimal() +
+  scale_y_continuous(name = "Effectif total", labels = scales::label_number()) +
+  labs(
+    title = "Bilan migratoire par année",
+    fill = "Rive",  # Changement du titre de la légende
+    x = "Années"
+  ) +
+  # Ajouter le total des effectifs au-dessus de chaque barre
+  geom_text(data = totals, aes(x = annee, y = total_effectif, label = total_effectif),
+            vjust = -0.5, size = 5, fontface = "plain", inherit.aes = FALSE) +
+  guides(fill = guide_legend(reverse = TRUE)) 
+
+
+graph_annee_oral <- graph_annee + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+
+png(file=str_c(imgwd,"graph_annee_oral.png"),width=42,height=20,unit="cm",res=200)
+print(graph_annee_oral)
+dev.off()
+
+
+
+## Morphologie taille des individus
+
+# Supposons que bio_ang est votre dataframe
+bio_ang <- bio_ang %>%
+  mutate(ope_dic_identifiant = recode(ope_dic_identifiant, `102` = "RG", `104` = "RD"))
+
+# Calculer les valeurs extrêmes (outliers) pour chaque groupe
+outliers <- bio_ang %>%
+  group_by(ope_dic_identifiant) %>%
+  mutate(
+    q1 = quantile(taille, 0.25),
+    q3 = quantile(taille, 0.75),
+    iqr = q3 - q1,
+    lower_bound = q1 - 1.5 * iqr,
+    upper_bound = q3 + 1.5 * iqr
+  ) %>%
+  filter(taille < lower_bound | taille > upper_bound)
+
+# Calculer le nombre d'observations pour chaque groupe
+counts <- bio_ang %>%
+  group_by(ope_dic_identifiant) %>%
+  summarise(n = n())
+
+# Créer le graphique
+taille<-ggplot(bio_ang, aes(x = ope_dic_identifiant, y = taille, fill = ope_dic_identifiant)) +
+  geom_violin(trim = FALSE, color = "black", show.legend = FALSE) +  # Créer le violin plot sans légende
+  geom_boxplot(width = 0.1, fill = "white", outlier.shape = NA, show.legend = FALSE) +  # Ajouter un boxplot sans légende
+  geom_point(data = outliers, aes(x = ope_dic_identifiant, y = taille), color = "black", size = 0.7, show.legend = FALSE) +  # Points noirs plus petits pour les valeurs extrêmes sans légende
+  geom_text(data = counts, aes(x = ope_dic_identifiant, y = -Inf, label = paste("n =", n)), vjust = -0.5, size = 5, color = "black") +  # Ajouter les nombres d'observations sous chaque violon avec le texte "n ="
+  geom_text(x = 1, y = max(bio_ang$taille) + 35, label = "a", size = 5) +  # Ajuster les coordonnées pour le groupe RG
+  geom_text(x = 2, y = max(bio_ang$taille) + 35, label = "b", size = 5) +  # Ajuster les coordonnées pour le groupe RD
+  labs(title = "Taille en mm des anguilles - 2024",
+       x = "Rive",
+       y = "Taille en mm") +
+  scale_fill_manual(values = c("RG" = "lightblue", "RD" = "lightcoral")) +  # Définir les couleurs des violins
+  scale_y_continuous(breaks = seq(0, 450, by = 50)) +  # Utiliser max(bio_ang$taille) pour fixer la limite de l'axe Y
+  theme_minimal() 
+
+taille_oral <- taille + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+png(file=str_c(imgwd,"taille_oral.png"),width=42,height=20,unit="cm",res=200)
+print(taille_oral)
+dev.off()
+
+
+
+
+##Graph avec les deux rives séparés
+taille_mois<-ggplot(bio_ang, aes(x = factor(mois), y = taille, fill = ope_dic_identifiant)) +
+  geom_boxplot() +
+  labs(
+    title = "Taille mensuelle des individus",
+    x = "Mois",
+    y = "Taille (mm)",
+    fill = "Passes-pièges"
+  ) +
+  scale_fill_manual(
+    values = c("102" = "lightblue", "104" = "lightcoral"),
+    labels = c("102" = "Rive gauche", "104" = "Rive droite")
+  ) +
+  theme_minimal() 
+
+taille_mois_oral <- taille_mois + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+png(file=str_c(imgwd,"taille_mois_oral.png"),width=42,height=20,unit="cm",res=200)
+print(taille_mois_oral)
+dev.off()
+
+
+
+##Température eau
+
+# Renommer les valeurs de DC
+grdata <- grdata %>%
+  mutate(DC = recode(DC, `102` = "Rive Gauche", `104` = "Rive Droite")) %>%
+  arrange(fin_pas) %>%  # S'assurer que les données sont ordonnées par date
+  group_by(DC) %>%      # Regrouper par rive (DC)
+  mutate(effectif_cumule = cumsum(effectif_total)) %>%  # Calculer le cumul par rive
+  ungroup()  # Ne pas oublier de dégrouper après l'opération
+
+# Calculer le facteur d'échelle entre les deux jeux de données
+max_effectif_total <- max(grdata$effectif_total)
+max_coeff <- max(Temperature_eau$env_valeur_quantitatif)
+scale_factor <- max_coeff / max_effectif_total
+
+#scale_factor <- 50
+
+# Mettre la langue en français
+Sys.setlocale("LC_TIME", "fr_FR.UTF-8")
+
+# Créer le graphique
+graph_temp_eau <- ggplot() +
+  geom_bar(data=grdata, aes(x = fin_pas, y = effectif_total), stat = "identity", position = "stack", alpha = 0.7) + # Barres empilées pour les effectifs journaliers
+  geom_line(data=Temperature_eau, aes(x= env_date_fin, y = env_valeur_quantitatif / scale_factor), size = 0.5, color = "darkblue") + # Lignes pour les coeff de marée
+  scale_y_continuous(
+    name = "Effectifs journaliers",
+    sec.axis = sec_axis(~ . * scale_factor, name = " Température de la Seine en °C ", 
+                        labels = scales::comma)  # Utiliser scales::comma pour formater sans notation scientifique)  # Ajuster l'axe secondaire
+  ) +
+  labs(
+    title = "Effectifs journaliers par rapport au température de la Seine ",
+    x = "Période de suivi"
+  ) +
+  scale_x_datetime(limits = c(min(grdata$fin_pas),max(grdata$fin_pas)),
+                   date_labels = "%B", breaks = "month")
+
+graph_temp_eau_oral <- graph_temp_eau + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+png(file=str_c(imgwd,"graph_temp_eau_oral.png"),width=42,height=20,unit="cm",res=200)
+print(graph_temp_eau_oral)
+dev.off()
+
+
+
+##Débit 
+
+Débit$year<-strftime(Débit$env_date_debut,format="%Y")
+Débit$mois<-strftime(Débit$env_date_debut,format="%m")
+
+debit<-rename(Débit, bjo_jour=env_date_debut, bjo_annee=year,bjo_valeur=env_valeur_quantitatif,bjo_labelquantite=env_val_identifiant)
+debit$bjo_labelquantite="Effectif_total"
+dat<-fun_report_mig_interannual(debit,year = NULL,timesplit = NULL)
+
+graph_debit<-ggplot() +
+  geom_ribbon(data = dat, aes(ymin = mintab, ymax = maxtab, x = day, fill = "Amplitude des débits des années 2014 à 2024"), alpha = 0.5) +
+  geom_line(data = dat, aes(x = day, y = mean, color = "Débit moyen")) +
+  geom_line(data = subset(dat, year == 2024), aes(x = day, y = value, color = "Débit 2024")) +
+  scale_x_datetime(name = "", 
+                   limits = c(as.POSIXct("2000-04-01"), as.POSIXct("2000-09-30")), 
+                   expand = c(0, 0),
+                   date_labels = "%B",  # Mois en toutes lettres en français
+                   date_breaks = "1 month") +  # Un mois entre chaque tick
+  scale_y_continuous(name = "Débit") +  # Titre pour l'axe des Y
+  scale_fill_manual(name = "Amplitude des débits des années 2014 à 2024", 
+                    values = "#B9DDF1", 
+                    guide = guide_legend(title = NULL)) +  # Définit le titre de la légende pour fill
+  scale_color_manual(name = NULL,  # Légende sans titre pour les lignes
+                     values = c("Débit moyen" = "#FEB7AA", "Débit 2024" = "#B5153A")) +
+  ggtitle("Comparaison des débits 2024 et des débits moyens des années précédentes") +  # Titre du graphique
+  theme_bw() 
+
+graph_debit_oral <- graph_debit + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),
+  axis.title.x = element_text(size = 19),
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17),
+  legend.position = "bottom",  # Placer la légende en dessous du graphique
+  legend.box = "horizontal"    # Organiser les éléments de la légende horizontalement
+)
+png(file=str_c(imgwd,"graph_debit_oral.png"),width=42,height=20,unit="cm",res=200)
+print(graph_debit_oral)
+dev.off()
+
+
+
+
+###Flottang
+library(openxlsx)
+
+flottang <- read.xlsx("~/Desktop/Stage M2/Données_Suivi_Flottang.xlsx", sheet = 1)
+
+
+# Date cible
+target_date <- as.Date("2020-07-03")
+
+# Calcul de l'origine
+origin_date <- target_date - 44015
+print(origin_date)
+
+flottang$Date_Fin <- as.Date(flottang$Date_Fin, origin = origin_date)
+
+# Convertir Date en POSIXct avec l'heure à minuit
+flottang$Date_Fin<- as.POSIXct(flottang$Date_Fin, format = "%Y-%m-%d", tz = "UTC")
+
+# Supposons que votre colonne d'année s'appelle 'année'
+flottang<- flottang %>% filter(Annee == 2024)
+
+flottang$Date_Fin<- as.Date(flottang$Date_Fin, format="%Y-%m-%d")
+
+flottang <- flottang %>% 
+  filter(Date_Fin <= as.Date("2024-09-13"))
+library(dplyr)
+
+# Convertir Effectif en numérique
+flottang$Effectif <- as.numeric(as.character(flottang$Effectif))
+
+# Convertir Date en POSIXct avec l'heure à minuit
+flottang$Date_Fin<- as.POSIXct(flottang$Date_Fin, format = "%Y-%m-%d", tz = "UTC")
+
+# Utilisation de la fonction replace
+flottang$Effectif <- replace(flottang$Effectif, is.na(flottang$Effectif), 0)
+
+# Renommer les valeurs de DC
+flottang <- flottang %>%
+  mutate(Localisation = recode(Localisation, `AVR` = "Aval Rive droite", `AVT` = "Aval Turbine Rive Gauche")) %>%
+  arrange(Date_Fin) %>%  # S'assurer que les données sont ordonnées par date
+  group_by(Localisation) %>%      # Regrouper par rive (DC)
+  mutate(Effectif_Cumule = cumsum(Effectif)) %>%  # Calculer le cumul par rive
+  ungroup()  # Ne pas oublier de dégrouper après l'opération
+
+# Calculer le facteur d'échelle entre les deux jeux de données
+max_effectif_total <- max(flottang$Effectif)
+max_effectif_cumule <- max(flottang$Effectif_Cumule)
+scale_factor <- max_effectif_cumule / max_effectif_total
+
+scale_factor <- 5
+
+# Créer le graphique 
+graph_flottang <- ggplot(flottang, aes(x = Date_Fin)) +
+  geom_bar(aes(y = Effectif, fill = Localisation), stat = "identity", position = "stack", alpha = 0.7) +
+  geom_line(aes(y = Effectif_Cumule / scale_factor, color = Localisation, group = Localisation), size = 0.5) +
+  scale_y_continuous(
+    name = "Effectifs journaliers",
+    sec.axis = sec_axis(~ . * scale_factor, name = "Effectifs cumulés", 
+                        labels = scales::comma)  # Formater sans notation scientifique
+  ) +
+  labs(
+    title = "Effectifs journaliers et cumulés - Flottangs 2024",
+    x = "Période de suivi",
+    fill = "Effectifs journaliers ",  # Légende pour les barres
+    color = "Effectifs cumulés"      # Légende pour les lignes
+  ) +
+  theme_bw() +
+  scale_x_datetime(date_labels = "%B", breaks = "month") +
+  scale_color_manual(values = c("red", "blue"), name = "Effectifs cumulés") +
+  scale_fill_manual(values = c("red", "blue"), name = "Effectifs journaliers")
+
+graph_flottang_oral <- graph_flottang + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+png(file=str_c(imgwd,"graph_flottang_oral.png"),width=42,height=20,unit="cm",res=200)
+print(graph_flottang_oral)
+dev.off()
+
+
+
+
+
+## Morphologie taille des individus flottang
+
+
+# Vérifiez les valeurs uniques dans Taille_mm pour détecter les anomalies
+unique(flottang$Taille_mm)
+
+# Obtenez un résumé statistique pour voir les valeurs non numériques
+summary(flottang$Taille_mm)
+
+# Convertir la colonne Taille_mm en numérique
+flottang$Taille_mm <- as.numeric(as.character(flottang$Taille_mm))
+
+# Supprimer les lignes contenant des NA dans Taille_mm
+flottang <- flottang[!is.na(flottang$Taille_mm), ]
+
+# Filtrer les lignes où Taille_mm est différent de 0
+flottang <- flottang[flottang$Taille_mm != 0, ]
+
+# Calculer le nombre d'observations pour chaque groupe
+counts <- flottang %>%
+  group_by(Localisation) %>%
+  summarise(n = n())
+
+taille_flottang<-ggplot(data = flottang, aes(x = Localisation, y = Taille_mm, fill = Localisation)) +
+  geom_violin(trim = FALSE, alpha = 0.6) +
+  geom_boxplot(width = 0.1, outlier.size = 1, color = "black", alpha = 0.5) +
+  geom_text(data = counts, aes(x = Localisation, y = -Inf, label = paste("n =", n)), vjust = -0.3, size = 4, color = "black") +  # Ajouter les nombres d'observations sous chaque violon avec le texte "n ="
+  geom_text(x = 1, y = max(flottang$Taille_mm) + 15, label = "a", size = 5) +  # Ajuster les coordonnées pour le groupe RG
+  geom_text(x = 2, y = max(flottang$Taille_mm) + 15, label = "b", size = 5) +
+  scale_fill_manual(values = c("Aval Turbine Rive Gauche" = "steelblue", "Aval Rive droite" = "salmon")) +
+  labs(title = "Taille en mm des anguilles - Flottang 2024",
+       x = "Flottang",
+       y = "Taille en mm") +
+  theme_minimal() 
+
+taille_flottang_oral <- taille_flottang + theme(
+  plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Centrer et mettre le titre en gras
+  axis.text = element_text(size = 17),
+  axis.title.y = element_text(size = 19),  # Taille du titre de l'axe des y
+  axis.title.x = element_text(size = 19),  # Taille du titre de l'axe des x
+  legend.text = element_text(size = 17),
+  legend.title = element_text(size = 17)
+)
+png(file=str_c(imgwd,"taille_flottang_oral.png"),width=42,height=20,unit="cm",res=200)
+print(taille_flottang_oral)
+dev.off()
+
+
+
 @
 
 
@@ -359,7 +854,7 @@ Mots-clés :  \textit{Anguilla Anguilla} ; Montaison ; Recrutement ; Rampe à an
 \end{center}
 
 Préambule : Les informations présentées ci-dessous sont tirées de site internet : https://www.seinormigr.fr. 
-\vspace{1cm}
+\vspace{0.5cm}
 
 \underline{Présentation générale} : Seinormigr a été créé en 2007 sur une initiative du Président de la Fédération de la Seine-Maritime pour la Pêche et la Protection du Milieu Aquatique. 
 L’association regroupe par adhésion les Fédérations départementales présentes sur le bassin Seine-Normandie afin de créer une seule et même continuité dans le suivi et la gestion des populations de poissons migrateurs. 
@@ -367,7 +862,7 @@ En 2011, elle est inscrite au Plan de Gestion des Poissons Migrateurs du bassin 
 En 2012, Seinormigr obtient son agrément d’association de protection de l’environnement par arrêté préfectoral du 13 décembre 2012. 
 Puis en 2013, l'association est habilitée pour prendre part aux débats environnementaux se déroulant dans le cadre des instances consultatives régionales. 
 Enfin en 2020, Seine-Normandie Migrateurs et Normandie Grands Migrateurs ont fusionné pour ne créer qu'une seule association grands migrateurs sur le territoire Seine-Normandie.
-\vspace{1cm}
+\vspace{0.5cm}
 
 \underline{Missions} :
 
@@ -384,13 +879,13 @@ Enfin en 2020, Seine-Normandie Migrateurs et Normandie Grands Migrateurs ont fus
 -	Participer à la définition et la mise en œuvre des objectifs de restauration des populations de poissons migrateurs au sein du COGEPOMI et de son PLAGEPOMI en collaboration étroite avec le secrétariat technique (DRIEE Île de France, Délégation de bassin) et les établissements publics de l’Etat (DREAL, AFB, Agence de l’Eau, DDTM, …).
 
 -	Développer une large communication de synthèse des productions basées sur des données d’expertises, notamment à l’aide de mise à disposition d’outils de communication à différentes échelles des besoins qu’ils soient locaux, régionaux ou de bassins.
-\vspace{1cm}
+\vspace{0.5cm}
 
 \underline{Territoires d’action} :  Seine Normandie Migrateurs fait partie des 8 associations migratrices présentent en France qui recouvrent les grands bassins français (Figure \ref{AM_National}). 
 L’association regroupe par adhésion 18 Fédérations Départementales pour la Pêche et la Protection du Milieu Aquatique (FDAAPPMA), des Associations Agréées pour la Pêche et la Protection du Milieu Aquatique (AAPPMA), ainsi que des adhérents directs. 
 Son territoire s’étend sur une superficie totale de 95 500 km², englobant près de 50 000 km de cours d’eau, composé d’une très grande partie du bassin versant de la Seine et de ceux des fleuves côtiers Normands. 
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{figure}[htpb]
 \centering
@@ -433,7 +928,7 @@ En France, près de 25\% des poissons dulçaquicoles et amphihalins sont consid�
 Il est estimé que près d’une espece d’eau douce sur trois est menacée d’extinction (WWF 2020).
 
 L’anguille européenne est une des espèces qui a été extrêmement touchées par ces menaces \citep{dekker_climbing_2016}. Autrefois abondante dans les eaux européennes, jugée nuisible jusqu’en 1984, l’espèce représentait plus de 50\% de la biomasse piscicole de l’aval des systèmes fluviaux.
-Ensuite, la population d'anguilles a drastiquement diminué depuis le milieu du XXème siècle. Initialement classée comme "vulnérable", elle est ensuite passée à "en danger", pour finalement aujourd’hui atteindre le statut "en danger critique d'extinction" selon l'Union internationale pour la conservation de la nature (UICN). Des études ont montré qu’aujourd’hui, selon les auteurs, le recrutement aurait diminué entre 90 et 99\% depuis 1960 \citep{feunteun_review_2003-1,baisez_outil_2005}.
+Ensuite, la population d'anguilles a drastiquement diminué depuis le milieu du XXème siècle. Initialement classée comme "vulnérable", elle est ensuite passée à "en danger", pour finalement aujourd’hui atteindre le statut "en danger critique d'extinction" selon l'Union internationale pour la conservation de la nature (UICN). Des études ont montré qu’aujourd’hui, selon les auteurs, le recrutement aurait diminué entre 90 et 99\% depuis 1960 \citep{feunteun_review_2003,baisez_outil_2005}.
 L’anguille par son cycle de vie à la fois en eau de mer et en eau douce est confrontée à de nombreux phénomènes
 qui sont à l’origine de ce déclin rapide : la dégradation des habitats, la pollution, le braconnage mais aussi les
 changements climatiques notamment \citep{dekker_worldwide_2003}.
@@ -763,7 +1258,7 @@ Lors de chaque relève, les pièges sont nettoyés et leur fonctionnement est v�
  Enlèvement des fines et débris dans le 2ème collecteur et autour de la crépine  & oui &  non \\ [1ex] 
  \hline
 \end{tabular}
-\caption{}
+\caption{Liste des Operations d'entretien des pièges à anguilles du barraghe de Poses}
 \label{tableau 2}
 \end{table}
 
@@ -863,6 +1358,292 @@ L’indice parasitaire (s’applique uniquement aux parasites) est calculé de l
 Pour analyser nos résultats, des traitements ont été fait à partir du logiciel R studio.
 Tout d’abord, les tests de comparaison utilisés ont été le test de Student pour 2 échantillons et L’ANOVA pour 3 échantillons ou plus. Pour chaque test, sont toujours vérifiés la normalité ainsi que l’homogénéité. Si les résultats sont significatifs, un test de comparaison multiple va nous montrer le ou les échantillons différents.
 Un autre test utilisé est l’analyse en composante principale (ACP). Cela est utilisé pour identifier les différents paramètres exerçant une influence sur la migration. En complémentarité, un test de corrélation est réalisé sur chaque paramètre par rapport aux effectifs d’anguilles. Pour finir, un test de significativité du R2 est appliqué.
+
+
+\section{Résultats}
+
+\textit{Note : Les résultats qui vont vous être présentés dans cette partie concernent les données du 2 avril au 23 septembre 2024.}
+
+\subsection{Bilan migratoire 2024 }
+
+Pour cette année 2024, le suivi a commencé le 2 avril, jour de la mise en route des pièges à anguilles. Les pièges de la rive droite aussi bien que la rive gauche ont fonctionné sans interruption pendant la période de suivi. Les premiers individus ont été observés le 8 avril en rive droite mais aussi en rive gauche. Les premiers individus de l’année avec une taille d’environ 80 mm ont été observés le 8 juillet. Pour cette année 2024, du 2 avril au 23 septembre un total de \Sexpr{round(sum(grdata$effectif_total))} anguilles a été comptabilisé soit un total de 760 856 (90\%) en rive droite et de 84 926 (10\%) en rive gauche. La (Figure \ref{graph_oral}) représente les effectifs journaliers ainsi que les effectifs cumulés, deux pics sont visibles avec un premier début août et le principal mi-août que cela soit pour la rive droite ou la rive gauche. Cette année encore les anguilles ont majoritairement emprunté la rive droite par rapport à la rive gauche.
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{graph_oral.png}
+\caption{Effectifs journaliers et cumulés des deux rives en 2024}
+\label{graph_oral}
+\end{figure}
+
+\subsection{Comparaisons interannuelles des migrations}
+
+Le suivi du recrutement des anguilles européennes en Seine est réalisé sur le barrage de Poses depuis 2014 en rive gauche et depuis 2018 en rive droite.  Cette année, les résultats obtenus sur la migration sont les plus importants depuis la mise en place du suivi (Figure \ref{graph_annee_oral}). Les (Figure \ref{g_RG}) et (Figure \ref{g_RD}) présentent les dynamiques de migration par rive. Les graphiques mettent en évidence des effectifs cumulés interannuels. 
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{graph_annee_oral.png}
+\caption{Évolution interannuelle des effectifs des anguilles capturées dans les pièges}
+\label{graph_annee_oral}
+\end{figure}
+
+Tout d’abord, sur la (Figure \ref{g_RG}) concernant la rive gauche, nous pouvons observer que les dynamiques de migrations sont relativement similaires avec des captures faibles en début de saison. Les captures augmentent ensuite progressivement jusqu’à des pics de migrations.   Ces pics de migrations ont souvent lieu l’été en juillet-août cependant il y a une forte variabilité entre les années en termes d’effectifs.
+
+A noté que pour cette année en rive gauche, 84 926 anguilles ont été piégées, soit plus du double des effectifs de l’année 2020 qui était jusqu’à présent la meilleure année.
+
+
+La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite 760 856 anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi. 
+
+
+\subsection{Morphotypes des individus en 2024}
+
+\subsubsection{Tailles selon la rive}
+
+\textit{Note : les données de taille ne concernent que les individus biométrés. }
+
+La (Figure \ref{taille_oral}) présente la taille des individus biométrés en mm sur les deux rives. Nous pouvons voir que pour les deux rives la majorité des individus ont une taille d’environ 80 mm ce qui correspond aux anguillettes de l’année. Peu d’individus en rive gauche dépassent les 250 mm alors qu’en rive droite certains individus dépassent les 300 mm voir les 400 mm dans des cas très rare. En rive gauche la taille moyenne est de 105 mm avec une médiane de 87 mm alors qu’en rive droite la taille moyenne des individus est de 111 mm avec une médiane a 90mm. Les individus empruntant la rive gauche sont significativement plus petits que ceux de la rive droite (wilcox-test, p < 0,05). Ce résultat est obtenu pour la première fois depuis le début des suivis, les années précédentes, les anguilles passant en rive gauche étaient plus grosses que les individus passant en rive droite (Figure \ref{taille_annee_oral}). Durant les relevés des pièges beaucoup d’individus de l’année ont été retrouvés en rive gauche ce qui n’étaient pas le cas les années précédentes. En rive droite de nombreuses anguilles ayant déjà plusieurs années donc en reprise de migration ont été retrouvées en quantité plus élevé surtout durant le mois de juillet contrairement aux années précédentes. 
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{taille_oral.png}
+\caption{Taille en mm des anguilles en rive droite et rive gauche - 2024}
+\label{taille_oral}
+\end{figure}
+
+La (Figure \ref{classe_taille_oral}) présente des classes de tailles des anguilles pour les deux rives. Ce résultat vient compléter la (Figure \ref{taille_oral}) car nous pouvons voir que les individus <= 85 mm (les individus de l’année), représentent 42\% des effectifs en rive gauche contre 30\% en rive droite. Les individus mesurant entre 85 et 115 mm représentent en rive gauche 20\% des effectifs et 24\% en rive droite. En rive droite, plus de 6\% des effectifs sont des individus de plus de 200 mm. En combinant les deux rives, les individus de l’année représentent 38\% des captures, ce résultat est similaire aux années précédentes. 
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{classe_taille_oral.png}
+\caption{Fréquences des classes de tailles (par 5 mm) des anguilles en RG (bleu) et en RD (rouge) en 2024.}
+\label{classe_taille_oral}
+\end{figure}
+
+\subsubsection{Tailles mensuelles}
+
+Lors des relevés des pièges en début de saison les individus sont des anguilles en reprise de migration c’est à dire des anguilles ayant déjà au minimum plus d’un an. Au fur et à mesure de la saison, les anguilles de l’année commencent à arriver et prédominent durant les mois d’été. De ce fait, la taille mensuelle des anguilles (RG + RD) diminue significativement (Kruskal- test, p < 0,05) comme le montre la (Figure \ref{taille_mois_oral}). Les tests affirment que tous les mois sont statistiquement différents entre eux (hormis avril et mai), ce qui témoigne d’une baisse constante de la taille au fur et à mesure des mois d’avril à août.
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{taille_mois_oral.png}
+\caption{Taille (mm) mensuelle des anguilles selon les rives en 2024}
+\label{taille_mois_oral}
+\end{figure} 
+
+A noter que pour le mois d’août il y a peu de variabilité de taille entre les rives en raison de l’arrivée massive des individus de l’année. 
+
+\subsection{État sanitaire du recrutement 2024}
+
+Cette année encore tous les individus biométrés ont fait l’objet de vérification de présence ou d’absence de pathologies de types anatomo-morphologiques externes ou de types ectoparasites. Chaque pathologie rencontrée possède une codification, à cela est ajouté un code allant de 0 à 4 qui quantifie le nombre de lésion ou le taux de recouvrement des parasites externes ainsi qu’une localisation sur l’individus. Le Tableau \ref{tableau 3} résume les calculs d’indice pathologique (IpG) et parasitaire (IpP) et la condition des anguilles en Seine au barrage de Poses. Au total, 10,6\% des anguilles biométrés (474/4469) présentent des pathologies. Le calcul d’IpG montre une condition des poissons « Bonne » et le calcul d’IpP montre une condition des poissons « excellente ».  Les pathologies le plus souvent retrouvées sur les anguilles sont les lésions majeures avec 59\% puis 14\% de lésions mineurs et 7\% de parasitisme.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|} 
+\hline
+  & RG  & RD & RG+RD\\ [0.5ex] 
+ \hline
+ Nombres de poissons examinés & 1758 & 2711  & 4469 \\ 
+ \hline
+ Nombres de poissons avec pathologies  & 169  & 305  & 474 \\
+ \hline
+ IpG & \textcolor{green}{0.14} & \textcolor{yellow}{0.21} & \textcolor{green}{0.18}\\
+ Condition des poissons & Bonne &  Précaire  & Bonne\\
+ \hline
+ IpP & \textcolor{blue}{0.03} & \textcolor{blue}{0.03} & \textcolor{blue}{0.03}\\ [0.5ex] 
+ Condition des poissons & Excellente & Excellente  & Excellente\\
+ \hline
+ Parasitisme & 32\%  & 24\% & 27\%\\
+ Lésions majeures & 49\%  & 65\% & 59\%\\
+ Lésions mineures  & 19\% &  11\%  & 14\%\\ [1ex] 
+ \hline
+ 
+\end{tabular}
+\caption{Synthèse de l’état sanitaire du recrutement 2024}
+\label{tableau 3}
+\end{table}
+
+
+Si l’on traite la rive droite et la rive gauche séparément les calculs des indices pathologiques montrent une condition des poissons « bonne » pour la rive gauche et « précaire » pour la rive droite. Les calculs d’indice parasitaire donnent les mêmes résultats que pour les deux rives confondues avec une condition des poissons « excellente » à la fois en rive gauche et en rive droite. La distribution des catégories pathologiques est assez similaire avec seulement un pourcentage de parasitisme plus élevé en rive gauche avec 32\% et un pourcentage de lésions majeures plus faibles avec 49\%. 
+
+La (Figure \ref{patho}) est une synthèse des pathologies ainsi que des intensités lésionnelles observées sur les deux rives confondues. Au total 11 pathologies ont été observées sur les anguilles dont 2 issues de parasites, les points noirs et les points blancs. La pathologie la plus représentée est la présence de marques d’érosion (50\%) sur les individus. Ensuite, la présence de points noirs est retrouvée à 18.2\% et la présence de plaie avec un pourcentage de 12.3\%.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{patho.png}
+\caption{Synthèse des pathologies et des intensités lésionnelles observés en rive droite et rive gauche. PN=Points noirs / PB=Points blancs / AG=Grosseurs-Tumeurs / AO=Absence d’organes / ER=Érosion / HE=Hémorragie / AM=Maigreur / PL=Plaies / AC=Altération de la couleur / AD=Difformité / ZO=État pathologique multiforme.}
+\label{patho}
+\end{figure} 
+
+
+\subsection{Influence des facteurs environnementaux }
+
+L’influence des paramètres environnementaux sur les effectifs de captures des anguilles est représentée par la (Figure \ref{ACP}). Le pourcentage d’inertie total des deux dimensions est satisfaisant avec 82,3\%. Toutes les variables sont fortement représentées. Le premier axe est très représenté par les variables Température de l’eau, Température de l’air et Débit. Le second axe est lui très représenté par la variable Coefficient de marée. La température de l’eau et la température de l’air sont fortement corrélées positivement entre elles. Avec une projection des individus sur ce graphique, nous pouvons voir qu’en début de saison les fortes valeurs de débit exercent une influence négative sur les effectifs des anguilles (Figure \ref{Individus}). En effet, le mois d’avril est significativement différent des autres mois, le débit était élevé et les captures faibles. Puis au fur et à mesure de la saison, les températures ont augmenté tout comme les captures. Cette année le débit était largement supérieur au débit moyen des années précédentes. Le mois d’avril 2024 est le mois avec des valeurs de débit le plus élevé depuis 2014 (Figure \ref{graph_debit_oral}). Le mois de juin ne semble pas être influencé par une variable en particulier. Les mois de juillet et d’août semblent eux influencés par la température de l’air et la température de l’eau. Ces deux mois représentent quasiment la totalité des anguilles capturées sur la période du suivi.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{ACP.png}
+\caption{Cercle de corrélation des variables environnementales – ACP}
+\label{ACP}
+\end{figure} 
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{Individus.png}
+\caption{Projection des individus selon les variables environnementales par mois de captures (ACP)}
+\label{Individus}
+\end{figure} 
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{graph_debit_oral.png}
+\caption{Comparaison des débits de 2024 et des débits moyens des années précédentes}
+\label{graph_debit_oral}
+\end{figure} 
+
+La température de l’air a augmenté début juillet ce qui a entrainé un réchauffement de l’eau de la Seine dépassant les 20°C pour la première fois de la saison, à ce moment-là un premier léger pic de migration des anguilles peut être observé. À la mi-juillet une seconde vague de chaleur plus importante a de nouveau permis à la Seine de dépasser une température de 20°C jusqu’à atteindre début août 23°C (Figure \ref{graph_temp_eau_oral}). Un second pic de migration plus important est observé début août et le pic de migration le plus important est lui observé mi-août avec une température de Seine aux alentours des 23°C.
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{graph_temp_eau_oral.png}
+\caption{Effectifs journaliers selon la température de la Seine (°C) en rive gauche et rive droite confondues en 2024.}
+\label{graph_temp_eau_oral}
+\end{figure} 
+
+\subsection{Bilan des flottangs }
+
+\subsubsection{Effectifs 2024}
+
+
+Les deux flottangs mis en place cette année sont en aval de la rampe en rive droite (AVR) et l’autre en aval de la rampe en rive gauche (AVT). Les flottangs ont été mis en place le 29 mai ce qui est plus tard contrairement aux autres années de suivi car le débit et le niveau d’eau étaient trop élevé. Pour l’AVR le premier individu a été observé le 31 mai et pour l’AVT le premier individu a été observé le 3 juin. Dans les flottangs un total de 6702 anguilles ont été piégées, 5006 (70\%) dans le flottang AVR et 1694 (30\%) dans le flottang AVT. La (Figure \ref{graph_flottang_oral}) illustre les effectifs journaliers et cumulés d'anguilles pour les deux flottangs. Pour le flottang AVR, peu d’anguilles ont été piégées jusqu’à la mi-juillet. Un premier pic est observé mi-juillet, un second pic le plus important est observé fin juillet début août et un dernier pic est observé mi-août. Les pics observés sur ce flottang sont les mêmes pics que nous avons observés avec les effectifs d’anguilles piégées en rive droite. La seule différence est que le pic le plus important pour le flottang est fin juillet-début août alors que le pic le plus important en rive droite et à la mi-août. En ce qui concerne le flottang AVT, nous pouvons constater qu’aucune anguille n’est capturée dans le flottang AVT du 10 au 24 juillet, durant cette période le flottang a été bloqué et les relèves étaient impossibles. Pour le flottang AVT, trois pics de captures sont visibles, le premier fin juin-début juillet, le second fin juillet-début août et le troisième le plus important à la mi-août. Ici les pics de captures dans le flottang AVT sont identiques aux pics de migration observés en rive gauche.
+
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{graph_flottang_oral.png}
+\caption{Effectifs cumulés et journaliers des flottangs AVR et AVT 2024}
+\label{graph_flottang_oral}
+\end{figure} 
+
+\subsubsection{Tailles des individus}
+
+La (Figure \ref{taille_flottang_oral}) présente la taille des individus en mm dans les flottangs. Nous pouvons voir que la majorité des individus retrouvés dans le flottangs AVR mesurent entre 70 et 80 mm ce qui correspond aux individus de l’année. Dans le flottang AVT une majorité d’individus sont des anguilles de l’année mais il y a aussi une distribution des individus de toutes tailles allant de 100 mm jusqu’à 175 mm. Pour le flottang AVT la taille moyenne est de 95.7 mm avec une médiane de 82 mm alors quand rive droite la taille moyenne des individus est de 87.9 mm avec une médiane a 79 mm. Les individus observés dans le flottang AVT sont significativement plus grands que ceux observés dans le flottang AVR (wilcox-test, p < 0,05). Ce résultat est contraire au résultat obtenu pour la taille des individus retrouvés dans les pièges en rive droite et en rive gauche.
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{taille_flottang_oral.png}
+\caption{Taille en mm des anguilles observées dans les flottangs AVR et AVT}
+\label{taille_flottang_oral}
+\end{figure} 
+
+\subsubsection{État sanitaire }
+
+Au total 6.21\% (59/950) des anguilles biométrées ont des lésions Tableau \ref{tableau 4}. Le calcul d’IpG montre une condition des poissons « Bonne » et le calcul d’IpP montre une condition des poissons « excellente ».  Les pathologies le plus souvent retrouvée sur les anguilles sont les lésions majeures avec 51\% puis 32\% de parasitisme et 17\% de lésions mineurs. Si nous traitons la rive droite et la rive gauche séparément les calculs des indices pathologiques montrent une condition des poissons « bonne » à la fois pour la rive gauche et pour la rive droite. Les calculs d’indice parasitaire donnent les mêmes résultats que pour les deux rives confondues avec une condition des poissons « excellente ». La distribution des catégories pathologiques est assez similaire avec seulement un pourcentage de parasitisme plus élevé en rive gauche avec 38\%, un pourcentage de lésions majeurs plus faibles avec 41\% et un pourcentage de lésions mineures plus élevés avec 21\%. Cette proportion plus importante d’anguilles ayant une pathologie de types parasites en AVT est la même que celle retrouvée en rive gauche. Au total 8 pathologies ont été observées sur les anguilles dont 2 issues de parasites, les points noirs et les points blancs. Les pathologies les plus retrouvées chez les individus sont la présence de points noirs (27\%) et la présence de marques d’érosion (25\%). Ensuite, la présence d’hémorragie est retrouvée à 17\% et la présence de plaie retrouvé à 14\%.
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|} 
+\hline
+  & RG  & RD & RG+RD\\ [0.5ex] 
+ \hline
+ Nombres de poissons examinés & 390 & 560  & 950 \\ 
+ \hline
+ Nombres de poissons avec pathologies  & 29  & 30 & 59 \\
+ \hline
+ IpG & \textcolor{green}{0.09} & \textcolor{green}{0.10} & \textcolor{green}{0.18}\\
+ Condition des poissons & Bonne &  Bonne  & Bonne\\
+ \hline
+ IpP & \textcolor{blue}{0.03} & \textcolor{blue}{0.01} & \textcolor{blue}{0.02}\\ [0.5ex] 
+ Condition des poissons & Excellente & Excellente  & Excellente\\
+ \hline
+ Parasitisme & 38\%  & 27\% & 32\%\\
+ Lésions majeures & 41\%  & 60\% & 51\%\\
+ Lésions mineures  & 21\% &  13\%  & 17\%\\ [1ex] 
+ \hline
+ 
+\end{tabular}
+\caption{Synthèse de l’état sanitaire dans les flottangs AVR et AVT 2024}
+\label{tableau 4}
+\end{table}
+
+\section{Discussion}
+
+L’année 2024 est la 11ème année en rive gauche et 7ème année en rive droite que le suivi du recrutement de la Seine en anguille européenne est réalisé sur le barrage de Poses. Durant la période de suivi, du 2 avril au 23 septembre, \Sexpr{round(sum(grdata$effectif_total))} anguilles ont été observées dans les pièges dont 760 856 anguilles en rive droite et 84 926 en rive gauche. Cette préférence pour la rive droite est cette année encore bien marquée. Deux gros pics de migration d’anguilles ont eu lieu durant la période de suivi, la première du 27 juillet au 2 août pendant lequel 125 475 anguilles ont été observées (les deux rives confondus). Le second pic le plus important à eu lieu du 9 au 16 août pendant lequel 303 037 anguilles ont été observées. Au total durant ces deux pics 428 504 anguilles sont passées dans les pièges ce qui correspond à 50\% des individus observés sur la durée totale du suivi. 
+
+\vspace{0.5cm}
+Cette année est la meilleure depuis le début des suivis pour la rive droite car le total de 476 958 anguilles en 2018 est dépassé. Ce constat est le même pour la rive gauche car la meilleure année était 2022 avec 36 046 est lui aussi dépassé. 
+
+\vspace{0.5cm}
+Cette année les premiers individus ont pu être observés le 8 avril pour les deux rives. Durant les mois d’avril, mai et juin les anguilles observées dans les pièges étaient des anguilles en reprise de migration c’est-à-dire des anguilles qui ont déjà au moins passé une année dans l’estuaire, leur taille étaient de 100 mm jusqu’à 300 mm. Ce n’est quand juillet que les premiers individus de l’année ont été observés avec une taille inférieure à 80 mm. Pour la première fois depuis le début des suivis en 2014, en rive gauche de nombreux individus de l’année ont pu être observés. Le pourcentage d’individus de l’année est même plus élevé en rive gauche avec 42\% des effectifs contre 30\% en rive droite. Ce changement est important à relever car depuis 2014 le dispositif en rive gauche présente une certaine sélectivité sur les petits individus. La récolte de données depuis quelques années a mis en avant une mauvaise condition d’accessibilité de la rampe en rive gauche. Cela est dû au fait que l’usine hydroélectrique génère de forts courant qui masquent l’attractivité de la rampe. De plus les forts courants viennent s’ajouter à la difficulté car les jeunes anguilles ont une nage très limitée. La présence de palplanches en berge vient aussi empêcher les anguilles d’avoir des points de fixation, de repos lors de la montaison (Figure \ref{Discu}). 
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{Discu.png}
+\caption{Photographie de l’aval de la centrale hydroélectrique et de la rampe à anguille (orange) en rive gauche. En vert, les palplanches longeant la berge et en rouge les courants limitants la montaison (Adapté de Théo Neveu, 2021).}
+\label{Discu}
+\end{figure} 
+
+\vspace{0.5cm}
+Cette année l’explication de l’observation de nombreux individus de petites tailles dans le piège rive gauche semble être le très fort débit enregistré pendant toute la période du suivi qui a permis d’avoir un niveau d’eau en aval du barrage plus élevé que les années précédentes (Figure \ref{graph_debit_oral}). Ce niveau d’eau plus élevé semble être venu contrer les forts courants produit par l’usine hydroélectrique en aval du dispositif et a permis aux anguilles d’atteindre plus facilement l’entrée de la rampe avec un peu moins de difficulté comparée aux années précédentes. En rive gauche, les années ayant eu des débits élevés sont les années où un nombre conséquent d’anguilles ont été observées dans le piège (2022, 2018 et 2016). Seule l’année 2021 a eu des débits plus élevés durant les mois de juillet et août que l’année 2024 ; cependant aucune comparaison ni corrélation ne peuvent être faites sur l’influence des débits sur les courants produits par l’usine hydroélectrique car durant l’été 2021 le piège en rive gauche a eu un dysfonctionnement de pompe.
+
+\vspace{0.5cm}
+Pour la rive droite les chiffres d’individus de l’année sont similaires aux années précédentes. A noté que ce dispositif est lui aussi imparfait. Le débit d’attrait en aval du dispositif est jugé insuffisant.  L’attrait est généralement compris entre 4 à 4,2 m3/s, alors qu’un attrait de 4,1 à 6,7 m3/s serait plus adapté pour les anguilles (d’après l’expertise de SCIMABIO Interface et OTEIS). L’attractivité du dispositif pourrait être encore amélioré avec la mise en route de la vanne de régulation. Des études ont été faites pour montrer que monter la vanne permettrait d’augmenter la vitesse d’écoulement et donc favoriser l’attraction.
+
+\vspace{0.5cm}
+Depuis le début des suivis chaque année l’état sanitaire est très bon. Cette année les calculs d’indice pathologique globale et d’indice parasitaire continuent d’être dans la même tendance. Les conditions des poissons sont excellentes au niveau parasitaire sur les deux rives ainsi que pour les flottangs. L’indice pathologiques globale donne une condition des poissons bonne pour la rive gauche et les flottangs et précaire pour la rive droite. Au total sur 5419 individus biométrés (les deux rives et les deux flottangs confondus) 533 anguilles présentent une pathologie (10.2\%). La nature pathologique la plus retrouvée est la lésion majeure avec 58\% suivi par le parasitisme avec 28\% et la nature pathologique la moins rencontrée est la lésion mineure avec 14\%.
+
+\vspace{0.5cm}
+En comparaison avec les années précédentes, la nature pathologique la plus rencontrée est différente. Le parasitisme était dominant sur les deux autres natures pathologiques. Cette année les individus touchés par un parasite ne sont que de 28\%.  D’après \citep{elie_sante_2014}, différents facteurs peuvent jouer un rôle sur le nombre de pathologies rencontrées. Particulièrement la température de l’eau augmenterait la rapidité de déroulement des cycles parasitaires. En \citep{lafferty_how_1999},  dit aussi que les effluents thermiques diminuent les capacités immunitaires de l’hôte et donc favorisent le parasitisme. Les courants lents ainsi que les hydrosystèmes à faciès lenthiques augmenteraient la présence de parasites dans les systèmes aquatiques \citep{berra_incidence_1978,janovy_evolutionary_1997}. En aval du barrage de Poses, les hydrosystèmes sont eux lotiques, les courants sont généralement forts car soumis au phénomène de marée et cette année les forts débits peuvent avoir un lien avec le plus faible taux de parasitisme rencontré sur les individus. La présence de points noirs a été observés davantage chez des individus de l’année car leur peau n’est pas encore assez épaisse. D’après \citep{elie_sante_2014}, en raison de l’épaisseur de sa peau l’anguille n’est pas affectée.  
+
+\vspace{0.5cm}
+La pathologie la plus observées sur les individus est la présence d’érosion. En grande proportion, les anguilles présentant des érosions étaient des individus ayant déjà passé au moins une année en estuaire, très peu d’individus de l’année présentaient des érosions. Les causes principales d’érosion étant les frottements durant la migration mais aussi éventuellement des parasites externes ou des carences \citep{elie_sante_2014}.  
+
+\vspace{0.5cm}
+La montaison des anguilles est influencée par différents facteurs environnementaux. D’après des études de \citep{white_environmental_1997} la température de l’eau fortement corrélée à la température de l’air serait le déclenchement de la montaison et particulièrement lorsque la température de l’eau se situerait entre 12 et 14°C. D’après \citep{adam_anguille_2008}. La température de l’air ainsi que la température de l’eau jouent un rôle au niveau des dispositifs à anguilles. Les premières anguilles ont été capturées à la suite de la mise en route des dispositifs. À cette date de lancement, le 2 avril la température de l’eau était de 12.3°C, ce qui est en lien avec la littérature où la montaison se déclenche entre 12 et 14°C \citep{white_environmental_1997}. Certaines autres années, les premières anguilles pouvaient être observées deux semaines après le lancement du dispositif à la mi-avril. Ce constat était rencontré quand la température de l’eau était inférieure à 12°C début avril.
+
+\vspace{0.5cm}
+En \citep{hirschinger_donnees_2015} a montré que des forts débits peuvent avoir un impact sur la montaison des anguilles. Les débits peuvent ralentir ou même bloquer la migration des civelles. Cette année les mois d’avril et mai ont eu des débits forts, les individus que nous avons observé dans les pièges était des individus de plus d’une année et aucune civelle n’a été observée durant ces mois-ci. Néanmoins aucune corrélation significative n’a été mise en évidence en 2024. Les coefficients de marée et les débits n’ont eux aussi aucune corrélation significative. Ce résultat est contraire à la littérature car des études ont montré que les coefficients de marée avaient une corrélation avec la migration des anguilles. \citep{gascuel_flow-carried_1986, elie_migration_1994}. Les études sur l’influence des coefficients de marée ont été faites proches de la mer contrairement au barrage de Poses (160km de la mer) ce qui peut expliquer des résultats contradictoires.  Cependant, les ressentis terrain était eux similaires car les jours ayant eu le plus d’anguilles dans les pièges n’étaient pas des jours à forts coefficient de marée. Inversement, aucun pic d’anguille n’a été observé les jours avec des forts coefficients de marée. Cette année, le cycle lunaire n’a pas été étudié mais d’après certaines études il pourrait exercer une influence sur la migration lors de nouvelle lune \citep{casamajor_fluctuations_2001}.
+
+\vspace{0.5cm}
+Le suivi flottangs a été réalisé pour la 10ème fois cette année, comme dit plus tôt les flottangs ont été mis en place plus tard comparé aux années précédentes dû au trop haut niveau de l’eau en aval des dispositifs. Ce suivi vient en complémentarité avec le suivi des passes à anguilles. En 2018, MIGADO a montré que ce dispositif de flottangs pouvait mettre en évidence un effet d’accumulation en aval des passes à anguilles \citep{lauronce_actions_2018}. Les années précédentes, un flottang était mis en place en amont des écluses rive droite. Il a permis de mettre en évidence le passage des anguilles par les écluses mais pas de quantifier car un seul flottang sous-estime énormément le nombres d’anguilles empruntant les écluses. Cette année ce flottang a été placé en aval du dispositif en rive gauche AVT tout comme en rive droite (AVR). 
+
+\vspace{0.5cm}
+Au total, 6702 anguilles ont été relevée dans les flottangs ce qui est un très faible nombre comparé aux anguilles retrouvées dans les pièges. Les jours ou les effectifs d’anguilles présentent dans les flottangs étaient le plus élevé correspond aux jours durant lequel nous avons constaté les pics de migration dans les cuves. Aucune accumulation d’anguille au pied des dispositifs semble être mis en évidence. Les flottangs sont utilisés par les anguilles comme une zone de repos durant leur montaison à la fois en rive gauche et en rive droite. 
+
+\vspace{0.5cm}
+Une hypothèse est que les individus se reposent dans les flottangs en attendant les marrées hautes pour faciliter leur passage dans les dispositifs. Cette hypothèse peut être avérée en rive gauche avec l’absence totale d’autres zone de repos à cause des palplanches et des vitesses de courants forts avec l’usine hydroélectrique. Une seconde hypothèse est le fait que les anguilles peuvent arriver dans la journée au pied du dispositif et attendent la nuit pour entamer leur montaison sur la passe. La nuit est plus favorable à la progression sur les rampes pour les anguilles car elles ne sont pas exposées à la lumière et surtout au soleil qui peut être fort en plein été mais aussi pour éviter les prédateurs. 
+
+\vspace{0.5cm}
+\textbf{Limite et biais}
+ 
+
+Cette année il est important de noter qu’aucun dysfonctionnement n’a été rencontré. La montaison des anguilles s’est déroulée sans impact significatif des problèmes de rampes qui peuvent engendrer de la prédation au pied des passes ou même de la mort à cause de la fatigue en ne trouvant pas l’entrée de la rampe.
+
+\vspace{0.5cm}
+Pour le tamisage, une maille de 6 mm est utilisée. Cette maille permet de laisser passer des individus supérieurs à 120 mm alors que cette opération au préalable est effectuée pour séparer les individus de l’année et les individus plus gros lors des relèves pour ensuite faire de la biométrie sur des échantillons des deux groupes. L’estimation du nombre d’individus dans le piège lors des relèves est faite sur la base des individus sur lequel la biométrie est faite (environ 60 individus par relève). Ce faible nombre pris aléatoirement ne représente pas toujours la réalité, c’est pourquoi en parallèle environ 200 individus sont comptés et pesés afin d’obtenir des poids qui représentent la totalité des anguilles pour une estimation plus précise. De plus la balance avec laquelle nous pesons les anguilles ne garantit pas des données optimales. Elle est aussi sensible à l’eau, au vent et il est possible que l’opérateur lors des pesées ajoute de l’eau ce qui peut entrainer un biais sur le poids des petits individus. Sa précision au dixième de grammes n’est pas suffisante pour les individus de l’année qui ont un poids entre 0.2 et 0.8 g. Même si toutes les précautions ainsi qu’un maximum d’application lors des mesures sont faites, les données de poids ne sont pas fiables à 100\%. C’est pour cela que la partie résultats traite la taille et non le poids des individus.
+
+\vspace{0.5cm}
+Le recrutement de l’anguille européenne réalisé sur le barrage de Poses est sûrement sous-estimé avec les pièges car nous savons que les écluses sont une voie de passage lors de la montaison des anguilles. Cependant aujourd’hui encore aucune méthode n’a été mise en place pour pouvoir quantifier le nombre d’anguille empruntant les écluses ce qui permettrait d’avoir le recrutement total d’anguille.
+Les flottangs pour la relève doivent être remontés de l’eau sur le sol depuis la berge. Lors de cette méthode de relevé nous avons vu que quelques anguilles présentes dans le flottang tombent et s’échappent. Il semble donc que les captures des flottangs soient eux aussi un peu sous-estimées. Cela est valable pour l’AVT en rive gauche et l’AVR en rive droite.
+
+\vspace{0.5cm}
+De nombreux problèmes émis dans ce rapport devraient être résolus pour pourvoir permettre aux anguilles de réaliser une montaison optimale sur le barrage. En rive droite, le principal problème est le débit d’attrait trop faible. Comme dit précédemment, des expertises sont en cours mais rien n’a encore était fait. En rive gauche, le principal problème est la difficulté pour les anguilles d’arriver sur la rampe à cause des courants produits par l’usine électrique et l’absence de zone de repos à cause des palplanches. Peut-être qu’une mise en place de divers supports ou de zone de repos serait possible, comme réaliser un enrochement mais la réalisation est complexe.
+
+\vspace{0.5cm}
+Pour résumé, cette étude du recrutement de l’anguille montre bien la difficulté des individus d’atteindre les rampes construites pour faciliter leur montaison. Le barrage de Poses est le premier ouvrage sur la Seine avant de nombreux autres obstacles. Sur l’axe Seine seul l’ouvrage situé au-dessus de Poses est équipé d’une rampe à anguille. Les ouvrages suivants possèdent uniquement des passes à poissons car ceux-ci se trouvent en dehors de la ZAP anguille. Au vu de l’importance de cet axe pour les anguilles, chaque ouvrage devrait être équipé de rampe à anguille. Les données mettent en lumière le besoin d’amélioration et d’optimisation aux niveaux des dispositifs mais aussi les influences que peuvent avoir les différents facteurs environnementaux sur la montaison ainsi que sur les pathologies de types parasitisme. Bien que cette année soit la meilleure année en termes de nombres d’anguilles depuis le début des suivis, ce nombre est encore bien loin des chiffres des années 80 ou l’anguille n’était pas encore en danger critique d’extinction. De nombreuses actions doivent encore être réalisées pour continuer à préserver les populations d'anguille européenne.
+
+\section{Conclusion}
+
+L’anguille européenne était abondante dans les eaux européennes, et même classée nuisible jusqu’en 1984. Les populations ont ensuite drastiquement diminué depuis le milieu du XXème siècle. Son statut a évolué au fur et à mesure du temps passant de « vulnérable » puis « en danger » pour être « en danger critique d’extinction » aujourd’hui. Pour stopper ce déclin et maintenir les populations d’anguille, la commission européenne exige à chaque état membre l’élaboration d’un plan de gestion national (PGA), décliné localement en unités de gestion (UGA). Sur le barrage de Poses, un suivi du recrutement d’anguille européenne a été mis en place car il est le premier obstacle depuis la mer. Cette année 2024, du 2 avril au 23 septembre un total de 845 783 anguilles ont été observées dans les pièges dont 760 856 anguilles en rive droite et 84 926 en rive gauche. Ce sont les meilleurs chiffres obtenus depuis le début des suivis à la fois en rive droite et en rive gauche. La rampe en rive droite, plus adapté au passage des anguilles a été plus utilisé par rapport à la rive gauche. Sur le plan sanitaire, la tendance des conditions des anguilles continue d’être excellente pour l’indice parasitaire et bonne pour l’indice pathologique globale. Au total, 10,6\% des anguilles biométrées (474/4469) présentent des pathologies. L’influence positive des températures sur la montaison des anguilles a pu cette année encore être mise en évidence. Les flottangs n’ont pas mis en évidence d’accumulation au pied des rampes et l’état sanitaire des individus est similaire aux individus retrouvés dans les pièges. Malgré les bons résultats obtenus cette année de nombreuses améliorations doivent être mise place pour optimiser la montaison des anguilles et plus particulièrement des jeunes individus. Ce suivi du recrutement est sûrement légèrement sous-estimé car nous savons que les écluses sont une voie de passage. Une mise en place d’un dispositif de comptages au niveau des écluses serait très intéressante pour avoir des chiffres très proche de la réalité des effectifs totaux franchissant le barrage de Poses.
+
+\vspace{0.5cm}
+Cette année, malgré le meilleur chiffre de montaison observé sur le barrage de Poses depuis le début des suivis, cela ne nous permet pas de qualifier la situation de satisfaisante même si une amélioration est visible. Sur le plan national, avec les données d’autres associations migrateurs le recrutement sur la Seine semble suivre la tendance. L’année 2024 semble être une bonne année de recrutement de l’anguille sur les principaux fleuves français.
+
 
 
 %\twocolumn

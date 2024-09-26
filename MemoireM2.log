@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  25 SEP 2024 17:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  26 SEP 2024 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -500,7 +500,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip67
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 108.
+Package hyperref Info: Option `colorlinks' set `true' on input line 109.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 
@@ -562,7 +562,7 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
 LaTeX Font Info:    Trying to load font information for T1+aer on input line 14
-4.
+5.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
@@ -575,24 +575,24 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 (./MemoireM2.aux)
 \openout1 = `MemoireM2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 144.
-LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -650,8 +650,8 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \degres on input line 144.
-LaTeX Info: Redefining \up on input line 144.
+LaTeX Info: Redefining \degres on input line 145.
+LaTeX Info: Redefining \up on input line 145.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -664,249 +664,367 @@ Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \symgns@font=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/aer/m/n --> TS1/aer/b/n on input line 144.
-Package gensymb Info: Math companion symbols declared on input line 144.
-LaTeX Info: Redefining \degree on input line 144.
-LaTeX Info: Redefining \celsius on input line 144.
+(Font)                  TS1/aer/m/n --> TS1/aer/b/n on input line 145.
+Package gensymb Info: Math companion symbols declared on input line 145.
+LaTeX Info: Redefining \degree on input line 145.
+LaTeX Info: Redefining \celsius on input line 145.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 144.
-LaTeX Info: Redefining \ohm on input line 144.
-Package gensymb Info: Using \textohm for \ohm on input line 144.
-Package gensymb Info: Using \textmu for \micro on input line 144.
-Package hyperref Info: Link coloring ON on input line 144.
+erthousand on input line 145.
+LaTeX Info: Redefining \ohm on input line 145.
+Package gensymb Info: Using \textohm for \ohm on input line 145.
+Package gensymb Info: Using \textmu for \micro on input line 145.
+Package hyperref Info: Link coloring ON on input line 145.
 
 (./MemoireM2.out) (./MemoireM2.out)
 \@outlinefile=\write3
 \openout3 = `MemoireM2.out'.
 
-Package hyperref Info: Option `pageanchor' set `false' on input line 146.
-<frontpage.pdf, id=192, 597.432pt x 845.07718pt>
+Package hyperref Info: Option `pageanchor' set `false' on input line 147.
+<frontpage.pdf, id=249, 597.432pt x 845.07718pt>
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf>
-Package pdftex.def Info: frontpage.pdf  used on input line 150.
+Package pdftex.def Info: frontpage.pdf  used on input line 151.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf>
-Package pdftex.def Info: frontpage.pdf  used on input line 150.
+Package pdftex.def Info: frontpage.pdf  used on input line 151.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
-<frontpage.pdf, id=195, page=1, 597.432pt x 845.07718pt>
+<frontpage.pdf, id=252, page=1, 597.432pt x 845.07718pt>
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
-Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
+Package pdftex.def Info: frontpage.pdf , page1 used on input line 151.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
-Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
+Package pdftex.def Info: frontpage.pdf , page1 used on input line 151.
 (pdftex.def)             Requested size: 597.45789pt x 845.1138pt.
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
-Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
+Package pdftex.def Info: frontpage.pdf , page1 used on input line 151.
 (pdftex.def)             Requested size: 597.45789pt x 845.1138pt.
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
-Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
+Package pdftex.def Info: frontpage.pdf , page1 used on input line 151.
 (pdftex.def)             Requested size: 597.45789pt x 845.1138pt.
 File: frontpage.pdf Graphic file (type pdf)
 <use frontpage.pdf, page 1>
-Package pdftex.def Info: frontpage.pdf , page1 used on input line 150.
+Package pdftex.def Info: frontpage.pdf , page1 used on input line 151.
 (pdftex.def)             Requested size: 597.45789pt x 845.1138pt.
  [1
 
 
  <./frontpage.pdf>] [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 164.
+(Font)              <12> on input line 165.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 164.
+(Font)              <8> on input line 165.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 164.
+(Font)              <6> on input line 165.
 LaTeX Font Info:    Trying to load font information for TS1+aer on input line 1
-64.
-LaTeX Font Info:    No file TS1aer.fd. on input line 164.
+65.
+LaTeX Font Info:    No file TS1aer.fd. on input line 165.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead on input line 164.
+(Font)              using `TS1/cmr/m/n' instead on input line 165.
 
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [1] (./MemoireM2.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 3.
-)
+ [2])
 \tf@toc=\write4
 \openout4 = `MemoireM2.toc'.
 
- [2] (./MemoireM2.lof)
+ [3] (./MemoireM2.lof)
 \tf@lof=\write5
 \openout5 = `MemoireM2.lof'.
 
- (./MemoireM2.lot)
+ (./MemoireM2.lot [4
+
+{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+)
 \tf@lot=\write6
 \openout6 = `MemoireM2.lot'.
 
-Package hyperref Info: Option `pageanchor' set `false' on input line 184.
- [3
-
-]
-Overfull \hbox (4.11864pt too wide) in paragraph at lines 196--198
+Package hyperref Info: Option `pageanchor' set `false' on input line 185.
+ [5]
+Overfull \hbox (4.11864pt too wide) in paragraph at lines 197--199
 []\T1/aer/m/n/10.95 Pr�ambule : Les in-for-ma-tions pr�-sen-t�es ci-dessous son
 t ti-r�es de site in-ter-net : https ://www.seinormigr.fr.
  []
 
 Package textcomp Info: Symbol \texttwosuperior not provided by
 (textcomp)             font family aer in TS1 encoding.
-(textcomp)             Default family used instead on input line 226.
-<image/AM_National.png, id=379, 964.038pt x 548.814pt>
+(textcomp)             Default family used instead on input line 227.
+<image/AM_National.png, id=494, 964.038pt x 548.814pt>
 File: image/AM_National.png Graphic file (type png)
 <use image/AM_National.png>
-Package pdftex.def Info: image/AM_National.png  used on input line 232.
+Package pdftex.def Info: image/AM_National.png  used on input line 233.
 (pdftex.def)             Requested size: 512.14963pt x 291.5651pt.
-[1
-
-
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<image/Organigramme_Seinormigr.png, id=387, 1105.12875pt x 736.25063pt>
+<image/Organigramme_Seinormigr.png, id=497, 1105.12875pt x 736.25063pt>
 File: image/Organigramme_Seinormigr.png Graphic file (type png)
 <use image/Organigramme_Seinormigr.png>
 Package pdftex.def Info: image/Organigramme_Seinormigr.png  used on input line 
-243.
+244.
 (pdftex.def)             Requested size: 512.14963pt x 341.19588pt.
- [2 <./image/AM_National.png>] [3 <./image/Organigramme_Seinormigr.png>]
+[1
+
+
+] [2 <./image/AM_National.png> <./image/Organigramme_Seinormigr.png>]
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 28
-3.
+4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-<image/Morpho.jpg, id=430, 1395.2125pt x 238.8925pt>
+)
+Underfull \vbox (badness 1762) has occurred while \output is active []
+
+ [3{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+<image/Morpho.jpg, id=541, 1395.2125pt x 238.8925pt>
 File: image/Morpho.jpg Graphic file (type jpg)
 <use image/Morpho.jpg>
-Package pdftex.def Info: image/Morpho.jpg  used on input line 318.
+Package pdftex.def Info: image/Morpho.jpg  used on input line 319.
 (pdftex.def)             Requested size: 512.14963pt x 87.6926pt.
-
+ [4 <./image/Morpho.jpg>]
 
 Package natbib Warning: Citation `schmidt_ivbreeding_1922' on page 5 undefined 
-on input line 332.
+on input line 333.
 
-[5 <./image/Morpho.jpg>]
-<image/Aire.png, id=490, 439.6425pt x 243.91125pt>
+<image/Aire.png, id=589, 439.6425pt x 243.91125pt>
 File: image/Aire.png Graphic file (type png)
 <use image/Aire.png>
-Package pdftex.def Info: image/Aire.png  used on input line 336.
+Package pdftex.def Info: image/Aire.png  used on input line 337.
 (pdftex.def)             Requested size: 512.14963pt x 284.1468pt.
-<image/Cycle.png, id=494, 663.98062pt x 327.2225pt>
+[5 <./image/Aire.png>]
+<image/Cycle.png, id=613, 663.98062pt x 327.2225pt>
 File: image/Cycle.png Graphic file (type png)
 <use image/Cycle.png>
-Package pdftex.def Info: image/Cycle.png  used on input line 348.
+Package pdftex.def Info: image/Cycle.png  used on input line 349.
 (pdftex.def)             Requested size: 512.14963pt x 252.41147pt.
-<image/larve.png, id=506, 268.00125pt x 370.38374pt>
+<image/larve.png, id=625, 268.00125pt x 370.38374pt>
 File: image/larve.png Graphic file (type png)
 <use image/larve.png>
-Package pdftex.def Info: image/larve.png  used on input line 359.
+Package pdftex.def Info: image/larve.png  used on input line 360.
 (pdftex.def)             Requested size: 256.07481pt x 353.89713pt.
- [6 <./image/Aire.png>] [7 <./image/Cycle.png> <./image/larve.png>]
-<image/civelle.png, id=549, 210.7875pt x 176.66pt>
+ [6 <./image/Cycle.png>] [7 <./image/larve.png>]
+<image/civelle.png, id=669, 210.7875pt x 176.66pt>
 File: image/civelle.png Graphic file (type png)
 <use image/civelle.png>
-Package pdftex.def Info: image/civelle.png  used on input line 372.
+Package pdftex.def Info: image/civelle.png  used on input line 373.
 (pdftex.def)             Requested size: 256.07481pt x 214.61914pt.
 
 
 Package natbib Warning: Citation `oliveira_life_1999' on page 8 undefined on in
-put line 379.
+put line 380.
 
-<image/ang_jaune_argent.png, id=559, 571.63562pt x 336.75812pt>
+<image/ang_jaune_argent.png, id=679, 571.63562pt x 336.75812pt>
 File: image/ang_jaune_argent.png Graphic file (type png)
 <use image/ang_jaune_argent.png>
-Package pdftex.def Info: image/ang_jaune_argent.png  used on input line 383.
+Package pdftex.def Info: image/ang_jaune_argent.png  used on input line 384.
 (pdftex.def)             Requested size: 256.07481pt x 150.85632pt.
-[8 <./image/civelle.png>] [9 <./image/ang_jaune_argent.png>] [10]
-<image/PGA.png, id=688, 455.7025pt x 314.17375pt>
+[8 <./image/civelle.png> <./image/ang_jaune_argent.png>] [9] [10]
+<image/PGA.png, id=804, 455.7025pt x 314.17375pt>
 File: image/PGA.png Graphic file (type png)
 <use image/PGA.png>
-Package pdftex.def Info: image/PGA.png  used on input line 458.
+Package pdftex.def Info: image/PGA.png  used on input line 459.
 (pdftex.def)             Requested size: 256.07481pt x 176.54971pt.
-
-Underfull \vbox (badness 2409) has occurred while \output is active []
-
- [11]
-<image/Bassin.png, id=699, 1027.33812pt x 729.72626pt>
+<image/Bassin.png, id=806, 1027.33812pt x 729.72626pt>
 File: image/Bassin.png Graphic file (type png)
 <use image/Bassin.png>
-Package pdftex.def Info: image/Bassin.png  used on input line 472.
+Package pdftex.def Info: image/Bassin.png  used on input line 473.
 (pdftex.def)             Requested size: 256.07481pt x 181.88551pt.
-
-[12 <./image/PGA.png> <./image/Bassin.png>]
-<image/Qualité_eau.png, id=712, 457.6005pt x 323.901pt>
+ [11] [12 <./image/PGA.png> <./image/Bassin.png>]
+<image/Qualité_eau.png, id=821, 457.6005pt x 323.901pt>
 File: image/Qualité_eau.png Graphic file (type png)
 <use image/Qualité_eau.png>
-Package pdftex.def Info: image/Qualité_eau.png  used on input line 482.
+Package pdftex.def Info: image/Qualité_eau.png  used on input line 483.
 (pdftex.def)             Requested size: 256.07481pt x 181.25482pt.
-<image/Barrage.png, id=714, 676.02562pt x 382.42876pt>
+<image/Barrage.png, id=823, 676.02562pt x 382.42876pt>
 File: image/Barrage.png Graphic file (type png)
 <use image/Barrage.png>
-Package pdftex.def Info: image/Barrage.png  used on input line 499.
+Package pdftex.def Info: image/Barrage.png  used on input line 500.
 (pdftex.def)             Requested size: 256.07481pt x 144.86343pt.
- [13 <./image/Qualité_eau.png> <./image/Barrage.png>]
-<image/RD.png, id=723, 481.8pt x 194.691pt>
+ [13 <./image/Qualité_eau.png>]
+<image/RD.png, id=832, 481.8pt x 194.691pt>
 File: image/RD.png Graphic file (type png)
 <use image/RD.png>
-Package pdftex.def Info: image/RD.png  used on input line 517.
+Package pdftex.def Info: image/RD.png  used on input line 518.
 (pdftex.def)             Requested size: 256.07481pt x 103.47983pt.
-<image/RG.png, id=724, 483.552pt x 194.472pt>
+<image/RG.png, id=833, 483.552pt x 194.472pt>
 File: image/RG.png Graphic file (type png)
 <use image/RG.png>
-Package pdftex.def Info: image/RG.png  used on input line 524.
+Package pdftex.def Info: image/RG.png  used on input line 525.
 (pdftex.def)             Requested size: 256.07481pt x 102.98953pt.
- [14 <./image/RD.png> <./image/RG.png>]
-<image/RG2.jpeg, id=738, 666.49pt x 939.51pt>
+
+
+Package natbib Warning: Citation `crivelli_languille_1998' on page 14 undefined
+ on input line 534.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14 <./image/Barrage.png> <./image/RD.png> <./image/RG.png>]
+<image/RG2.jpeg, id=843, 666.49pt x 939.51pt>
 File: image/RG2.jpeg Graphic file (type jpg)
 <use image/RG2.jpeg>
-Package pdftex.def Info: image/RG2.jpeg  used on input line 547.
+Package pdftex.def Info: image/RG2.jpeg  used on input line 548.
 (pdftex.def)             Requested size: 256.07481pt x 360.97418pt.
- [15 <./image/RG2.jpeg>]
-<image/RD2.jpeg, id=743, 746.79pt x 762.85pt>
+<image/RD2.jpeg, id=845, 746.79pt x 762.85pt>
 File: image/RD2.jpeg Graphic file (type jpg)
 <use image/RD2.jpeg>
-Package pdftex.def Info: image/RD2.jpeg  used on input line 564.
+Package pdftex.def Info: image/RD2.jpeg  used on input line 565.
 (pdftex.def)             Requested size: 256.07481pt x 261.5772pt.
 
-Overfull \hbox (7.61554pt too wide) in paragraph at lines 583--601
+Overfull \hbox (7.61554pt too wide) in paragraph at lines 584--602
  [][] 
  []
+
+[15] [16 <./image/RG2.jpeg>]
+<image/Protocole.png, id=857, 492.75pt x 322.9155pt>
+File: image/Protocole.png Graphic file (type png)
+<use image/Protocole.png>
+Package pdftex.def Info: image/Protocole.png  used on input line 616.
+(pdftex.def)             Requested size: 256.07481pt x 167.8234pt.
+ [17 <./image/RD2.jpeg>]
+<image/Flottang.png, id=865, 278.03876pt x 185.69376pt>
+File: image/Flottang.png Graphic file (type png)
+<use image/Flottang.png>
+Package pdftex.def Info: image/Flottang.png  used on input line 634.
+(pdftex.def)             Requested size: 256.07481pt x 171.02733pt.
+ [18 <./image/Protocole.png> <./image/Flottang.png>]
+<image/Grille.png, id=883, 457.98067pt x 440.9282pt>
+File: image/Grille.png Graphic file (type png)
+<use image/Grille.png>
+Package pdftex.def Info: image/Grille.png  used on input line 674.
+(pdftex.def)             Requested size: 256.07481pt x 246.54134pt.
+ [19]
+<image/Interprétation.png, id=893, 416.55624pt x 63.23625pt>
+File: image/Interprétation.png Graphic file (type png)
+<use image/Interprétation.png>
+Package pdftex.def Info: image/Interprétation.png  used on input line 692.
+(pdftex.def)             Requested size: 256.07481pt x 38.87605pt.
+ [20 <./image/Grille.png> <./image/Interprétation.png>]
+<image/graph_oral.png, id=906, 3319.40125pt x 1579.9025pt>
+File: image/graph_oral.png Graphic file (type png)
+<use image/graph_oral.png>
+Package pdftex.def Info: image/graph_oral.png  used on input line 715.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+
+
+LaTeX Warning: Reference `g_RG' on page 21 undefined on input line 722.
+
+
+LaTeX Warning: Reference `g_RD' on page 21 undefined on input line 722.
+
+<image/graph_annee_oral.png, id=908, 3319.40125pt x 1579.9025pt>
+File: image/graph_annee_oral.png Graphic file (type png)
+<use image/graph_annee_oral.png>
+Package pdftex.def Info: image/graph_annee_oral.png  used on input line 727.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+
+LaTeX Warning: Reference `g_RG' on page 21 undefined on input line 732.
+
+
+LaTeX Warning: Reference `g_RD' on page 21 undefined on input line 737.
+
+
+LaTeX Warning: Reference `taille_annee_oral' on page 21 undefined on input line
+ 746.
+
+[21 <./image/graph_oral.png>]
+<image/taille_oral.png, id=914, 3319.40125pt x 1579.9025pt>
+File: image/taille_oral.png Graphic file (type png)
+<use image/taille_oral.png>
+Package pdftex.def Info: image/taille_oral.png  used on input line 750.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+ [22 <./image/graph_annee_oral.png> <./image/taille_oral.png>]
+<image/classe_taille_oral.png, id=923, 3319.40125pt x 1579.9025pt>
+File: image/classe_taille_oral.png Graphic file (type png)
+<use image/classe_taille_oral.png>
+Package pdftex.def Info: image/classe_taille_oral.png  used on input line 760.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+<image/taille_mois_oral.png, id=925, 3319.40125pt x 1579.9025pt>
+File: image/taille_mois_oral.png Graphic file (type png)
+<use image/taille_mois_oral.png>
+Package pdftex.def Info: image/taille_mois_oral.png  used on input line 772.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+
+Underfull \vbox (badness 1314) has occurred while \output is active []
+
+ [23 <./image/classe_taille_oral.png> <./image/taille_mois_oral.png>]
+<image/patho.png, id=934, 490.779pt x 356.313pt>
+File: image/patho.png Graphic file (type png)
+<use image/patho.png>
+Package pdftex.def Info: image/patho.png  used on input line 816.
+(pdftex.def)             Requested size: 409.72125pt x 297.47952pt.
+<image/ACP.png, id=938, 1445.4pt x 903.375pt>
+File: image/ACP.png Graphic file (type png)
+<use image/ACP.png>
+Package pdftex.def Info: image/ACP.png  used on input line 828.
+(pdftex.def)             Requested size: 409.72125pt x 256.07233pt.
+ [24] [25 <./image/patho.png>]
+<image/Individus.png, id=946, 1445.4pt x 903.375pt>
+File: image/Individus.png Graphic file (type png)
+<use image/Individus.png>
+Package pdftex.def Info: image/Individus.png  used on input line 836.
+(pdftex.def)             Requested size: 409.72125pt x 256.07233pt.
+<image/graph_debit_oral.png, id=947, 3319.40125pt x 1579.9025pt>
+File: image/graph_debit_oral.png Graphic file (type png)
+<use image/graph_debit_oral.png>
+Package pdftex.def Info: image/graph_debit_oral.png  used on input line 843.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+<image/graph_temp_eau_oral.png, id=949, 3319.40125pt x 1579.9025pt>
+File: image/graph_temp_eau_oral.png Graphic file (type png)
+<use image/graph_temp_eau_oral.png>
+Package pdftex.def Info: image/graph_temp_eau_oral.png  used on input line 853.
+
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+<image/graph_flottang_oral.png, id=951, 3319.40125pt x 1579.9025pt>
+File: image/graph_flottang_oral.png Graphic file (type png)
+<use image/graph_flottang_oral.png>
+Package pdftex.def Info: image/graph_flottang_oral.png  used on input line 868.
+
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+
+Underfull \vbox (badness 1286) has occurred while \output is active []
+
+ [26 <./image/ACP.png>] [27 <./image/Individus.png> <./image/graph_debit_oral.p
+ng>]
+[28 <./image/graph_temp_eau_oral.png> <./image/graph_flottang_oral.png>]
+<image/taille_flottang_oral.png, id=967, 3319.40125pt x 1579.9025pt>
+File: image/taille_flottang_oral.png Graphic file (type png)
+<use image/taille_flottang_oral.png>
+Package pdftex.def Info: image/taille_flottang_oral.png  used on input line 879
+.
+(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16 <./image/RD2.jpeg>]
-<image/Protocole.png, id=751, 492.75pt x 322.9155pt>
-File: image/Protocole.png Graphic file (type png)
-<use image/Protocole.png>
-Package pdftex.def Info: image/Protocole.png  used on input line 615.
-(pdftex.def)             Requested size: 256.07481pt x 167.8234pt.
- [17 <./image/Protocole.png>]
-<image/Flottang.png, id=760, 278.03876pt x 185.69376pt>
-File: image/Flottang.png Graphic file (type png)
-<use image/Flottang.png>
-Package pdftex.def Info: image/Flottang.png  used on input line 633.
-(pdftex.def)             Requested size: 256.07481pt x 171.02733pt.
- [18 <./image/Flottang.png>]
-<image/Grille.png, id=777, 457.98067pt x 440.9282pt>
-File: image/Grille.png Graphic file (type png)
-<use image/Grille.png>
-Package pdftex.def Info: image/Grille.png  used on input line 673.
-(pdftex.def)             Requested size: 256.07481pt x 246.54134pt.
-<image/Interprétation.png, id=783, 416.55624pt x 63.23625pt>
-File: image/Interprétation.png Graphic file (type png)
-<use image/Interprétation.png>
-Package pdftex.def Info: image/Interprétation.png  used on input line 691.
-(pdftex.def)             Requested size: 256.07481pt x 38.87605pt.
- [19 <./image/Grille.png>] (./MemoireM2.bbl [20 <./image/Interprétation.png>] 
-[21] [22] [23])
+[29 <./image/taille_flottang_oral.png>]
+<image/Discu.png, id=975, 453.6585pt x 218.781pt>
+File: image/Discu.png Graphic file (type png)
+<use image/Discu.png>
+Package pdftex.def Info: image/Discu.png  used on input line 927.
+(pdftex.def)             Requested size: 409.72125pt x 197.5921pt.
+ [30]
+
+Package natbib Warning: Citation `berra_incidence_1978' on page 31 undefined on
+ input line 942.
+
+
+Underfull \vbox (badness 1968) has occurred while \output is active []
+
+ [31 <./image/Discu.png>] [32]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+(./MemoireM2.bbl [34] [35] [36] [37])
 
 Package natbib Warning: There were undefined citations.
 
-[24] (./MemoireM2.aux)
+[38] (./MemoireM2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -915,35 +1033,39 @@ L3 programming layer <2024-02-20>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `MemoireM2.out' has not changed.
-(rerunfilecheck)             Checksum: 179BBAE1A671192F4426971A07D8961A;8371.
+(rerunfilecheck)             Checksum: 65788D10C79D79E62A16E65AC7CF55C1;10835.
  ) 
 Here is how much of TeX's memory you used:
- 17010 strings out of 474116
- 277978 string characters out of 5743683
- 1946187 words of memory out of 5000000
- 38917 multiletter control sequences out of 15000+600000
+ 17200 strings out of 474116
+ 282577 string characters out of 5743683
+ 1947187 words of memory out of 5000000
+ 39075 multiletter control sequences out of 15000+600000
  594130 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,17n,79p,2286b,699s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,79p,2286b,710s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on MemoireM2.pdf (30 pages, 21912294 bytes).
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on MemoireM2.pdf (46 pages, 26656973 bytes).
 PDF statistics:
- 908 PDF objects out of 1000 (max. 8388607)
- 766 compressed objects within 8 object streams
- 141 named destinations out of 1000 (max. 500000)
- 497 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1148 PDF objects out of 1200 (max. 8388607)
+ 960 compressed objects within 10 object streams
+ 173 named destinations out of 1000 (max. 500000)
+ 674 words of extra memory for PDF output out of 10000 (max. 10000000)
 
