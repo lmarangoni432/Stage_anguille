@@ -1,4 +1,5 @@
 \babel@toc {french}{}\relax 
+\contentsline {section}{Seine Normandie Migrateurs}{1}{section*.3}%
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Contexte historique de l’étude}{3}{subsection.1.1}%
 \contentsline {section}{\numberline {2}Synthèse bibliographique}{4}{section.2}%
@@ -53,10 +54,11 @@
 \contentsline {subsubsection}{\numberline {5.3.1}Tailles selon la rive}{21}{subsubsection.5.3.1}%
 \contentsline {subsubsection}{\numberline {5.3.2}Tailles mensuelles}{23}{subsubsection.5.3.2}%
 \contentsline {subsection}{\numberline {5.4}État sanitaire du recrutement 2024}{24}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Influence des facteurs environnementaux }{24}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Bilan des flottangs }{26}{subsection.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Effectifs 2024}{26}{subsubsection.5.6.1}%
-\contentsline {subsubsection}{\numberline {5.6.2}Tailles des individus}{29}{subsubsection.5.6.2}%
-\contentsline {subsubsection}{\numberline {5.6.3}État sanitaire }{29}{subsubsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.5}Influence des facteurs environnementaux }{25}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Bilan des flottangs }{27}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Effectifs 2024}{27}{subsubsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.2}Tailles des individus}{28}{subsubsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.3}État sanitaire }{28}{subsubsection.5.6.3}%
 \contentsline {section}{\numberline {6}Discussion}{29}{section.6}%
-\contentsline {section}{\numberline {7}Conclusion}{34}{section.7}%
+\contentsline {section}{\numberline {7}Conclusion}{33}{section.7}%
+\contentsline {section}{Références}{33}{section.7}%
