@@ -266,7 +266,11 @@ r_mig_interannual<-calcule(r_mig_interannual,silent=TRUE)
 
 data_histo_RD <- r_mig_interannual@data
 
-save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,histo_debit,data_histo_RG,data_histo_RD,file=str_c(datawd,"data_report.Rdata"))
+# Calcul des totaux pour la rive droite (102) et la rive gauche (104)
+total_rive_droite <- round(sum(grdata$effectif_total[grdata$DC == 102], na.rm = TRUE))
+total_rive_gauche <- round(sum(grdata$effectif_total[grdata$DC == 104], na.rm = TRUE))
+
+save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,histo_debit,total_rive_droite,total_rive_gauche,data_histo_RG,data_histo_RD,file=str_c(datawd,"data_report.Rdata"))
 
 }else{
   load(str_c(datawd,"data_report.Rdata"))
@@ -1001,6 +1005,10 @@ print(g_RD)
 dev.off()
 
 
+
+
+
+
 @
 
 
@@ -1038,7 +1046,7 @@ année \Sexpr{annee}}
 
 \begin{abstract}
 
-Un suivi du recrutement de l’anguille européenne en Seine est réalisé depuis 2014 en rive gauche et 2018 en rive droite du barrage de Poses, premier ouvrage sur la Seine. Ce suivi a été mis en place dans le cadre du Plan National de Gestion Anguille (PGA). Pour cette année 2024, un total de \Sexpr{round(sum(grdata$effectif_total))} anguilles a été comptabilisé avec 86,6\% des individus en rive droite et 13,4\% des individus en rive gauche. La mise en place d’une rampe à anguille en rive droite a fortement augmenté les chiffres car l’accessibilité de la rampe en rive gauche est trop difficile à cause des courants issus de l’usine hydroélectrique. Les facteurs environnementaux jouent un rôle dans la montaison des anguilles. Cette année les résultats ont réussi a montré un impact significatif positif des températures de l’air et de l’eau fortement corrélées entre elles. Les débits et les niveaux d’eau étaient extrêmement élevés, cela a joué un rôle dans l’accessibilité des anguilles en venant modifier et contrer les courants de l’usine hydroélectrique. En complémentarité des dispositifs de piégeages, des flottangs ont été mis en place en aval des rampes visant à vérifier le bon fonctionnement des dispositifs. Une amélioration des chiffres est visible cette année mais nous ne pouvons pas qualifier la situation de satisfaisante comparé aux chiffres des années 80.
+Un suivi du recrutement de l’anguille européenne en Seine est réalisé depuis 2014 en rive gauche et 2018 en rive droite du barrage de Poses, premier ouvrage sur la Seine. Ce suivi a été mis en place dans le cadre du Plan National de Gestion Anguille (PGA). Pour cette année 2024, un total de \Sexpr{round(sum(grdata$effectif_total))} anguilles a été comptabilisé avec 90\% des individus en rive droite et 10\% des individus en rive gauche. La mise en place d’une rampe à anguille en rive droite a fortement augmenté les chiffres car l’accessibilité de la rampe en rive gauche est trop difficile à cause des courants issus de l’usine hydroélectrique. Les facteurs environnementaux jouent un rôle dans la montaison des anguilles. Cette année les résultats ont réussi a montré un impact significatif positif des températures de l’air et de l’eau fortement corrélées entre elles. Les débits et les niveaux d’eau étaient extrêmement élevés, cela a joué un rôle dans l’accessibilité des anguilles en venant modifier et contrer les courants de l’usine hydroélectrique. En complémentarité des dispositifs de piégeages, des flottangs ont été mis en place en aval des rampes visant à vérifier le bon fonctionnement des dispositifs. Une amélioration des chiffres est visible cette année mais nous ne pouvons pas qualifier la situation de satisfaisante comparé aux chiffres des années 80.
 Mots-clés :  \textit{Anguilla Anguilla} ; Montaison ; Recrutement ; Rampe à anguille ; Seine
 
 
@@ -1068,9 +1076,9 @@ Mots-clés :  \textit{Anguilla Anguilla} ; Montaison ; Recrutement ; Rampe à an
 
 \addcontentsline{toc}{section}{Seine Normandie Migrateurs}
 
-Préambule : Les informations présentées ci-dessous sont tirées de site internet : https://www.seinormigr.fr. 
-\vspace{0.5cm}
+Péambule : Les informations présentées ci-dessous sont tirées du site internet : https://www.seinormigr.fr.
 
+\vspace{0.5cm}
 \underline{Présentation générale} : Seinormigr a été créé en 2007 sur une initiative du Président de la Fédération de la Seine-Maritime pour la Pêche et la Protection du Milieu Aquatique. 
 L’association regroupe par adhésion les Fédérations départementales présentes sur le bassin Seine-Normandie afin de créer une seule et même continuité dans le suivi et la gestion des populations de poissons migrateurs. 
 En 2011, elle est inscrite au Plan de Gestion des Poissons Migrateurs du bassin Seine-Normandie où elle siège en tant qu’inviter. 
@@ -1231,8 +1239,8 @@ La larve leptocéphale est le premier stade de l’espèce qui apparait à la su
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{larve}
-\caption{Larve leptocéphale)}
+\includegraphics[width=0.4\textwidth]{larve}
+\caption{Larve leptocéphale}
 \label{larve}
 \end{figure}
 
@@ -1255,7 +1263,7 @@ Le stade anguille jaune apparait à la suite des anguillettes. La différence en
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{ang_jaune_argent}
+\includegraphics[width=\textwidth]{ang_jaune_argent}
 \caption{Anguille jaune (haut) et anguille argenté (bas) (\citep{durif_migration_2003})}
 \label{ang_jaune_argent}
 \end{figure}
@@ -1330,7 +1338,7 @@ Du point de vue du l’UGA Seine-Normandie, le Plan de gestion des poissons migr
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{PGA}
+\includegraphics[width=\textwidth]{PGA}
 \caption{Chronologie des plans de gestion de l’anguille européenne en place en France métropolitaine (GIPSA 2023)}
 \label{PGA}
 \end{figure}
@@ -1371,7 +1379,7 @@ Le barrage de Poses a été construit entre les années 1878 et 1885 entre les c
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{Barrage}
+\includegraphics[width=\textwidth]{Barrage}
 \caption{Présentation des infrastructures du barrage de Poses – Amfreville-sous-les-Monts}
 \label{Barrage}
 \end{figure}
@@ -1389,14 +1397,14 @@ Des rampes à anguilles ont aussi été construites en parallèle des passes à 
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{RD}
+\includegraphics[width=\textwidth]{RD}
 \caption{Passes à poissons (Rive gauche photo de gauche, Rive droite photo de droite). (SEINORMIGR)}
 \label{RD}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{RG}
+\includegraphics[width=\textwidth]{RG}
 \caption{Système de vidéo-comptage (Rive gauche photo de gauche, Rive droite photo de droite). (SEINORMIGR)}
 \label{RG}
 \end{figure}
@@ -1419,7 +1427,7 @@ Dernière partie l’amont : Cette dernière rampe (inclinée à 35°) dirige le
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{RG2}
+\includegraphics[width=0.4\textwidth]{RG2}
 \caption{Dispositif de franchissement anguille en rive gauche sur le barrage de Poses. Les flèches rouges indiquent le trajet des individus}
 \label{RG2}
 \end{figure}
@@ -1545,7 +1553,7 @@ Les codes pathologiques sont utilisés pour calculer l’IpG et l’IpP, indices
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{Grille}
+\includegraphics[width=\textwidth]{Grille}
 \caption{Grille de codification des anomalies anatomo-morphologiques externes et des ectoparasites des poissons visibles à l'oeil nu. \citep{elie_sante_2014}}
 \label{Grille}
 \end{figure}
@@ -1563,7 +1571,7 @@ L’indice parasitaire (s’applique uniquement aux parasites) est calculé de l
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.5\textwidth]{Interprétation}
+\includegraphics[width=\textwidth]{Interprétation}
 \caption{Grille d'interprétation de l'indice pathologique (IpG) et parasitaire (IpP) \citep{elie_sante_2014}}
 \label{Interprétation}
 \end{figure}
@@ -1581,12 +1589,12 @@ Un autre test utilisé est l’analyse en composante principale (ACP). Cela est 
 
 \subsection{Bilan migratoire 2024 }
 
-Pour cette année 2024, le suivi a commencé le 2 avril, jour de la mise en route des pièges à anguilles. Les pièges de la rive droite aussi bien que la rive gauche ont fonctionné sans interruption pendant la période de suivi. Les premiers individus ont été observés le 8 avril en rive droite mais aussi en rive gauche. Les premiers individus de l’année avec une taille d’environ 80 mm ont été observés le 8 juillet. Pour cette année 2024, du 2 avril au 23 septembre un total de \Sexpr{round(sum(grdata$effectif_total))} anguilles a été comptabilisé soit un total de 760 856 (90\%) en rive droite et de 84 926 (10\%) en rive gauche. La (Figure \ref{graph_oral}) représente les effectifs journaliers ainsi que les effectifs cumulés, deux pics sont visibles avec un premier début août et le principal mi-août que cela soit pour la rive droite ou la rive gauche. Cette année encore les anguilles ont majoritairement emprunté la rive droite par rapport à la rive gauche.
+Pour cette année 2024, le suivi a commencé le 2 avril, jour de la mise en route des pièges à anguilles. Les pièges de la rive droite aussi bien que la rive gauche ont fonctionné sans interruption pendant la période de suivi. Les premiers individus ont été observés le 8 avril en rive droite mais aussi en rive gauche. Les premiers individus de l’année avec une taille d’environ 80 mm ont été observés le 8 juillet. Pour cette année 2024, du 2 avril au 23 septembre un total de \Sexpr{round(sum(grdata$effectif_total))} anguilles a été comptabilisé soit un total de \Sexpr{total_rive_droite} (90\%) en rive droite et de \Sexpr{total_rive_gauche} (10\%) en rive gauche. La (Figure \ref{graph_oral}) représente les effectifs journaliers ainsi que les effectifs cumulés, deux pics sont visibles avec un premier début août et le principal mi-août que cela soit pour la rive droite ou la rive gauche. Cette année encore les anguilles ont majoritairement emprunté la rive droite par rapport à la rive gauche.
 
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{graph_oral.png}
+\includegraphics[width=\textwidth]{graph_oral.png}
 \caption{Effectifs journaliers et cumulés des deux rives en 2024}
 \label{graph_oral}
 \end{figure}
@@ -1598,28 +1606,28 @@ Le suivi du recrutement des anguilles européennes en Seine est réalisé sur le
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{graph_annee_oral.png}
+\includegraphics[width=\textwidth]{graph_annee_oral.png}
 \caption{Évolution interannuelle des effectifs des anguilles capturées dans les pièges}
 \label{graph_annee_oral}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{g_RG.png}
+\includegraphics[width=\textwidth]{g_RG.png}
 \caption{Effectifs cumulés rive gauche}
 \label{g_RG}
 \end{figure}
 
 Tout d’abord, sur la (Figure \ref{g_RG}) concernant la rive gauche, nous pouvons observer que les dynamiques de migrations sont relativement similaires avec des captures faibles en début de saison. Les captures augmentent ensuite progressivement jusqu’à des pics de migrations.   Ces pics de migrations ont souvent lieu l’été en juillet-août cependant il y a une forte variabilité entre les années en termes d’effectifs.
 
-A noté que pour cette année en rive gauche, 84 926 anguilles ont été piégées, soit plus du double des effectifs de l’année 2020 qui était jusqu’à présent la meilleure année.
+A noté que pour cette année en rive gauche, \Sexpr{total_rive_gauche} anguilles ont été piégées, soit plus du double des effectifs de l’année 2020 qui était jusqu’à présent la meilleure année.
 
 
-La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite 760 856 anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi.
+La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite \Sexpr{total_rive_droite} anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi.
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{g_RD.png}
+\includegraphics[width=\textwidth]{g_RD.png}
 \caption{Effectifs cumulés rive gauche}
 \label{g_RD}
 \end{figure}
@@ -1635,14 +1643,14 @@ La (Figure \ref{taille_oral}) présente la taille des individus biométrés en m
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{taille_oral.png}
+\includegraphics[width=\textwidth]{taille_oral.png}
 \caption{Taille en mm des anguilles en rive droite et rive gauche - 2024}
 \label{taille_oral}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{taille_annee_oral.png}
+\includegraphics[width=\textwidth]{taille_annee_oral.png}
 \caption{Taille en mm des anguilles en montaison par année en fonction de la rive}
 \label{taille_annee_oral}
 \end{figure}
@@ -1653,7 +1661,7 @@ La (Figure \ref{classe_taille_oral}) présente des classes de tailles des anguil
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{classe_taille_oral.png}
+\includegraphics[width=\textwidth]{classe_taille_oral.png}
 \caption{Fréquences des classes de tailles (par 5 mm) des anguilles en RG (bleu) et en RD (rouge) en 2024.}
 \label{classe_taille_oral}
 \end{figure}
@@ -1665,7 +1673,7 @@ Lors des relevés des pièges en début de saison les individus sont des anguill
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{taille_mois_oral.png}
+\includegraphics[width=\textwidth]{taille_mois_oral.png}
 \caption{Taille (mm) mensuelle des anguilles selon les rives en 2024}
 \label{taille_mois_oral}
 \end{figure} 
@@ -1709,7 +1717,7 @@ La (Figure \ref{patho}) est une synthèse des pathologies ainsi que des intensit
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{patho.png}
+\includegraphics[width=0.5\textwidth]{patho.png}
 \caption{Synthèse des pathologies et des intensités lésionnelles observés en rive droite et rive gauche. PN=Points noirs / PB=Points blancs / AG=Grosseurs-Tumeurs / AO=Absence d’organes / ER=Érosion / HE=Hémorragie / AM=Maigreur / PL=Plaies / AC=Altération de la couleur / AD=Difformité / ZO=État pathologique multiforme.}
 \label{patho}
 \end{figure} 
@@ -1721,7 +1729,7 @@ L’influence des paramètres environnementaux sur les effectifs de captures des
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{ACP.png}
+\includegraphics[width=\textwidth]{ACP.png}
 \caption{Cercle de corrélation des variables environnementales – ACP}
 \label{ACP}
 \end{figure} 
@@ -1729,14 +1737,14 @@ L’influence des paramètres environnementaux sur les effectifs de captures des
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{Individus.png}
+\includegraphics[width=\textwidth]{Individus.png}
 \caption{Projection des individus selon les variables environnementales par mois de captures (ACP)}
 \label{Individus}
 \end{figure} 
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{graph_debit_oral.png}
+\includegraphics[width=\textwidth]{graph_debit_oral.png}
 \caption{Comparaison des débits de 2024 et des débits moyens des années précédentes}
 \label{graph_debit_oral}
 \end{figure} 
@@ -1746,7 +1754,7 @@ La température de l’air a augmenté début juillet ce qui a entrainé un réc
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{graph_temp_eau_oral.png}
+\includegraphics[width=\textwidth]{graph_temp_eau_oral.png}
 \caption{Effectifs journaliers selon la température de la Seine (°C) en rive gauche et rive droite confondues en 2024.}
 \label{graph_temp_eau_oral}
 \end{figure} 
@@ -1761,7 +1769,7 @@ Les deux flottangs mis en place cette année sont en aval de la rampe en rive dr
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{graph_flottang_oral.png}
+\includegraphics[width=\textwidth]{graph_flottang_oral.png}
 \caption{Effectifs cumulés et journaliers des flottangs AVR et AVT 2024}
 \label{graph_flottang_oral}
 \end{figure} 
@@ -1772,7 +1780,7 @@ La (Figure \ref{taille_flottang_oral}) présente la taille des individus en mm d
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{taille_flottang_oral.png}
+\includegraphics[width=\textwidth]{taille_flottang_oral.png}
 \caption{Taille en mm des anguilles observées dans les flottangs AVR et AVT}
 \label{taille_flottang_oral}
 \end{figure} 
@@ -1810,7 +1818,7 @@ Au total 6.21\% (59/950) des anguilles biométrées ont des lésions Tableau \re
 
 \section{Discussion}
 
-L’année 2024 est la 11ème année en rive gauche et 7ème année en rive droite que le suivi du recrutement de la Seine en anguille européenne est réalisé sur le barrage de Poses. Durant la période de suivi, du 2 avril au 23 septembre, \Sexpr{round(sum(grdata$effectif_total))} anguilles ont été observées dans les pièges dont 760 856 anguilles en rive droite et 84 926 en rive gauche. Cette préférence pour la rive droite est cette année encore bien marquée. Deux gros pics de migration d’anguilles ont eu lieu durant la période de suivi, la première du 27 juillet au 2 août pendant lequel 125 475 anguilles ont été observées (les deux rives confondus). Le second pic le plus important à eu lieu du 9 au 16 août pendant lequel 303 037 anguilles ont été observées. Au total durant ces deux pics 428 504 anguilles sont passées dans les pièges ce qui correspond à 50\% des individus observés sur la durée totale du suivi. 
+L’année 2024 est la 11ème année en rive gauche et 7ème année en rive droite que le suivi du recrutement de la Seine en anguille européenne est réalisé sur le barrage de Poses. Durant la période de suivi, du 2 avril au 23 septembre, \Sexpr{round(sum(grdata$effectif_total))} anguilles ont été observées dans les pièges dont \Sexpr{total_rive_droite} anguilles en rive droite et \Sexpr{total_rive_gauche} en rive gauche. Cette préférence pour la rive droite est cette année encore bien marquée. Deux gros pics de migration d’anguilles ont eu lieu durant la période de suivi, la première du 27 juillet au 2 août pendant lequel 125 475 anguilles ont été observées (les deux rives confondus). Le second pic le plus important à eu lieu du 9 au 16 août pendant lequel 303 037 anguilles ont été observées. Au total durant ces deux pics 428 504 anguilles sont passées dans les pièges ce qui correspond à 50\% des individus observés sur la durée totale du suivi. 
 
 \vspace{0.5cm}
 Cette année est la meilleure depuis le début des suivis pour la rive droite car le total de 476 958 anguilles en 2018 est dépassé. Ce constat est le même pour la rive gauche car la meilleure année était 2022 avec 36 046 est lui aussi dépassé. 
@@ -1820,7 +1828,7 @@ Cette année les premiers individus ont pu être observés le 8 avril pour les d
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{Discu.png}
+\includegraphics[width=\textwidth]{Discu.png}
 \caption{Photographie de l’aval de la centrale hydroélectrique et de la rampe à anguille (orange) en rive gauche. En vert, les palplanches longeant la berge et en rouge les courants limitants la montaison (Adapté de Théo Neveu, 2021).}
 \label{Discu}
 \end{figure} 
@@ -1876,7 +1884,7 @@ Pour résumé, cette étude du recrutement de l’anguille montre bien la diffic
 
 \section{Conclusion}
 
-L’anguille européenne était abondante dans les eaux européennes, et même classée nuisible jusqu’en 1984. Les populations ont ensuite drastiquement diminué depuis le milieu du XXème siècle. Son statut a évolué au fur et à mesure du temps passant de \og vulnérable \fg{} puis \og en danger \fg{} pour être \og en danger critique d’extinction \fg{} aujourd’hui. Pour stopper ce déclin et maintenir les populations d’anguille, la commission européenne exige à chaque état membre l’élaboration d’un plan de gestion national (PGA), décliné localement en unités de gestion (UGA). Sur le barrage de Poses, un suivi du recrutement d’anguille européenne a été mis en place car il est le premier obstacle depuis la mer. Cette année 2024, du 2 avril au 23 septembre un total de 845 783 anguilles ont été observées dans les pièges dont 760 856 anguilles en rive droite et 84 926 en rive gauche. Ce sont les meilleurs chiffres obtenus depuis le début des suivis à la fois en rive droite et en rive gauche. La rampe en rive droite, plus adapté au passage des anguilles a été plus utilisé par rapport à la rive gauche. Sur le plan sanitaire, la tendance des conditions des anguilles continue d’être excellente pour l’indice parasitaire et bonne pour l’indice pathologique globale. Au total, 10,6\% des anguilles biométrées (474/4469) présentent des pathologies. L’influence positive des températures sur la montaison des anguilles a pu cette année encore être mise en évidence. Les flottangs n’ont pas mis en évidence d’accumulation au pied des rampes et l’état sanitaire des individus est similaire aux individus retrouvés dans les pièges. Malgré les bons résultats obtenus cette année de nombreuses améliorations doivent être mise place pour optimiser la montaison des anguilles et plus particulièrement des jeunes individus. Ce suivi du recrutement est sûrement légèrement sous-estimé car nous savons que les écluses sont une voie de passage. Une mise en place d’un dispositif de comptages au niveau des écluses serait très intéressante pour avoir des chiffres très proche de la réalité des effectifs totaux franchissant le barrage de Poses.
+L’anguille européenne était abondante dans les eaux européennes, et même classée nuisible jusqu’en 1984. Les populations ont ensuite drastiquement diminué depuis le milieu du XXème siècle. Son statut a évolué au fur et à mesure du temps passant de \og vulnérable \fg{} puis \og en danger \fg{} pour être \og en danger critique d’extinction \fg{} aujourd’hui. Pour stopper ce déclin et maintenir les populations d’anguille, la commission européenne exige à chaque état membre l’élaboration d’un plan de gestion national (PGA), décliné localement en unités de gestion (UGA). Sur le barrage de Poses, un suivi du recrutement d’anguille européenne a été mis en place car il est le premier obstacle depuis la mer. Cette année 2024, du 2 avril au 23 septembre un total de \Sexpr{round(sum(grdata$effectif_total))} anguilles ont été observées dans les pièges dont \Sexpr{total_rive_droite} anguilles en rive droite et \Sexpr{total_rive_gauche} en rive gauche. Ce sont les meilleurs chiffres obtenus depuis le début des suivis à la fois en rive droite et en rive gauche. La rampe en rive droite, plus adapté au passage des anguilles a été plus utilisé par rapport à la rive gauche. Sur le plan sanitaire, la tendance des conditions des anguilles continue d’être excellente pour l’indice parasitaire et bonne pour l’indice pathologique globale. Au total, 10,6\% des anguilles biométrées (474/4469) présentent des pathologies. L’influence positive des températures sur la montaison des anguilles a pu cette année encore être mise en évidence. Les flottangs n’ont pas mis en évidence d’accumulation au pied des rampes et l’état sanitaire des individus est similaire aux individus retrouvés dans les pièges. Malgré les bons résultats obtenus cette année de nombreuses améliorations doivent être mise place pour optimiser la montaison des anguilles et plus particulièrement des jeunes individus. Ce suivi du recrutement est sûrement légèrement sous-estimé car nous savons que les écluses sont une voie de passage. Une mise en place d’un dispositif de comptages au niveau des écluses serait très intéressante pour avoir des chiffres très proche de la réalité des effectifs totaux franchissant le barrage de Poses.
 
 \vspace{0.5cm}
 Cette année, malgré le meilleur chiffre de montaison observé sur le barrage de Poses depuis le début des suivis, cela ne nous permet pas de qualifier la situation de satisfaisante même si une amélioration est visible. Sur le plan national, avec les données d’autres associations migrateurs le recrutement sur la Seine semble suivre la tendance. L’année 2024 semble être une bonne année de recrutement de l’anguille sur les principaux fleuves français.

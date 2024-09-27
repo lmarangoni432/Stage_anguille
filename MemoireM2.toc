@@ -11,18 +11,18 @@
 \contentsline {subsection}{\numberline {2.3}Cycle de vie}{6}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Larve leptocéphale}{6}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Civelle}{6}{subsubsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}Anguille jaune }{8}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Anguille argentée }{9}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.3}Anguille jaune }{7}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Anguille argentée }{7}{subsubsection.2.3.4}%
 \contentsline {subsection}{\numberline {2.4}Menaces }{9}{subsection.2.4}%
 \contentsline {subsubsection}{\numberline {2.4.1}Pêche et braconnage }{9}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Parasitisme}{9}{subsubsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.3}Prédation}{10}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.3}Prédation}{9}{subsubsection.2.4.3}%
 \contentsline {subsubsection}{\numberline {2.4.4}Obstacles à la migration}{10}{subsubsection.2.4.4}%
 \contentsline {subsubsection}{\numberline {2.4.5}Perte et dégradation des habitats}{10}{subsubsection.2.4.5}%
 \contentsline {subsubsection}{\numberline {2.4.6}Modifications hydro climatiques}{10}{subsubsection.2.4.6}%
 \contentsline {subsubsection}{\numberline {2.4.7}Pollution}{10}{subsubsection.2.4.7}%
-\contentsline {subsection}{\numberline {2.5}Intérêt de l’anguille européenne }{11}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Écologique }{11}{subsubsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5}Intérêt de l’anguille européenne }{10}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Écologique }{10}{subsubsection.2.5.1}%
 \contentsline {subsubsection}{\numberline {2.5.2}Économique }{11}{subsubsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.6}Mesures de conservation}{11}{subsection.2.6}%
 \contentsline {section}{\numberline {3}Contexte}{11}{section.3}%
@@ -30,35 +30,35 @@
 \contentsline {subsection}{\numberline {3.2}Sites d’études : Poses – Amfreville-sous-les-Monts}{13}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Le barrage}{13}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Les passes à poissons et le vidéo comptage}{13}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Les rampes à anguilles }{14}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3}Les rampes à anguilles }{13}{subsubsection.3.2.3}%
 \contentsline {section}{\numberline {4}Matériels et méthodes}{15}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Les pièges actifs }{15}{subsection.4.1}%
 \contentsline {subsubsection}{\numberline {4.1.1}Rive gauche}{15}{subsubsection.4.1.1}%
 \contentsline {subsubsection}{\numberline {4.1.2}Rive droite }{15}{subsubsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.2}Protocole de suivi }{15}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Suivi des anguilles }{15}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Entretien des pièges}{17}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2}Protocole de suivi }{16}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Suivi des anguilles }{16}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Entretien des pièges}{16}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}Obtention des données biométriques}{17}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Saisie et bancarisation des données}{18}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.4}Saisie et bancarisation des données}{17}{subsubsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.3}Les pièges passifs \@FB@og Flottang \@FB@fg \relax {}}{18}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Protocole des flottangs}{18}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Saisie et bancarisation des données }{19}{subsubsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.4}Paramètres environnementaux}{19}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Traitement de données }{19}{subsection.4.5}%
 \contentsline {subsubsection}{\numberline {4.5.1}Analyse globale }{19}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Analyses statistiques}{20}{subsubsection.4.5.2}%
-\contentsline {section}{\numberline {5}Résultats}{20}{section.5}%
+\contentsline {subsubsection}{\numberline {4.5.2}Analyses statistiques}{21}{subsubsection.4.5.2}%
+\contentsline {section}{\numberline {5}Résultats}{21}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Bilan migratoire 2024 }{21}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Comparaisons interannuelles des migrations}{21}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Morphotypes des individus en 2024}{21}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Tailles selon la rive}{21}{subsubsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3}Morphotypes des individus en 2024}{22}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Tailles selon la rive}{22}{subsubsection.5.3.1}%
 \contentsline {subsubsection}{\numberline {5.3.2}Tailles mensuelles}{24}{subsubsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.4}État sanitaire du recrutement 2024}{25}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Influence des facteurs environnementaux }{25}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.4}État sanitaire du recrutement 2024}{24}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Influence des facteurs environnementaux }{26}{subsection.5.5}%
 \contentsline {subsection}{\numberline {5.6}Bilan des flottangs }{27}{subsection.5.6}%
 \contentsline {subsubsection}{\numberline {5.6.1}Effectifs 2024}{27}{subsubsection.5.6.1}%
 \contentsline {subsubsection}{\numberline {5.6.2}Tailles des individus}{30}{subsubsection.5.6.2}%
 \contentsline {subsubsection}{\numberline {5.6.3}État sanitaire }{30}{subsubsection.5.6.3}%
-\contentsline {section}{\numberline {6}Discussion}{30}{section.6}%
+\contentsline {section}{\numberline {6}Discussion}{31}{section.6}%
 \contentsline {section}{\numberline {7}Conclusion}{35}{section.7}%
-\contentsline {section}{Références}{35}{section.7}%
+\contentsline {section}{Références}{36}{section.7}%

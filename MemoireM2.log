@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  26 SEP 2024 16:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.5)  27 SEP 2024 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -754,9 +754,9 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 Package hyperref Info: Option `pageanchor' set `false' on input line 184.
  [5]
-Overfull \hbox (4.11864pt too wide) in paragraph at lines 198--200
-[]\T1/aer/m/n/10.95 Préambule : Les in-for-ma-tions pré-sen-tées ci-dessous son
-t ti-rées de site in-ter-net : https ://www.seinormigr.fr.
+Overfull \hbox (1.05273pt too wide) in paragraph at lines 198--199
+[]\T1/aer/m/n/10.95 Péambule : Les in-for-ma-tions pré-sen-tées ci-dessous sont
+ ti-rées du site in-ter-net : https ://www.seinormigr.fr. 
  []
 
 Package textcomp Info: Symbol \texttwosuperior not provided by
@@ -777,7 +777,7 @@ Package pdftex.def Info: image/Organigramme_Seinormigr.png  used on input line
 
 
 ] [2 <./image/AM_National.png> <./image/Organigramme_Seinormigr.png>]
-Underfull \vbox (badness 1762) has occurred while \output is active []
+Underfull \vbox (badness 5119) has occurred while \output is active []
 
  [3]
 <image/Morpho.jpg, id=555, 1395.2125pt x 238.8925pt>
@@ -787,90 +787,75 @@ Package pdftex.def Info: image/Morpho.jpg  used on input line 320.
 (pdftex.def)             Requested size: 512.14963pt x 87.6926pt.
 
 [4 <./image/Morpho.jpg>]
-
-Package natbib Warning: Citation `schmidt_ivbreeding_1922' on page 5 undefined 
-on input line 334.
-
-<image/Aire.png, id=603, 439.6425pt x 243.91125pt>
+<image/Aire.png, id=605, 439.6425pt x 243.91125pt>
 File: image/Aire.png Graphic file (type png)
 <use image/Aire.png>
 Package pdftex.def Info: image/Aire.png  used on input line 338.
 (pdftex.def)             Requested size: 512.14963pt x 284.1468pt.
-[5 <./image/Aire.png>]
-<image/Cycle.png, id=627, 663.98062pt x 327.2225pt>
+ [5 <./image/Aire.png>]
+<image/Cycle.png, id=630, 663.98062pt x 327.2225pt>
 File: image/Cycle.png Graphic file (type png)
 <use image/Cycle.png>
 Package pdftex.def Info: image/Cycle.png  used on input line 350.
 (pdftex.def)             Requested size: 512.14963pt x 252.41147pt.
-<image/larve.png, id=639, 268.00125pt x 370.38374pt>
+<image/larve.png, id=642, 268.00125pt x 370.38374pt>
 File: image/larve.png Graphic file (type png)
 <use image/larve.png>
 Package pdftex.def Info: image/larve.png  used on input line 361.
-(pdftex.def)             Requested size: 256.07481pt x 353.89713pt.
- [6 <./image/Cycle.png>] [7 <./image/larve.png>]
-<image/civelle.png, id=683, 210.7875pt x 176.66pt>
+(pdftex.def)             Requested size: 204.85672pt x 283.11656pt.
+ [6 <./image/Cycle.png>]
+<image/civelle.png, id=682, 210.7875pt x 176.66pt>
 File: image/civelle.png Graphic file (type png)
 <use image/civelle.png>
 Package pdftex.def Info: image/civelle.png  used on input line 374.
 (pdftex.def)             Requested size: 256.07481pt x 214.61914pt.
-
-
-Package natbib Warning: Citation `oliveira_life_1999' on page 8 undefined on in
-put line 381.
-
-<image/ang_jaune_argent.png, id=693, 571.63562pt x 336.75812pt>
+<image/ang_jaune_argent.png, id=694, 571.63562pt x 336.75812pt>
 File: image/ang_jaune_argent.png Graphic file (type png)
 <use image/ang_jaune_argent.png>
 Package pdftex.def Info: image/ang_jaune_argent.png  used on input line 385.
-(pdftex.def)             Requested size: 256.07481pt x 150.85632pt.
-[8 <./image/civelle.png> <./image/ang_jaune_argent.png>] [9] [10]
-<image/PGA.png, id=818, 455.7025pt x 314.17375pt>
+(pdftex.def)             Requested size: 512.14963pt x 301.7178pt.
+
+[7 <./image/larve.png>] [8 <./image/civelle.png> <./image/ang_jaune_argent.png>
+] [9] [10]
+<image/PGA.png, id=824, 455.7025pt x 314.17375pt>
 File: image/PGA.png Graphic file (type png)
 <use image/PGA.png>
 Package pdftex.def Info: image/PGA.png  used on input line 460.
-(pdftex.def)             Requested size: 256.07481pt x 176.54971pt.
-<image/Bassin.png, id=820, 1027.33812pt x 729.72626pt>
+(pdftex.def)             Requested size: 512.14963pt x 353.09943pt.
+<image/Bassin.png, id=826, 1027.33812pt x 729.72626pt>
 File: image/Bassin.png Graphic file (type png)
 <use image/Bassin.png>
 Package pdftex.def Info: image/Bassin.png  used on input line 474.
 (pdftex.def)             Requested size: 256.07481pt x 181.88551pt.
- [11] [12 <./image/PGA.png> <./image/Bassin.png>]
-<image/QualitÃ©_eau.png, id=835, 457.6005pt x 323.901pt>
+<image/QualitÃ©_eau.png, id=832, 457.6005pt x 323.901pt>
 File: image/QualitÃ©_eau.png Graphic file (type png)
 <use image/QualitÃ©_eau.png>
 Package pdftex.def Info: image/QualitÃ©_eau.png  used on input line 484.
 (pdftex.def)             Requested size: 256.07481pt x 181.25482pt.
-<image/Barrage.png, id=837, 676.02562pt x 382.42876pt>
+ [11] [12 <./image/PGA.png> <./image/Bassin.png>]
+<image/Barrage.png, id=845, 676.02562pt x 382.42876pt>
 File: image/Barrage.png Graphic file (type png)
 <use image/Barrage.png>
 Package pdftex.def Info: image/Barrage.png  used on input line 501.
-(pdftex.def)             Requested size: 256.07481pt x 144.86343pt.
- [13 <./image/QualitÃ©_eau.png>]
-<image/RD.png, id=846, 481.8pt x 194.691pt>
+(pdftex.def)             Requested size: 512.14963pt x 289.73271pt.
+<image/RD.png, id=848, 481.8pt x 194.691pt>
 File: image/RD.png Graphic file (type png)
 <use image/RD.png>
 Package pdftex.def Info: image/RD.png  used on input line 519.
-(pdftex.def)             Requested size: 256.07481pt x 103.47983pt.
-<image/RG.png, id=847, 483.552pt x 194.472pt>
+(pdftex.def)             Requested size: 512.14963pt x 206.97452pt.
+<image/RG.png, id=849, 483.552pt x 194.472pt>
 File: image/RG.png Graphic file (type png)
 <use image/RG.png>
 Package pdftex.def Info: image/RG.png  used on input line 526.
-(pdftex.def)             Requested size: 256.07481pt x 102.98953pt.
-
-
-Package natbib Warning: Citation `crivelli_languille_1998' on page 14 undefined
- on input line 535.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14 <./image/Barrage.png> <./image/RD.png> <./image/RG.png>]
-<image/RG2.jpeg, id=857, 666.49pt x 939.51pt>
+(pdftex.def)             Requested size: 512.14963pt x 205.99391pt.
+ [13 <./image/QualitÃ©_eau.png>] [14 <./image/Barrage.png> <./image/RD.png>]
+<image/RG2.jpeg, id=864, 666.49pt x 939.51pt>
 File: image/RG2.jpeg Graphic file (type jpg)
 <use image/RG2.jpeg>
 Package pdftex.def Info: image/RG2.jpeg  used on input line 549.
-(pdftex.def)             Requested size: 256.07481pt x 360.97418pt.
-<image/RD2.jpeg, id=859, 746.79pt x 762.85pt>
+(pdftex.def)             Requested size: 204.85672pt x 288.765pt.
+ [15 <./image/RG.png>]
+<image/RD2.jpeg, id=872, 746.79pt x 762.85pt>
 File: image/RD2.jpeg Graphic file (type jpg)
 <use image/RD2.jpeg>
 Package pdftex.def Info: image/RD2.jpeg  used on input line 566.
@@ -880,8 +865,14 @@ Overfull \hbox (7.61554pt too wide) in paragraph at lines 585--603
  [][] 
  []
 
-[15] [16 <./image/RG2.jpeg>]
-<image/Protocole.png, id=871, 492.75pt x 322.9155pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 1210) has occurred while \output is active []
+
+ [16 <./image/RG2.jpeg>]
+<image/Protocole.png, id=880, 492.75pt x 322.9155pt>
 File: image/Protocole.png Graphic file (type png)
 <use image/Protocole.png>
 Package pdftex.def Info: image/Protocole.png  used on input line 617.
@@ -895,143 +886,123 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\char' on input line 629.
 
-<image/Flottang.png, id=879, 278.03876pt x 185.69376pt>
+<image/Flottang.png, id=889, 278.03876pt x 185.69376pt>
 File: image/Flottang.png Graphic file (type png)
 <use image/Flottang.png>
 Package pdftex.def Info: image/Flottang.png  used on input line 635.
 (pdftex.def)             Requested size: 256.07481pt x 171.02733pt.
 [18 <./image/Protocole.png> <./image/Flottang.png>]
-<image/Grille.png, id=899, 457.98067pt x 440.9282pt>
+<image/Grille.png, id=908, 457.98067pt x 440.9282pt>
 File: image/Grille.png Graphic file (type png)
 <use image/Grille.png>
 Package pdftex.def Info: image/Grille.png  used on input line 675.
-(pdftex.def)             Requested size: 256.07481pt x 246.54134pt.
- [19]
-<image/InterprÃ©tation.png, id=908, 416.55624pt x 63.23625pt>
+(pdftex.def)             Requested size: 512.14963pt x 493.12305pt.
+<image/InterprÃ©tation.png, id=914, 416.55624pt x 63.23625pt>
 File: image/InterprÃ©tation.png Graphic file (type png)
 <use image/InterprÃ©tation.png>
 Package pdftex.def Info: image/InterprÃ©tation.png  used on input line 693.
-(pdftex.def)             Requested size: 256.07481pt x 38.87605pt.
- [20 <./image/Grille.png> <./image/InterprÃ©tation.png>]
-<image/graph_oral.png, id=921, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 77.75792pt.
+ [19] [20 <./image/Grille.png> <./image/InterprÃ©tation.png>]
+<image/graph_oral.png, id=930, 3319.40125pt x 1579.9025pt>
 File: image/graph_oral.png Graphic file (type png)
 <use image/graph_oral.png>
 Package pdftex.def Info: image/graph_oral.png  used on input line 716.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/graph_annee_oral.png, id=925, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+ [21 <./image/graph_oral.png>]
+<image/graph_annee_oral.png, id=938, 3319.40125pt x 1579.9025pt>
 File: image/graph_annee_oral.png Graphic file (type png)
 <use image/graph_annee_oral.png>
 Package pdftex.def Info: image/graph_annee_oral.png  used on input line 728.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/g_RG.png, id=926, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/g_RG.png, id=939, 3319.40125pt x 1579.9025pt>
 File: image/g_RG.png Graphic file (type png)
 <use image/g_RG.png>
 Package pdftex.def Info: image/g_RG.png  used on input line 735.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/g_RD.png, id=929, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/g_RD.png, id=942, 3319.40125pt x 1579.9025pt>
 File: image/g_RD.png Graphic file (type png)
 <use image/g_RD.png>
 Package pdftex.def Info: image/g_RD.png  used on input line 749.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
- [21 <./image/graph_oral.png>] [22 <./image/graph_annee_oral.png> <./image/g_RG
-.png> <./image/g_RD.png>]
-<image/taille_oral.png, id=942, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/taille_oral.png, id=945, 3319.40125pt x 1579.9025pt>
 File: image/taille_oral.png Graphic file (type png)
 <use image/taille_oral.png>
 Package pdftex.def Info: image/taille_oral.png  used on input line 765.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/taille_annee_oral.png, id=943, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+ [22 <./image/graph_annee_oral.png>] [23 <./image/g_RG.png> <./image/g_RD.png>]
+<image/taille_annee_oral.png, id=957, 3319.40125pt x 1579.9025pt>
 File: image/taille_annee_oral.png Graphic file (type png)
 <use image/taille_annee_oral.png>
 Package pdftex.def Info: image/taille_annee_oral.png  used on input line 772.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
- [23 <./image/taille_oral.png> <./image/taille_annee_oral.png>]
-<image/classe_taille_oral.png, id=953, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/classe_taille_oral.png, id=960, 3319.40125pt x 1579.9025pt>
 File: image/classe_taille_oral.png Graphic file (type png)
 <use image/classe_taille_oral.png>
 Package pdftex.def Info: image/classe_taille_oral.png  used on input line 783.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/taille_mois_oral.png, id=955, 3319.40125pt x 1579.9025pt>
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/taille_mois_oral.png, id=962, 3319.40125pt x 1579.9025pt>
 File: image/taille_mois_oral.png Graphic file (type png)
 <use image/taille_mois_oral.png>
 Package pdftex.def Info: image/taille_mois_oral.png  used on input line 795.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-
-Underfull \vbox (badness 1314) has occurred while \output is active []
-
- [24 <./image/classe_taille_oral.png> <./image/taille_mois_oral.png>]
-<image/patho.png, id=963, 490.779pt x 356.313pt>
-File: image/patho.png Graphic file (type png)
-<use image/patho.png>
-Package pdftex.def Info: image/patho.png  used on input line 839.
-(pdftex.def)             Requested size: 409.72125pt x 297.47952pt.
-<image/ACP.png, id=967, 1445.4pt x 903.375pt>
-File: image/ACP.png Graphic file (type png)
-<use image/ACP.png>
-Package pdftex.def Info: image/ACP.png  used on input line 851.
-(pdftex.def)             Requested size: 409.72125pt x 256.07233pt.
- [25] [26 <./image/patho.png>]
-<image/Individus.png, id=975, 1445.4pt x 903.375pt>
-File: image/Individus.png Graphic file (type png)
-<use image/Individus.png>
-Package pdftex.def Info: image/Individus.png  used on input line 859.
-(pdftex.def)             Requested size: 409.72125pt x 256.07233pt.
-<image/graph_debit_oral.png, id=976, 3319.40125pt x 1579.9025pt>
-File: image/graph_debit_oral.png Graphic file (type png)
-<use image/graph_debit_oral.png>
-Package pdftex.def Info: image/graph_debit_oral.png  used on input line 866.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/graph_temp_eau_oral.png, id=978, 3319.40125pt x 1579.9025pt>
-File: image/graph_temp_eau_oral.png Graphic file (type png)
-<use image/graph_temp_eau_oral.png>
-Package pdftex.def Info: image/graph_temp_eau_oral.png  used on input line 876.
-
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-<image/graph_flottang_oral.png, id=980, 3319.40125pt x 1579.9025pt>
-File: image/graph_flottang_oral.png Graphic file (type png)
-<use image/graph_flottang_oral.png>
-Package pdftex.def Info: image/graph_flottang_oral.png  used on input line 891.
-
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
-
-Underfull \vbox (badness 1286) has occurred while \output is active []
-
- [27 <./image/ACP.png>] [28 <./image/Individus.png> <./image/graph_debit_oral.p
-ng>]
-[29 <./image/graph_temp_eau_oral.png> <./image/graph_flottang_oral.png>]
-<image/taille_flottang_oral.png, id=997, 3319.40125pt x 1579.9025pt>
-File: image/taille_flottang_oral.png Graphic file (type png)
-<use image/taille_flottang_oral.png>
-Package pdftex.def Info: image/taille_flottang_oral.png  used on input line 902
-.
-(pdftex.def)             Requested size: 409.72125pt x 195.00427pt.
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[30 <./image/taille_flottang_oral.png>]
-<image/Discu.png, id=1005, 453.6585pt x 218.781pt>
+[24 <./image/taille_oral.png>] [25 <./image/taille_annee_oral.png> <./image/cla
+sse_taille_oral.png>]
+<image/patho.png, id=974, 490.779pt x 356.313pt>
+File: image/patho.png Graphic file (type png)
+<use image/patho.png>
+Package pdftex.def Info: image/patho.png  used on input line 839.
+(pdftex.def)             Requested size: 256.07481pt x 185.91994pt.
+ [26 <./image/taille_mois_oral.png>]
+<image/ACP.png, id=982, 1445.4pt x 903.375pt>
+File: image/ACP.png Graphic file (type png)
+<use image/ACP.png>
+Package pdftex.def Info: image/ACP.png  used on input line 851.
+(pdftex.def)             Requested size: 512.14963pt x 320.08696pt.
+<image/Individus.png, id=983, 1445.4pt x 903.375pt>
+File: image/Individus.png Graphic file (type png)
+<use image/Individus.png>
+Package pdftex.def Info: image/Individus.png  used on input line 859.
+(pdftex.def)             Requested size: 512.14963pt x 320.08696pt.
+<image/graph_debit_oral.png, id=984, 3319.40125pt x 1579.9025pt>
+File: image/graph_debit_oral.png Graphic file (type png)
+<use image/graph_debit_oral.png>
+Package pdftex.def Info: image/graph_debit_oral.png  used on input line 866.
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/graph_temp_eau_oral.png, id=986, 3319.40125pt x 1579.9025pt>
+File: image/graph_temp_eau_oral.png Graphic file (type png)
+<use image/graph_temp_eau_oral.png>
+Package pdftex.def Info: image/graph_temp_eau_oral.png  used on input line 876.
+
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+ [27 <./image/patho.png>] [28 <./image/ACP.png> <./image/Individus.png>] [29 <.
+/image/graph_debit_oral.png> <./image/graph_temp_eau_oral.png>]
+<image/graph_flottang_oral.png, id=1003, 3319.40125pt x 1579.9025pt>
+File: image/graph_flottang_oral.png Graphic file (type png)
+<use image/graph_flottang_oral.png>
+Package pdftex.def Info: image/graph_flottang_oral.png  used on input line 891.
+
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+<image/taille_flottang_oral.png, id=1005, 3319.40125pt x 1579.9025pt>
+File: image/taille_flottang_oral.png Graphic file (type png)
+<use image/taille_flottang_oral.png>
+Package pdftex.def Info: image/taille_flottang_oral.png  used on input line 902
+.
+(pdftex.def)             Requested size: 512.14963pt x 243.74931pt.
+ [30 <./image/graph_flottang_oral.png>] [31 <./image/taille_flottang_oral.png>]
+<image/Discu.png, id=1017, 453.6585pt x 218.781pt>
 File: image/Discu.png Graphic file (type png)
 <use image/Discu.png>
 Package pdftex.def Info: image/Discu.png  used on input line 950.
-(pdftex.def)             Requested size: 409.72125pt x 197.5921pt.
- [31]
-
-Package natbib Warning: Citation `berra_incidence_1978' on page 32 undefined on
- input line 965.
-
-
-Underfull \vbox (badness 1968) has occurred while \output is active []
-
+(pdftex.def)             Requested size: 512.14963pt x 247.00598pt.
  [32 <./image/Discu.png>] [33]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5091) has occurred while \output is active []
 
  [34]
-(./MemoireM2.bbl [35] [36] [37] [38])
-
-Package natbib Warning: There were undefined citations.
-
-[39] (./MemoireM2.aux)
+[35] (./MemoireM2.bbl [36] [37] [38] [39]) [40] (./MemoireM2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1044,10 +1015,10 @@ Package rerunfilecheck Info: File `MemoireM2.out' has not changed.
 (rerunfilecheck)             Checksum: D02B22ED1A1961F53FFCD520C07265B2;11128.
  ) 
 Here is how much of TeX's memory you used:
- 17233 strings out of 474116
- 283300 string characters out of 5743683
+ 17249 strings out of 474116
+ 283752 string characters out of 5743683
  1948187 words of memory out of 5000000
- 39104 multiletter control sequences out of 15000+600000
+ 39116 multiletter control sequences out of 15000+600000
  597132 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,17n,79p,2286b,710s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1067,10 +1038,10 @@ e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/public/lm/lmb10.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/
 type1/public/cm-super/sfrm1095.pfb>
-Output written on MemoireM2.pdf (47 pages, 27420726 bytes).
+Output written on MemoireM2.pdf (48 pages, 27430135 bytes).
 PDF statistics:
- 1182 PDF objects out of 1200 (max. 8388607)
- 985 compressed objects within 10 object streams
- 176 named destinations out of 1000 (max. 500000)
+ 1196 PDF objects out of 1200 (max. 8388607)
+ 998 compressed objects within 10 object streams
+ 180 named destinations out of 1000 (max. 500000)
  705 words of extra memory for PDF output out of 10000 (max. 10000000)
 
