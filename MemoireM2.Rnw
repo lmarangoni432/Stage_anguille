@@ -149,7 +149,7 @@ integer_breaks <- function(n = 5, ...) {
 }
 
 
-###### connexion à la base Stacomi, schéma Seinormigr sur le raspberry ###########
+###### connexion à la base Stacomi, schéma Seinormigr  ###########
 
 
 # con<-  pool::dbPool(
@@ -1618,12 +1618,12 @@ Le suivi du recrutement des anguilles européennes en Seine est réalisé sur le
 \label{g_RG}
 \end{figure}
 
-Tout d’abord, sur la (Figure \ref{g_RG}) concernant la rive gauche, nous pouvons observer que les dynamiques de migrations sont relativement similaires avec des captures faibles en début de saison. Les captures augmentent ensuite progressivement jusqu’à des pics de migrations.   Ces pics de migrations ont souvent lieu l’été en juillet-août cependant il y a une forte variabilité entre les années en termes d’effectifs.
+Tout d’abord, sur la figure \ref{g_RG} concernant la rive gauche, nous pouvons observer que les dynamiques de migrations sont relativement similaires avec des captures faibles en début de saison. Les captures augmentent ensuite progressivement jusqu’à des pics de migrations.   Ces pics de migrations ont souvent lieu l’été en juillet-août cependant il y a une forte variabilité entre les années en termes d’effectifs.
 
 A noté que pour cette année en rive gauche, \Sexpr{total_rive_gauche} anguilles ont été piégées, soit plus du double des effectifs de l’année 2022 qui était jusqu’à présent la meilleure année.
 
 
-La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite \Sexpr{total_rive_droite} anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi.
+La Figure \ref{g_RD} concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite \Sexpr{total_rive_droite} anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi.
 
 \begin{figure}[htpb]
 \centering
@@ -1639,7 +1639,7 @@ La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là au
 
 \textit{Note : les données de taille ne concernent que les individus biométrés. }
 
-La (Figure \ref{taille_oral}) présente la taille des individus biométrés en mm sur les deux rives. Nous pouvons voir que pour les deux rives la majorité des individus ont une taille d’environ 80 mm ce qui correspond aux anguillettes de l’année. Peu d’individus en rive gauche dépassent les 250 mm alors qu’en rive droite certains individus dépassent les 300 mm voir les 400 mm dans des cas très rare. En rive gauche la taille moyenne est de 105 mm avec une médiane de 87 mm alors qu’en rive droite la taille moyenne des individus est de 111 mm avec une médiane a 90mm. Les individus empruntant la rive gauche sont significativement plus petits que ceux de la rive droite (wilcox-test, p < 0,05). Ce résultat est obtenu pour la première fois depuis le début des suivis, les années précédentes, les anguilles passant en rive gauche étaient plus grosses que les individus passant en rive droite (Figure \ref{taille_annee_oral}). Durant les relevés des pièges beaucoup d’individus de l’année ont été retrouvés en rive gauche ce qui n’étaient pas le cas les années précédentes. En rive droite de nombreuses anguilles ayant déjà plusieurs années donc en reprise de migration ont été retrouvées en quantité plus élevé surtout durant le mois de juillet contrairement aux années précédentes. 
+La Figure \ref{taille_oral} présente la taille des individus biométrés en mm sur les deux rives. Nous pouvons voir que pour les deux rives la majorité des individus ont une taille d’environ 80 mm ce qui correspond aux anguillettes de l’année. Peu d’individus en rive gauche dépassent les 250 mm alors qu’en rive droite certains individus dépassent les 300 mm voir les 400 mm dans des cas très rare. En rive gauche la taille moyenne est de 105 mm avec une médiane de 87 mm alors qu’en rive droite la taille moyenne des individus est de 111 mm avec une médiane a 90mm. Les individus empruntant la rive gauche sont significativement plus petits que ceux de la rive droite (wilcox-test, p < 0,05). Ce résultat est obtenu pour la première fois depuis le début des suivis, les années précédentes, les anguilles passant en rive gauche étaient plus grosses que les individus passant en rive droite (Figure \ref{taille_annee_oral}). Durant les relevés des pièges beaucoup d’individus de l’année ont été retrouvés en rive gauche ce qui n’étaient pas le cas les années précédentes. En rive droite de nombreuses anguilles ayant déjà plusieurs années donc en reprise de migration ont été retrouvées en quantité plus élevé surtout durant le mois de juillet contrairement aux années précédentes. 
 
 \begin{figure}[htpb]
 \centering
