@@ -267,8 +267,8 @@ r_mig_interannual<-calcule(r_mig_interannual,silent=TRUE)
 data_histo_RD <- r_mig_interannual@data
 
 # Calcul des totaux pour la rive droite (102) et la rive gauche (104)
-total_rive_droite <- round(sum(grdata$effectif_total[grdata$DC == 102], na.rm = TRUE))
-total_rive_gauche <- round(sum(grdata$effectif_total[grdata$DC == 104], na.rm = TRUE))
+total_rive_droite <- round(sum(grdata$effectif_total[grdata$DC == 104], na.rm = TRUE))
+total_rive_gauche <- round(sum(grdata$effectif_total[grdata$DC == 102], na.rm = TRUE))
 
 save(hauteur_eau,grdata,annee2,bio_ang,patho,lot,ope,data_env,histo_debit,total_rive_droite,total_rive_gauche,data_histo_RG,data_histo_RD,file=str_c(datawd,"data_report.Rdata"))
 
@@ -491,17 +491,17 @@ graph_annee<- ggplot(annee2) +
   aes(x = annee, y = effectif, fill = ope_dic_identifiant) +
   geom_col() +
   scale_fill_hue(direction = 1) +
-  theme_minimal() +
-  scale_y_continuous(name = "Effectif total", labels = scales::label_number()) +
-  labs(
+  theme_minimal() + 
+    labs(
     title = "Bilan migratoire par année",
     fill = "Rive",  # Changement du titre de la légende
-    x = "Années"
+    x = "Années",
+    y = "Effectif total"
   ) +
   # Ajouter le total des effectifs au-dessus de chaque barre
-  geom_text(data = totals, aes(x = annee, y = total_effectif, label = total_effectif),
+  geom_text(data = totals, aes(x = annee, y = total_effectif, label = format(total_effectif,big.mark=" ")),
             vjust = -0.5, size = 5, fontface = "plain", inherit.aes = FALSE) +
-  guides(fill = guide_legend(reverse = TRUE)) 
+  guides(fill = guide_legend(reverse = TRUE))
 
 
 graph_annee_oral <- graph_annee + theme(
@@ -1620,7 +1620,7 @@ Le suivi du recrutement des anguilles européennes en Seine est réalisé sur le
 
 Tout d’abord, sur la (Figure \ref{g_RG}) concernant la rive gauche, nous pouvons observer que les dynamiques de migrations sont relativement similaires avec des captures faibles en début de saison. Les captures augmentent ensuite progressivement jusqu’à des pics de migrations.   Ces pics de migrations ont souvent lieu l’été en juillet-août cependant il y a une forte variabilité entre les années en termes d’effectifs.
 
-A noté que pour cette année en rive gauche, \Sexpr{total_rive_gauche} anguilles ont été piégées, soit plus du double des effectifs de l’année 2020 qui était jusqu’à présent la meilleure année.
+A noté que pour cette année en rive gauche, \Sexpr{total_rive_gauche} anguilles ont été piégées, soit plus du double des effectifs de l’année 2022 qui était jusqu’à présent la meilleure année.
 
 
 La (Figure \ref{g_RD}) concerne la rive droite, nous pouvons observer que là aussi les dynamiques de migrations sont similaires en début de saison avec des captures relativement basses. Tout comme en rive gauche les captures augmentent ensuite progressivement jusqu’à des pics de migrations. Cependant, en rive droite contrairement à la rive gauche les pics de migrations commencent mi-juillet pour chaque année jusqu’à mi-août début septembre pour certaines années. Cette année en rive droite \Sexpr{total_rive_droite} anguilles ont été piégées, en comparaison l’année 2018 a comptabilisé 476 958 individus sur toute la période de suivi.
